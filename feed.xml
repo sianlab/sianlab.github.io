@@ -1,16 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="https://sianlab.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://sianlab.github.io/" rel="alternate" type="text/html" /><updated>2022-06-07T17:38:47+09:00</updated><id>https://sianlab.github.io/feed.xml</id><title type="html">Siansoft</title><subtitle>기술 블로그</subtitle><entry><title type="html">Apache Ignite 살펴보기</title><link href="https://sianlab.github.io/apache-ignite-overview" rel="alternate" type="text/html" title="Apache Ignite 살펴보기" /><published>2022-06-07T00:00:00+09:00</published><updated>2022-06-07T00:00:00+09:00</updated><id>https://sianlab.github.io/apache-ignite-overview</id><content type="html" xml:base="https://sianlab.github.io/apache-ignite-overview"><![CDATA[<p>아파치 재단에서 Apache Ignite라는 분산형 데이터베이스 서비스를 출시했다. 메모리와 저장장치 간 데이터를 분산하여 속도, 안정성 모두 고려하여 개발된 데이터베이스로 보인다. 사이트에 접속해보면 여러가지 기술들이 나열되어 있는데 이론적인 이야기는 일단 제쳐두고 간단하게 메모리 DB로 사용해 본 내용을 본 포스트에 기재한다.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="https://sianlab.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://sianlab.github.io/" rel="alternate" type="text/html" /><updated>2022-06-07T17:50:11+09:00</updated><id>https://sianlab.github.io/feed.xml</id><title type="html">Siansoft</title><subtitle>기술 블로그</subtitle><entry><title type="html">Apache Ignite 살펴보기</title><link href="https://sianlab.github.io/apache-ignite-overview" rel="alternate" type="text/html" title="Apache Ignite 살펴보기" /><published>2022-06-07T00:00:00+09:00</published><updated>2022-06-07T00:00:00+09:00</updated><id>https://sianlab.github.io/apache-ignite-overview</id><content type="html" xml:base="https://sianlab.github.io/apache-ignite-overview"><![CDATA[<p>아파치 재단에서 Apache Ignite라는 분산형 데이터베이스 서비스를 출시했다. 메모리와 저장장치 간 데이터를 분산하여 속도, 안정성 모두 고려하여 개발된 데이터베이스로 보인다. 사이트에 접속해보면 여러가지 기술들이 나열되어 있는데 이론적인 이야기는 일단 제쳐두고 간단하게 메모리 DB로 사용해 본 내용을 본 포스트에 기재한다.</p>
 
 <p>만약 지원하는 기술 및 각종 가이드가 궁금한 사람은 아래 사이트에 접속해서 확인해보면 된다.</p>
 
-<p>[Apache Ignite 페이지]
-[Apache Ignite 페이지]: https://ignite.apache.org	“Apache Ignite 페이지”</p>
+<p><a href="https://ignite.apache.org" title="Apache Ignite 페이지">Apache Ignite 페이지</a></p>
 
 <h1 id="apache-ignite-설치-및-서버-실행">Apache Ignite 설치 및 서버 실행</h1>
 
 <p>Apache Ignite를 사용하기 위해선 먼저 사이트에 접속하여 다운로드 페이지에서 Ignite를 다운로드 받아야 한다.</p>
 
-<p>[Apache Ignite 다운로드 페이지]
-[Apache Ignite 다운로드 페이지]: https://ignite.apache.org/download.cgi#binaries	“Apache Ignite 다운로드 페이지”</p>
+<p><a href="https://ignite.apache.org/download.cgi#binaries" title="Apache Ignite 다운로드 페이지">Apache Ignite 다운로드 페이지</a></p>
 
 <p>위 사이트에 접속하여 원하는 버전을 다운로드 받는다. 필자는 포스트 작성 당시 latest 버전인 2.13.0를 받았다.</p>
 
