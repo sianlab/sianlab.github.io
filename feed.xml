@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-06-07T15:12:12+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Sian Lab</title><subtitle>기술 블로그</subtitle><entry><title type="html">Maven과 Gradle 차이</title><link href="http://localhost:4000/mavengradle" rel="alternate" type="text/html" title="Maven과 Gradle 차이" /><published>2021-09-09T16:00:00+09:00</published><updated>2021-09-09T16:00:00+09:00</updated><id>http://localhost:4000/mavengradle</id><content type="html" xml:base="http://localhost:4000/mavengradle"><![CDATA[<h1 id="빌드-도구란">빌드 도구란?</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="https://sianlab.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://sianlab.github.io/" rel="alternate" type="text/html" /><updated>2022-06-07T15:12:12+09:00</updated><id>https://sianlab.github.io/feed.xml</id><title type="html">Sian Lab</title><subtitle>기술 블로그</subtitle><entry><title type="html">Maven과 Gradle 차이</title><link href="https://sianlab.github.io/mavengradle" rel="alternate" type="text/html" title="Maven과 Gradle 차이" /><published>2021-09-09T16:00:00+09:00</published><updated>2021-09-09T16:00:00+09:00</updated><id>https://sianlab.github.io/mavengradle</id><content type="html" xml:base="https://sianlab.github.io/mavengradle"><![CDATA[<h1 id="빌드-도구란">빌드 도구란?</h1>
 
 <ul>
   <li>빌드 도구는 빌드 자동화를 시켜주는 실행가능한 프로그램만들어 주는 프로그램 ex) maven, gradle, ant</li>
@@ -141,7 +141,7 @@ Gradle은 설정 주입 방식을 제공한다.</li>
     <span class="nx">compile</span><span class="p">(</span><span class="dl">'</span><span class="s1">org.springframework.boot:spring-boot-starter</span><span class="dl">'</span><span class="p">)</span>
     <span class="nx">testCompile</span><span class="p">(</span><span class="dl">'</span><span class="s1">org.springframework.boot:spring-boot-starter-test</span><span class="dl">'</span><span class="p">)</span>
 <span class="p">}</span>
-</code></pre></div></div>]]></content><author><name>sian</name></author><category term="build" /><category term="maven" /><category term="gradle" /><summary type="html"><![CDATA[빌드 도구란?]]></summary></entry><entry><title type="html">Python 강좌(1) - Python 기본</title><link href="http://localhost:4000/python-base" rel="alternate" type="text/html" title="Python 강좌(1) - Python 기본" /><published>2021-09-08T08:40:00+09:00</published><updated>2021-09-08T08:40:00+09:00</updated><id>http://localhost:4000/python-base</id><content type="html" xml:base="http://localhost:4000/python-base"><![CDATA[<p><span class="table-of-contents-list">Python 강좌는 여러 절로 구성되어 있습니다. </span></p>
+</code></pre></div></div>]]></content><author><name>sian</name></author><category term="build" /><category term="maven" /><category term="gradle" /><summary type="html"><![CDATA[빌드 도구란?]]></summary></entry><entry><title type="html">Python 강좌(1) - Python 기본</title><link href="https://sianlab.github.io/python-base" rel="alternate" type="text/html" title="Python 강좌(1) - Python 기본" /><published>2021-09-08T08:40:00+09:00</published><updated>2021-09-08T08:40:00+09:00</updated><id>https://sianlab.github.io/python-base</id><content type="html" xml:base="https://sianlab.github.io/python-base"><![CDATA[<p><span class="table-of-contents-list">Python 강좌는 여러 절로 구성되어 있습니다. </span></p>
 <ul class="table-of-contents-list">
     <li><a href="./python-base">Python 강좌(1) - Python 기본</a></li>
     <li><a href="./python-control-statement">Python 강좌(2) - Python 제어문</a></li>
@@ -153,13 +153,13 @@ Gradle은 설정 주입 방식을 제공한다.</li>
     <span class="kd">var</span> <span class="nx">foo</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">Hello World</span><span class="dl">'</span><span class="p">;</span>
     <span class="kd">var</span> <span class="nx">bar</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
 <span class="p">}</span>
-</code></pre></div></div>]]></content><author><name>sian</name></author><category term="python" /><summary type="html"><![CDATA[Python 강좌는 여러 절로 구성되어 있습니다. Python 강좌(1) - Python 기본 Python 강좌(2) - Python 제어문]]></summary></entry><entry><title type="html">Python 강좌(2) - Python 제어문</title><link href="http://localhost:4000/python-control-statement" rel="alternate" type="text/html" title="Python 강좌(2) - Python 제어문" /><published>2021-09-08T08:40:00+09:00</published><updated>2021-09-08T08:40:00+09:00</updated><id>http://localhost:4000/python-control-statement</id><content type="html" xml:base="http://localhost:4000/python-control-statement"><![CDATA[<p><span class="table-of-contents-list">Python 강좌는 여러 절로 구성되어 있습니다. </span></p>
+</code></pre></div></div>]]></content><author><name>sian</name></author><category term="python" /><summary type="html"><![CDATA[Python 강좌는 여러 절로 구성되어 있습니다. Python 강좌(1) - Python 기본 Python 강좌(2) - Python 제어문]]></summary></entry><entry><title type="html">Python 강좌(2) - Python 제어문</title><link href="https://sianlab.github.io/python-control-statement" rel="alternate" type="text/html" title="Python 강좌(2) - Python 제어문" /><published>2021-09-08T08:40:00+09:00</published><updated>2021-09-08T08:40:00+09:00</updated><id>https://sianlab.github.io/python-control-statement</id><content type="html" xml:base="https://sianlab.github.io/python-control-statement"><![CDATA[<p><span class="table-of-contents-list">Python 강좌는 여러 절로 구성되어 있습니다. </span></p>
 <ul class="table-of-contents-list">
     <li><a href="./python-base">Python 강좌(1) - Python 기본</a></li>
     <li><a href="./python-control-statement">Python 강좌(2) - Python 제어문</a></li>
 </ul>
 
-<p>이 글은 Python 제어문 입니다.!!</p>]]></content><author><name>sian</name></author><category term="python" /><summary type="html"><![CDATA[Python 강좌는 여러 절로 구성되어 있습니다. Python 강좌(1) - Python 기본 Python 강좌(2) - Python 제어문]]></summary></entry><entry><title type="html">PMD 설치 및 사용방법</title><link href="http://localhost:4000/pmd" rel="alternate" type="text/html" title="PMD 설치 및 사용방법" /><published>2021-01-20T16:30:00+09:00</published><updated>2021-01-20T16:30:00+09:00</updated><id>http://localhost:4000/pmd</id><content type="html" xml:base="http://localhost:4000/pmd"><![CDATA[<h1 id="-pmd-란">※	PMD 란</h1>
+<p>이 글은 Python 제어문 입니다.!!</p>]]></content><author><name>sian</name></author><category term="python" /><summary type="html"><![CDATA[Python 강좌는 여러 절로 구성되어 있습니다. Python 강좌(1) - Python 기본 Python 강좌(2) - Python 제어문]]></summary></entry><entry><title type="html">PMD 설치 및 사용방법</title><link href="https://sianlab.github.io/pmd" rel="alternate" type="text/html" title="PMD 설치 및 사용방법" /><published>2021-01-20T16:30:00+09:00</published><updated>2021-01-20T16:30:00+09:00</updated><id>https://sianlab.github.io/pmd</id><content type="html" xml:base="https://sianlab.github.io/pmd"><![CDATA[<h1 id="-pmd-란">※	PMD 란</h1>
 
 <ol>
   <li>JAVA 소스 코드를 분석하여 프로그램의 오류 또는 불필요한 부분을 찾아내고 성능을 높이는 오픈 소스 도구</li>
@@ -278,7 +278,7 @@ Eclipse IDE의 환경설정을 통해, 전자정부 표준프레임워크 표준
   <li>
     <p>룰셋을 적용하겠냐는 질문에 YES버튼을 클릭하여 최종 확인.</p>
   </li>
-</ol>]]></content><author><name>sian</name></author><category term="web" /><category term="PMD" /><summary type="html"><![CDATA[※ PMD 란]]></summary></entry><entry><title type="html">TortoiseGit 사용방법</title><link href="http://localhost:4000/tortoisegit-2" rel="alternate" type="text/html" title="TortoiseGit 사용방법" /><published>2021-01-13T15:30:00+09:00</published><updated>2021-01-13T15:30:00+09:00</updated><id>http://localhost:4000/tortoisegit-2</id><content type="html" xml:base="http://localhost:4000/tortoisegit-2"><![CDATA[<h1 id="-tortoisegit-사용방법">※	TortoiseGit 사용방법</h1>
+</ol>]]></content><author><name>sian</name></author><category term="web" /><category term="PMD" /><summary type="html"><![CDATA[※ PMD 란]]></summary></entry><entry><title type="html">TortoiseGit 사용방법</title><link href="https://sianlab.github.io/tortoisegit-2" rel="alternate" type="text/html" title="TortoiseGit 사용방법" /><published>2021-01-13T15:30:00+09:00</published><updated>2021-01-13T15:30:00+09:00</updated><id>https://sianlab.github.io/tortoisegit-2</id><content type="html" xml:base="https://sianlab.github.io/tortoisegit-2"><![CDATA[<h1 id="-tortoisegit-사용방법">※	TortoiseGit 사용방법</h1>
 
 <ol>
   <li>데이터 받아오기 (Git 데이터 복제)</li>
@@ -352,7 +352,7 @@ Eclipse IDE의 환경설정을 통해, 전자정부 표준프레임워크 표준
 
 <p><img src="\assets\built\images\tortoisegit\tortoise39.png" alt="img" /></p>
 
-<p>서버에 작업내용 “Push” 완료</p>]]></content><author><name>sian</name></author><category term="web" /><category term="TortoiseGit" /><summary type="html"><![CDATA[※ TortoiseGit 사용방법]]></summary></entry><entry><title type="html">TortoiseGit 설치방법</title><link href="http://localhost:4000/tortoisegit-1" rel="alternate" type="text/html" title="TortoiseGit 설치방법" /><published>2021-01-13T15:00:00+09:00</published><updated>2021-01-13T15:00:00+09:00</updated><id>http://localhost:4000/tortoisegit-1</id><content type="html" xml:base="http://localhost:4000/tortoisegit-1"><![CDATA[<h1 id="-tortoisegit-설치방법">※	TortoiseGit 설치방법</h1>
+<p>서버에 작업내용 “Push” 완료</p>]]></content><author><name>sian</name></author><category term="web" /><category term="TortoiseGit" /><summary type="html"><![CDATA[※ TortoiseGit 사용방법]]></summary></entry><entry><title type="html">TortoiseGit 설치방법</title><link href="https://sianlab.github.io/tortoisegit-1" rel="alternate" type="text/html" title="TortoiseGit 설치방법" /><published>2021-01-13T15:00:00+09:00</published><updated>2021-01-13T15:00:00+09:00</updated><id>https://sianlab.github.io/tortoisegit-1</id><content type="html" xml:base="https://sianlab.github.io/tortoisegit-1"><![CDATA[<h1 id="-tortoisegit-설치방법">※	TortoiseGit 설치방법</h1>
 
 <h2 id="-tortoisegit-이란">●	TortoiseGit 이란</h2>
 
@@ -456,7 +456,7 @@ Use MinTTY(the default terminal of MSYS2) – Git bash 기본 터미널 사용</
 
 <p><img src="\assets\built\images\tortoisegit\tortoise24.png" alt="img" /></p>
 
-<p>설치 완료</p>]]></content><author><name>sian</name></author><category term="web" /><category term="TortoiseGit" /><summary type="html"><![CDATA[※ TortoiseGit 설치방법]]></summary></entry><entry><title type="html">CentOS 7 Gitlab 설치 및 설정(2) - Gitlab 설정</title><link href="http://localhost:4000/gitlab-install-2" rel="alternate" type="text/html" title="CentOS 7 Gitlab 설치 및 설정(2) - Gitlab 설정" /><published>2021-01-13T14:45:00+09:00</published><updated>2021-01-13T14:45:00+09:00</updated><id>http://localhost:4000/gitlab-install-2</id><content type="html" xml:base="http://localhost:4000/gitlab-install-2"><![CDATA[<h3 id="centos-7-gitlab-설치-및-설정2---gitlab-설정">CentOS 7 Gitlab 설치 및 설정(2) - Gitlab 설정</h3>
+<p>설치 완료</p>]]></content><author><name>sian</name></author><category term="web" /><category term="TortoiseGit" /><summary type="html"><![CDATA[※ TortoiseGit 설치방법]]></summary></entry><entry><title type="html">CentOS 7 Gitlab 설치 및 설정(2) - Gitlab 설정</title><link href="https://sianlab.github.io/gitlab-install-2" rel="alternate" type="text/html" title="CentOS 7 Gitlab 설치 및 설정(2) - Gitlab 설정" /><published>2021-01-13T14:45:00+09:00</published><updated>2021-01-13T14:45:00+09:00</updated><id>https://sianlab.github.io/gitlab-install-2</id><content type="html" xml:base="https://sianlab.github.io/gitlab-install-2"><![CDATA[<h3 id="centos-7-gitlab-설치-및-설정2---gitlab-설정">CentOS 7 Gitlab 설치 및 설정(2) - Gitlab 설정</h3>
 
 <h6 id="os--centos-7">OS : CentOS 7</h6>
 <h6 id="version--gitlab-ce-community-edition---무료버전">VERSION : gitlab-ce (community edition - 무료버전)</h6>
@@ -503,7 +503,7 @@ Use MinTTY(the default terminal of MSYS2) – Git bash 기본 터미널 사용</
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>gitlab-ctl stop				// gitlab 중지
 <span class="nb">sudo </span>gitlab-ctl reconfigure			// 설정 적용
 <span class="nb">sudo </span>gitlab-ctl restart				// gitlab 재시작
-</code></pre></div></div>]]></content><author><name>sian</name></author><category term="linux" /><category term="gitlab" /><summary type="html"><![CDATA[CentOS 7 Gitlab 설치 및 설정(2) - Gitlab 설정]]></summary></entry><entry><title type="html">CentOS 7 Gitlab 설치 및 설정(1) - Gitlab 설치하기</title><link href="http://localhost:4000/gitlab-install-1" rel="alternate" type="text/html" title="CentOS 7 Gitlab 설치 및 설정(1) - Gitlab 설치하기" /><published>2021-01-13T12:45:00+09:00</published><updated>2021-01-13T12:45:00+09:00</updated><id>http://localhost:4000/gitlab-install-1</id><content type="html" xml:base="http://localhost:4000/gitlab-install-1"><![CDATA[<h3 id="centos-7-gitlab-설치-및-설정1---gitlab-설치하기">CentOS 7 Gitlab 설치 및 설정(1) - Gitlab 설치하기</h3>
+</code></pre></div></div>]]></content><author><name>sian</name></author><category term="linux" /><category term="gitlab" /><summary type="html"><![CDATA[CentOS 7 Gitlab 설치 및 설정(2) - Gitlab 설정]]></summary></entry><entry><title type="html">CentOS 7 Gitlab 설치 및 설정(1) - Gitlab 설치하기</title><link href="https://sianlab.github.io/gitlab-install-1" rel="alternate" type="text/html" title="CentOS 7 Gitlab 설치 및 설정(1) - Gitlab 설치하기" /><published>2021-01-13T12:45:00+09:00</published><updated>2021-01-13T12:45:00+09:00</updated><id>https://sianlab.github.io/gitlab-install-1</id><content type="html" xml:base="https://sianlab.github.io/gitlab-install-1"><![CDATA[<h3 id="centos-7-gitlab-설치-및-설정1---gitlab-설치하기">CentOS 7 Gitlab 설치 및 설정(1) - Gitlab 설치하기</h3>
 
 <h6 id="os--centos-7">OS : CentOS 7</h6>
 <h6 id="version--gitlab-ce-community-edition---무료버전">VERSION : gitlab-ce (community edition - 무료버전)</h6>
@@ -570,7 +570,7 @@ Use MinTTY(the default terminal of MSYS2) – Git bash 기본 터미널 사용</
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>gitlab-ctl stop				// gitlab 중지
 <span class="nb">sudo </span>gitlab-ctl reconfigure			// 설정 적용
 <span class="nb">sudo </span>gitlab-ctl restart				// gitlab 재시작
-</code></pre></div></div>]]></content><author><name>sian</name></author><category term="linux" /><category term="gitlab" /><summary type="html"><![CDATA[CentOS 7 Gitlab 설치 및 설정(1) - Gitlab 설치하기]]></summary></entry><entry><title type="html">워드프레스(wordpress) 설치형 사용법</title><link href="http://localhost:4000/wordpress-use-installer" rel="alternate" type="text/html" title="워드프레스(wordpress) 설치형 사용법" /><published>2020-07-14T18:45:00+09:00</published><updated>2020-07-14T18:45:00+09:00</updated><id>http://localhost:4000/wordpress-use-installer</id><content type="html" xml:base="http://localhost:4000/wordpress-use-installer"><![CDATA[<h1 id="워드프레스-설치형-사용법">워드프레스 설치형 사용법</h1>
+</code></pre></div></div>]]></content><author><name>sian</name></author><category term="linux" /><category term="gitlab" /><summary type="html"><![CDATA[CentOS 7 Gitlab 설치 및 설정(1) - Gitlab 설치하기]]></summary></entry><entry><title type="html">워드프레스(wordpress) 설치형 사용법</title><link href="https://sianlab.github.io/wordpress-use-installer" rel="alternate" type="text/html" title="워드프레스(wordpress) 설치형 사용법" /><published>2020-07-14T18:45:00+09:00</published><updated>2020-07-14T18:45:00+09:00</updated><id>https://sianlab.github.io/wordpress-use-installer</id><content type="html" xml:base="https://sianlab.github.io/wordpress-use-installer"><![CDATA[<h1 id="워드프레스-설치형-사용법">워드프레스 설치형 사용법</h1>
 
 <h2 id="wordpress-설치형-사용법">WordPress 설치형 사용법</h2>
 <p> 
@@ -653,7 +653,7 @@ Use MinTTY(the default terminal of MSYS2) – Git bash 기본 터미널 사용</
 
 <p><img src="\assets\built\images\wordpress\b17.png" alt="img" /></p>
 
-<p>이러한 식으로 플러그인을 찾아 추가해 사용 할 수 있습니다.</p>]]></content><author><name>sian</name></author><category term="web" /><category term="WordPress" /><summary type="html"><![CDATA[워드프레스 설치형 사용법]]></summary></entry><entry><title type="html">워드프레스(wordpress) 사용법</title><link href="http://localhost:4000/wordpress-use" rel="alternate" type="text/html" title="워드프레스(wordpress) 사용법" /><published>2020-07-13T18:33:00+09:00</published><updated>2020-07-13T18:33:00+09:00</updated><id>http://localhost:4000/wordpress-use</id><content type="html" xml:base="http://localhost:4000/wordpress-use"><![CDATA[<h1 id="워드프레스-사용법">워드프레스 사용법</h1>
+<p>이러한 식으로 플러그인을 찾아 추가해 사용 할 수 있습니다.</p>]]></content><author><name>sian</name></author><category term="web" /><category term="WordPress" /><summary type="html"><![CDATA[워드프레스 설치형 사용법]]></summary></entry><entry><title type="html">워드프레스(wordpress) 사용법</title><link href="https://sianlab.github.io/wordpress-use" rel="alternate" type="text/html" title="워드프레스(wordpress) 사용법" /><published>2020-07-13T18:33:00+09:00</published><updated>2020-07-13T18:33:00+09:00</updated><id>https://sianlab.github.io/wordpress-use</id><content type="html" xml:base="https://sianlab.github.io/wordpress-use"><![CDATA[<h1 id="워드프레스-사용법">워드프레스 사용법</h1>
 
 <h2 id="wordpress-사용법">WordPress 사용법</h2>
 
