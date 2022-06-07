@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Document Settings -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Base Meta -->
+    <!-- dynamically fixing the title for tag/author pages -->
+
+
+
+    <title>Apache Ignite 살펴보기</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Styles'n'Scripts -->
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.edited.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/syntax.css" />
+
+    <!-- custom.css -->
+    <link rel="stylesheet" type="text/css" href="/assets/built/custom.css" />
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- 웹폰트 추가 -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/nanumgothic.css">
+
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <style>.hljs { background: none; }</style>
+
+    <!--[if IE]>
+        <style>
+            p, ol, ul{
+                width: 100%;
+            }
+            blockquote{
+                width: 100%;
+            }
+        </style>
+    <![endif]-->
+    
+    <!-- This tag outputs SEO meta+structured data and other important settings -->
+    <meta name="description" content="기술 블로그" />
+    <link rel="shortcut icon" href="https://sianlab.github.io/assets/built/images/favicon.jpg" type="image/png" />
+    <link rel="canonical" href="https://sianlab.github.io/apache-ignite-overview" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+
+     <!--title below is coming from _includes/dynamic_title-->
+    <meta property="og:site_name" content="Siansoft" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Apache Ignite 살펴보기" />
+    <meta property="og:description" content="아파치 재단에서 Apache Ignite라는 분산형 데이터베이스 서비스를 출시했다. 메모리와 저장장치 간 데이터를 분산하여 속도, 안정성 모두 고려하여 개발된 데이터베이스로 보인다. 사이트에 접속해보면 여러가지 기술들이 나열되어 있는데 이론적인 이야기는 일단 제쳐두고 간단하게 메모리 DB로 사용해 본 내용을 본 포스트에 기재한다. 만약 지원하는 기술 및 각종 가이드가 궁금한 사람은 아래 사이트에 접속해서" />
+    <meta property="og:url" content="https://sianlab.github.io/apache-ignite-overview" />
+    <meta property="og:image" content="https://sianlab.github.io/assets/built/images/apache-ignite/cover.png" />
+    <meta property="article:publisher" content="https://www.facebook.com/" />
+    <meta property="article:author" content="https://www.facebook.com/" />
+    <meta property="article:published_time" content="2022-06-07T00:00:00+09:00" />
+    <meta property="article:modified_time" content="2022-06-07T00:00:00+09:00" />
+    <meta property="article:tag" content="apache-ignite" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Apache Ignite 살펴보기" />
+    <meta name="twitter:description" content="아파치 재단에서 Apache Ignite라는 분산형 데이터베이스 서비스를 출시했다. 메모리와 저장장치 간 데이터를 분산하여 속도, 안정성 모두 고려하여 개발된 데이터베이스로 보인다. 사이트에 접속해보면 여러가지 기술들이 나열되어 있는데 이론적인 이야기는 일단 제쳐두고 간단하게 메모리 DB로 사용해 본 내용을 본 포스트에 기재한다. 만약 지원하는 기술 및 각종 가이드가 궁금한 사람은 아래 사이트에 접속해서" />
+    <meta name="twitter:url" content="https://sianlab.github.io/" />
+    <meta name="twitter:image" content="https://sianlab.github.io/assets/built/images/apache-ignite/cover.png" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Siansoft" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="apache-ignite" />
+    <meta name="twitter:site" content="@" />
+    <meta name="twitter:creator" content="@" />
+    <meta property="og:image:width" content="1400" />
+    <meta property="og:image:height" content="933" />
+
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Siansoft",
+        "logo": "https://sianlab.github.io/"
+    },
+    "url": "https://sianlab.github.io/apache-ignite-overview",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://sianlab.github.io/assets/built/images/apache-ignite/cover.png",
+        "width": 2000,
+        "height": 666
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://sianlab.github.io/apache-ignite-overview"
+    },
+    "description": "아파치 재단에서 Apache Ignite라는 분산형 데이터베이스 서비스를 출시했다. 메모리와 저장장치 간 데이터를 분산하여 속도, 안정성 모두 고려하여 개발된 데이터베이스로 보인다. 사이트에 접속해보면 여러가지 기술들이 나열되어 있는데 이론적인 이야기는 일단 제쳐두고 간단하게 메모리 DB로 사용해 본 내용을 본 포스트에 기재한다. 만약 지원하는 기술 및 각종 가이드가 궁금한 사람은 아래 사이트에 접속해서"
+}
+    </script>
+
+    <!-- <script type="text/javascript" src="https://demo.ghost.io/public/ghost-sdk.min.js?v=724281a32e"></script>
+    <script type="text/javascript">
+    ghost.init({
+    	clientId: "ghost-frontend",
+    	clientSecret: "f84a07a72b17"
+    });
+    </script> -->
+
+    <meta name="generator" content="Jekyll 3.6.2" />
+    <link rel="alternate" type="application/rss+xml" title="Apache Ignite 살펴보기" href="/feed.xml" />
+
+
+</head>
+<body class="post-template">
+
+    <div class="site-wrapper">
+        <!-- All the main content gets inserted here, index.hbs, post.hbs, etc -->
+        <!-- default -->
+
+<!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template -->
+
+<header class="site-header outer">
+    <div class="inner">
+        <nav class="site-nav">
+    <div class="site-nav-left">
+        
+            
+                <a class="site-nav-logo" href="https://sianlab.github.io/">Siansoft</a>
+            
+        
+        
+            <ul class="nav" role="menu">
+    <li class="nav-about" role="menuitem"><a href="/about/">About</a></li>
+    <li class="nav-jekyll" role="menuitem"><a href="/category/react/">react</a></li>
+    <li class="nav-python" role="menuitem"><a href="/category/spring/">spring</a></li>
+    <li class="nav-java" role="menuitem"><a href="/category/ios/">ios</a></li>
+    <li class="nav-jekyll" role="menuitem"><a href="/category/jekyll/">jekyll</a></li>
+    <li class="nav-python" role="menuitem"><a href="/category/minimal-mistakes/">minimal-mistakes</a></li>
+    <li class="nav-python" role="menuitem"><a href="/category/ssl/">ssl</a></li>
+    <li class="nav-python" role="menuitem"><a href="/category/tensorflow/">tensorflow</a></li>
+    <li class="nav-python" role="menuitem"><a href="/category/ssh/">ssh</a></li>
+    <li class="nav-archive" role="menuitem">
+        <a href="/archive.html">All Posts</a>
+    </li>
+    <li class="nav-archive" role="menuitem">
+        <a href="/categories.html">카테고리별 Posts</a>
+    </li>
+    <li class="nav-archive" role="menuitem">
+        <a href="/author_archive.html">Tag별 Posts</a>
+    </li>
+</ul>
+        
+    </div>
+    <div class="site-nav-right">
+        <div class="social-links">
+            
+            
+        </div>
+        
+            <a class="subscribe-button" href="#subscribe">Search</a>
+        
+    </div>
+</nav>
+
+    </div>
+</header>
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<main id="site-main" class="site-main outer" role="main">
+    <div class="inner">
+
+        <article class="post-full  tag-apache-ignite tag-ignite  ">
+
+            <header class="post-full-header">
+                <section class="post-full-meta">
+                    <time class="post-full-meta-date" datetime=" 7 June 2022"> 7 June 2022</time>
+                    
+                        <span class="date-divider">/</span>
+                        
+                            
+                            <a href='/category/apache-ignite/'>APACHE-IGNITE</a>
+                            
+                        
+                    
+                </section>
+                <h1 class="post-full-title">Apache Ignite 살펴보기</h1>
+            </header>
+
+            <!--
+            
+            <figure class="post-full-image" style="background-image: url(/assets/built/images/apache-ignite/cover.png)">
+            </figure>
+            
+            -->
+
+            <section class="post-full-content">
+                <div class="kg-card-markdown">
+                    <p>아파치 재단에서 Apache Ignite라는 분산형 데이터베이스 서비스를 출시했다. 메모리와 저장장치 간 데이터를 분산하여 속도, 안정성 모두 고려하여 개발된 데이터베이스로 보인다. 사이트에 접속해보면 여러가지 기술들이 나열되어 있는데 이론적인 이야기는 일단 제쳐두고 간단하게 메모리 DB로 사용해 본 내용을 본 포스트에 기재한다.</p>
+
+<p>만약 지원하는 기술 및 각종 가이드가 궁금한 사람은 아래 사이트에 접속해서 확인해보면 된다.</p>
+
+<p>[Apache Ignite 페이지]
+[Apache Ignite 페이지]: https://ignite.apache.org	“Apache Ignite 페이지”</p>
+
+<h1 id="apache-ignite-설치-및-서버-실행">Apache Ignite 설치 및 서버 실행</h1>
+
+<p>Apache Ignite를 사용하기 위해선 먼저 사이트에 접속하여 다운로드 페이지에서 Ignite를 다운로드 받아야 한다.</p>
+
+<p>[Apache Ignite 다운로드 페이지]
+[Apache Ignite 다운로드 페이지]: https://ignite.apache.org/download.cgi#binaries	“Apache Ignite 다운로드 페이지”</p>
+
+<p>위 사이트에 접속하여 원하는 버전을 다운로드 받는다. 필자는 포스트 작성 당시 latest 버전인 2.13.0를 받았다.</p>
+
+<p><img src="\assets\built\images\apache-ignite\apache-ignite-overview\img1.png" alt="" /></p>
+
+<p>다운로드 받은 zip 파일을 압축해제한 뒤, 해당 폴더를 명령 프롬프트로 진입한다. (윈도우에서 진행했기 때문에 cmd를 이용하였다.)</p>
+
+<p><img src="\assets\built\images\apache-ignite\apache-ignite-overview\img2.png" alt="" /></p>
+
+<p>bin 폴더 내부에 진입했다면 아래 명령어를 실행해주자. Windows와 Unix 간 명령어가 다른 것에 주의. (bat, sh)</p>
+
+<div class="language-terminal highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">#</span><span class="w"> </span>Windows
+<span class="go">ignite.bat ..\examples\config\example-ignite.xml
+
+</span><span class="gp">#</span><span class="w"> </span>Unix
+<span class="go">./ignite.sh ../examples/config/example-ignite.xml
+</span></code></pre></div></div>
+
+<p>아래 이미지와 같이 서버가 구동되는지 확인한다.</p>
+
+<p><img src="\assets\built\images\apache-ignite\apache-ignite-overview\img3.png" alt="" /></p>
+
+<blockquote>
+  <p>java는 1.8_301 버전을 이용</p>
+
+  <p>openjdk 1.8 버전에서 에러가 발생하여 추후 알아볼 예정</p>
+</blockquote>
+
+<h2 id="java-client를-이용하여-기본-구현">Java client를 이용하여 기본 구현</h2>
+
+<p>평소에 사용하던 언어인 Java를 이용하여 기본 메모리 DB에 read, write를 하는 클라이언트를 작성하였다. Ignite 사이트에 각종 다른 언어 매뉴얼이 있으니 다른 언어는 사이트의 가이드에서 확인할 수 있다.</p>
+
+<p>우선 첫번째로 maven project를 생성하여 pom.xml에 ignite 의존성을 추가한다.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;properties&gt;</span>
+	<span class="nt">&lt;ignite.version&gt;</span>2.13.0<span class="nt">&lt;/ignite.version&gt;</span>
+<span class="nt">&lt;/properties&gt;</span>
+
+<span class="nt">&lt;dependencies&gt;</span>
+	<span class="nt">&lt;dependency&gt;</span>
+		<span class="nt">&lt;groupId&gt;</span>org.apache.ignite<span class="nt">&lt;/groupId&gt;</span>
+		<span class="nt">&lt;artifactId&gt;</span>ignite-core<span class="nt">&lt;/artifactId&gt;</span>
+		<span class="nt">&lt;version&gt;</span>${ignite.version}<span class="nt">&lt;/version&gt;</span>
+	<span class="nt">&lt;/dependency&gt;</span>
+	<span class="nt">&lt;dependency&gt;</span>
+		<span class="nt">&lt;groupId&gt;</span>org.apache.ignite<span class="nt">&lt;/groupId&gt;</span>
+		<span class="nt">&lt;artifactId&gt;</span>ignite-spring<span class="nt">&lt;/artifactId&gt;</span>
+		<span class="nt">&lt;version&gt;</span>${ignite.version}<span class="nt">&lt;/version&gt;</span>
+	<span class="nt">&lt;/dependency&gt;</span>
+<span class="nt">&lt;/dependencies&gt;</span>
+</code></pre></div></div>
+
+<p>그 후 Java 코드를 작성한다. Ignite에서 제공하는 기본 코드다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">main</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.Collections</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.apache.ignite.Ignite</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.ignite.IgniteCache</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.ignite.Ignition</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.ignite.configuration.IgniteConfiguration</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.ignite.lang.IgniteRunnable</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.ignite.resources.IgniteInstanceResource</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.ignite.spi.discovery.tcp.TcpDiscoverySpi</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.ignite.spi.discovery.tcp.ipfinder.multicast.TcpDiscoveryMulticastIpFinder</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">IgniteTest</span> <span class="o">{</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+		<span class="c1">// Preparing IgniteConfiguration using Java APIs</span>
+        <span class="nc">IgniteConfiguration</span> <span class="n">cfg</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">IgniteConfiguration</span><span class="o">();</span>
+
+        <span class="c1">// The node will be started as a client node.</span>
+        <span class="n">cfg</span><span class="o">.</span><span class="na">setClientMode</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+
+        <span class="c1">// Classes of custom Java logic will be transferred over the wire from this app.</span>
+        <span class="n">cfg</span><span class="o">.</span><span class="na">setPeerClassLoadingEnabled</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+
+        <span class="c1">// Setting up an IP Finder to ensure the client can locate the servers.</span>
+        <span class="nc">TcpDiscoveryMulticastIpFinder</span> <span class="n">ipFinder</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">TcpDiscoveryMulticastIpFinder</span><span class="o">();</span>
+        <span class="n">ipFinder</span><span class="o">.</span><span class="na">setAddresses</span><span class="o">(</span><span class="nc">Collections</span><span class="o">.</span><span class="na">singletonList</span><span class="o">(</span><span class="s">"127.0.0.1:47500..47509"</span><span class="o">));</span>
+        <span class="n">cfg</span><span class="o">.</span><span class="na">setDiscoverySpi</span><span class="o">(</span><span class="k">new</span> <span class="nc">TcpDiscoverySpi</span><span class="o">().</span><span class="na">setIpFinder</span><span class="o">(</span><span class="n">ipFinder</span><span class="o">));</span>
+
+        <span class="c1">// Starting the node</span>
+        <span class="nc">Ignite</span> <span class="n">ignite</span> <span class="o">=</span> <span class="nc">Ignition</span><span class="o">.</span><span class="na">start</span><span class="o">(</span><span class="n">cfg</span><span class="o">);</span>
+
+        <span class="c1">// Create an IgniteCache and put some values in it.</span>
+        <span class="nc">IgniteCache</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">,</span> <span class="nc">String</span><span class="o">&gt;</span> <span class="n">cache</span> <span class="o">=</span> <span class="n">ignite</span><span class="o">.</span><span class="na">getOrCreateCache</span><span class="o">(</span><span class="s">"myCache"</span><span class="o">);</span>
+        <span class="n">cache</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="s">"Hello"</span><span class="o">);</span>
+        <span class="n">cache</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="s">"World!"</span><span class="o">);</span>
+
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&gt;&gt; Created the cache and add the values."</span><span class="o">);</span>
+
+        <span class="c1">// Executing custom Java compute task on server nodes.</span>
+        <span class="n">ignite</span><span class="o">.</span><span class="na">compute</span><span class="o">(</span><span class="n">ignite</span><span class="o">.</span><span class="na">cluster</span><span class="o">().</span><span class="na">forServers</span><span class="o">()).</span><span class="na">broadcast</span><span class="o">(</span><span class="k">new</span> <span class="nc">RemoteTask</span><span class="o">());</span>
+
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&gt;&gt; Compute task is executed, check for output on the server nodes."</span><span class="o">);</span>
+
+        <span class="c1">// Disconnect from the cluster.</span>
+        <span class="n">ignite</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+	<span class="o">}</span>
+	
+	<span class="cm">/**
+     * A compute tasks that prints out a node ID and some details about its OS and JRE.
+     * Plus, the code shows how to access data stored in a cache from the compute task.
+     */</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">RemoteTask</span> <span class="kd">implements</span> <span class="nc">IgniteRunnable</span> <span class="o">{</span>
+        <span class="nd">@IgniteInstanceResource</span>
+        <span class="nc">Ignite</span> <span class="n">ignite</span><span class="o">;</span>
+
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&gt;&gt; Executing the compute task"</span><span class="o">);</span>
+
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span>
+                <span class="s">"   Node ID: "</span> <span class="o">+</span> <span class="n">ignite</span><span class="o">.</span><span class="na">cluster</span><span class="o">().</span><span class="na">localNode</span><span class="o">().</span><span class="na">id</span><span class="o">()</span> <span class="o">+</span> <span class="s">"\n"</span> <span class="o">+</span>
+                <span class="s">"   OS: "</span> <span class="o">+</span> <span class="nc">System</span><span class="o">.</span><span class="na">getProperty</span><span class="o">(</span><span class="s">"os.name"</span><span class="o">)</span> <span class="o">+</span>
+                <span class="s">"   JRE: "</span> <span class="o">+</span> <span class="nc">System</span><span class="o">.</span><span class="na">getProperty</span><span class="o">(</span><span class="s">"java.runtime.name"</span><span class="o">));</span>
+
+            <span class="nc">IgniteCache</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">,</span> <span class="nc">String</span><span class="o">&gt;</span> <span class="n">cache</span> <span class="o">=</span> <span class="n">ignite</span><span class="o">.</span><span class="na">cache</span><span class="o">(</span><span class="s">"myCache"</span><span class="o">);</span>
+
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&gt;&gt; "</span> <span class="o">+</span> <span class="n">cache</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span> <span class="o">+</span> <span class="s">" "</span> <span class="o">+</span> <span class="n">cache</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">2</span><span class="o">));</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Ignite 가이드에서 제공하는 Java 코드는 기본 cache를 하나 만든 뒤, 해당 cache에 데이터 2개를 저장한 후, 서버에서 해당 데이터를 출력하는 task를 보내는 방식으로 작성되어 있다. 위 코드를 작성한 뒤 코드를 실행해보면 아래와 같이 Java 콘솔이 출력된다.</p>
+
+<p><img src="\assets\built\images\apache-ignite\apache-ignite-overview\img4.png" alt="" /></p>
+
+<p>클라이언트에서 작성한대로, 서버에 task를 execute했으니 서버 콘솔을 확인해보라는 메시지가 나온다면 성공이다. 이제 Ignite 서버 콘솔을 확인한다.</p>
+
+<p><img src="\assets\built\images\apache-ignite\apache-ignite-overview\img5.png" alt="" /></p>
+
+<p>task에 작성한대로 콘솔에 데이터가 출력되는 모습이 확인된다. 서버의 cache에 데이터가 잘 저장되었다.</p>
+
+<p>다음은 클라이언트에서 값을 저장하고, 서버에서 확인하는 것이 아니라 클라이언트에서 값을 확인해보는 코드를 작성하였다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">main</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.Collections</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.apache.ignite.Ignite</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.ignite.IgniteCache</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.ignite.Ignition</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.ignite.configuration.IgniteConfiguration</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.ignite.spi.discovery.tcp.TcpDiscoverySpi</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.ignite.spi.discovery.tcp.ipfinder.multicast.TcpDiscoveryMulticastIpFinder</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">IgniteTest</span> <span class="o">{</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+		<span class="c1">// Preparing IgniteConfiguration using Java APIs</span>
+        <span class="nc">IgniteConfiguration</span> <span class="n">cfg</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">IgniteConfiguration</span><span class="o">();</span>
+
+        <span class="c1">// The node will be started as a client node.</span>
+        <span class="n">cfg</span><span class="o">.</span><span class="na">setClientMode</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+
+        <span class="c1">// Classes of custom Java logic will be transferred over the wire from this app.</span>
+        <span class="n">cfg</span><span class="o">.</span><span class="na">setPeerClassLoadingEnabled</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+
+        <span class="c1">// Setting up an IP Finder to ensure the client can locate the servers.</span>
+        <span class="nc">TcpDiscoveryMulticastIpFinder</span> <span class="n">ipFinder</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">TcpDiscoveryMulticastIpFinder</span><span class="o">();</span>
+        <span class="n">ipFinder</span><span class="o">.</span><span class="na">setAddresses</span><span class="o">(</span><span class="nc">Collections</span><span class="o">.</span><span class="na">singletonList</span><span class="o">(</span><span class="s">"127.0.0.1:47500..47509"</span><span class="o">));</span>
+        <span class="n">cfg</span><span class="o">.</span><span class="na">setDiscoverySpi</span><span class="o">(</span><span class="k">new</span> <span class="nc">TcpDiscoverySpi</span><span class="o">().</span><span class="na">setIpFinder</span><span class="o">(</span><span class="n">ipFinder</span><span class="o">));</span>
+
+        <span class="c1">// Starting the node</span>
+        <span class="nc">Ignite</span> <span class="n">ignite</span> <span class="o">=</span> <span class="nc">Ignition</span><span class="o">.</span><span class="na">start</span><span class="o">(</span><span class="n">cfg</span><span class="o">);</span>
+
+        <span class="c1">// Create an IgniteCache and put some values in it.</span>
+        <span class="nc">IgniteCache</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">,</span> <span class="nc">String</span><span class="o">&gt;</span> <span class="n">cache</span> <span class="o">=</span> <span class="n">ignite</span><span class="o">.</span><span class="na">getOrCreateCache</span><span class="o">(</span><span class="s">"myCache"</span><span class="o">);</span>
+        <span class="n">cache</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="s">"Hello"</span><span class="o">);</span>
+        <span class="n">cache</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="s">"World!"</span><span class="o">);</span>
+
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&gt;&gt; Created the cache and add the values."</span><span class="o">);</span>
+        
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&gt;&gt; value 1 : "</span> <span class="o">+</span> <span class="n">cache</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">));</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&gt;&gt; value 2 : "</span> <span class="o">+</span> <span class="n">cache</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">2</span><span class="o">));</span>
+
+        <span class="c1">// Disconnect from the cluster.</span>
+        <span class="n">ignite</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>cache에서 키를 이용하여 get을 해주면 간단하게 클라이언트에서 데이터를 조회할 수 있다. 아래 콘솔을 확인하자.</p>
+
+<p><img src="\assets\built\images\apache-ignite\apache-ignite-overview\img6.png" alt="" /></p>
+
+<p>서버가 작동되고 있는 한, 데이터가 유지되야하기 때문에 다음은 서버에 값을 저장하지 않고 바로 조회하는 코드를 작성하였다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">main</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.Collections</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.apache.ignite.Ignite</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.ignite.IgniteCache</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.ignite.Ignition</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.ignite.configuration.IgniteConfiguration</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.ignite.spi.discovery.tcp.TcpDiscoverySpi</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.ignite.spi.discovery.tcp.ipfinder.multicast.TcpDiscoveryMulticastIpFinder</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">IgniteTest</span> <span class="o">{</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+		<span class="c1">// Preparing IgniteConfiguration using Java APIs</span>
+        <span class="nc">IgniteConfiguration</span> <span class="n">cfg</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">IgniteConfiguration</span><span class="o">();</span>
+
+        <span class="c1">// The node will be started as a client node.</span>
+        <span class="n">cfg</span><span class="o">.</span><span class="na">setClientMode</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+
+        <span class="c1">// Classes of custom Java logic will be transferred over the wire from this app.</span>
+        <span class="n">cfg</span><span class="o">.</span><span class="na">setPeerClassLoadingEnabled</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+
+        <span class="c1">// Setting up an IP Finder to ensure the client can locate the servers.</span>
+        <span class="nc">TcpDiscoveryMulticastIpFinder</span> <span class="n">ipFinder</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">TcpDiscoveryMulticastIpFinder</span><span class="o">();</span>
+        <span class="n">ipFinder</span><span class="o">.</span><span class="na">setAddresses</span><span class="o">(</span><span class="nc">Collections</span><span class="o">.</span><span class="na">singletonList</span><span class="o">(</span><span class="s">"127.0.0.1:47500..47509"</span><span class="o">));</span>
+        <span class="n">cfg</span><span class="o">.</span><span class="na">setDiscoverySpi</span><span class="o">(</span><span class="k">new</span> <span class="nc">TcpDiscoverySpi</span><span class="o">().</span><span class="na">setIpFinder</span><span class="o">(</span><span class="n">ipFinder</span><span class="o">));</span>
+
+        <span class="c1">// Starting the node</span>
+        <span class="nc">Ignite</span> <span class="n">ignite</span> <span class="o">=</span> <span class="nc">Ignition</span><span class="o">.</span><span class="na">start</span><span class="o">(</span><span class="n">cfg</span><span class="o">);</span>
+
+        <span class="c1">// Create an IgniteCache and put some values in it.</span>
+        <span class="nc">IgniteCache</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">,</span> <span class="nc">String</span><span class="o">&gt;</span> <span class="n">cache</span> <span class="o">=</span> <span class="n">ignite</span><span class="o">.</span><span class="na">getOrCreateCache</span><span class="o">(</span><span class="s">"myCache"</span><span class="o">);</span>
+
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&gt;&gt; value 1 : "</span> <span class="o">+</span> <span class="n">cache</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">));</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"&gt;&gt; value 2 : "</span> <span class="o">+</span> <span class="n">cache</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">2</span><span class="o">));</span>
+
+        <span class="c1">// Disconnect from the cluster.</span>
+        <span class="n">ignite</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>콘솔을 확인해서 이전에 저장했던 데이터가 잘 나오는지 확인한다.</p>
+
+<p><img src="\assets\built\images\apache-ignite\apache-ignite-overview\img7.png" alt="" /></p>
+
+<p>메모리 DB로 사용되기 때문에, 서버가 기본설정 상 정지되면 기존의 값들이 사라질 것이다. 직접 확인해보기 위해 서버를 재시작한 뒤 데이터를 다시 조회해봤다.</p>
+
+<p><img src="\assets\built\images\apache-ignite\apache-ignite-overview\img8.png" alt="" /></p>
+
+<p>기존 데이터가 삭제되고 null로 출력되는 모습을 확인할 수 있다.</p>
+
+<h1 id="데이터-영속성-설정">데이터 영속성 설정</h1>
+
+<p>ignite는 서버가 중지되더라도 데이터가 소멸되지 않는 데이터 영속성 설정을 할 수 있다. 컴퓨터의 저장장치와 연계하여 데이터가 유지되는 것으로 보인다. 일단 기본적인 기능들을 먼저 사용해보기 위해 이론적인 내용보다 코드를 먼저 작성했기때문에 정확한 동작 매커니즘은 아직 파악하지 못하였다.</p>
+
+<p>데이터 영속성을 설정하는 방법은 사이트의 가이드에 여러가지 방법이 소개되어 있는데, 본 포스트에서는 xml 파일을 수정하는 방법으로 진행하였다. 본 포스트 상단에 ignite 서버를 실행할 때 입력한 명령어를 보면 bat(또는 sh) 파일 뒤에 <strong>..\examples\config\example-ignite.xml</strong> 라고 입력한 부분이 있었는데, 이 xml 파일이 설정파일이다. 해당 폴더(examples\config)에 가보면 여러가지 설정들이 있는데, example-ignite.xml 파일을 그대로 수정하려고 한다.</p>
+
+<p>example-ignite.xml 파일을 보면 example-default.xml 파일을 import 하고 있기 때문에 실제 수정은 <strong>example-default.xml</strong> 파일을 수정하였다.</p>
+
+<p>example-default.xml 파일 안에 IgniteConfiguration bean(bean id가 ignite.cfg로 되어 있음) 내부에 아래 프로퍼티를 추가해준다.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"dataStorageConfiguration"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;bean</span> <span class="na">class=</span><span class="s">"org.apache.ignite.configuration.DataStorageConfiguration"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"defaultDataRegionConfiguration"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;bean</span> <span class="na">class=</span><span class="s">"org.apache.ignite.configuration.DataRegionConfiguration"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"persistenceEnabled"</span> <span class="na">value=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;/bean&gt;</span>
+        <span class="nt">&lt;/property&gt;</span>
+    <span class="nt">&lt;/bean&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+</code></pre></div></div>
+
+<p>persistenceEnabled 속성을 true로 설정해주면 데이터 영속성이 활성화된다. xml 파일을 수정하고 다시 ignite 서버를 실행시킨다. (본 포스트 상단 실행 명령어와 동일) 하지만 데이터 영속성을 활성화 한 뒤 서버를 실행하면 에러가 나는데, 영속성을 사용하려면 cluster 모드가 활성화되어 있어야 하기 때문이다. 그래서 cluster 모드를 활성화해준다.</p>
+
+<p>ignite.bat(또는 sh) 파일이 있는 폴더(bin 폴더)에 보면 control.bat(또는 sh) 파일이 있는데, 이 파일을 이용하면 cluster 모드를 활성화할 수 있다. 해당 폴더에서 아래 명령어를 입력해준다.</p>
+
+<div class="language-terminal highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">control.bat --set-state ACTIVE
+</span></code></pre></div></div>
+
+<p>아래와 같이 나오면 cluster 모드 활성화에 성공한 것이다.</p>
+
+<p><img src="\assets\built\images\apache-ignite\apache-ignite-overview\img9.png" alt="" /></p>
+
+<p>이제 영속성이 잘 동작하는지 확인하기 위해 ignite 서버를 실행시킨 뒤, 클라이언트에서 값을 저장한 후 서버를 재시작하였다. 그 뒤 다시 클라이언트에서 데이터를 조회해보았다. (위 클라이언트 코드와 다를 것이 없으므로 코드는 생략)</p>
+
+<p><img src="\assets\built\images\apache-ignite\apache-ignite-overview\img10.png" alt="" /></p>
+
+<p>ignite 서버를 재시작했음에도 데이터가 유지되는 모습을 확인할 수 있었다.</p>
+
+<p>여기까지 정말 기본적인 ignite 사용법을 살펴보았다.</p>
+
+                </div>
+            </section>
+            
+                
+                <a href='/tag/apache-ignite/'>APACHE-IGNITE</a>,
+                
+            
+                
+                <a href='/tag/ignite/'>IGNITE</a>
+                
+            
+            <!-- Email subscribe form at the bottom of the page -->
+            <!--
+            
+                <section class="subscribe-form">
+                    <h3 class="subscribe-form-title">Subscribe to Siansoft</h3>
+                    <p>Get the latest posts delivered right to your inbox</p>
+                    <span id="searchform" method="post" action="/subscribe/" class="">
+    <input class="confirm" type="hidden" name="confirm"  />
+    <input class="location" type="hidden" name="location"  />
+    <input class="referrer" type="hidden" name="referrer"  />
+
+    <div class="form-group">
+        <input class="subscribe-email" onkeyup="myFunc()"
+               id="searchtext" type="text" name="searchtext"
+               placeholder="Search..." />
+    </div>
+    <script type="text/javascript">
+        function myFunc() {
+            if(event.keyCode == 13) {
+                var url = encodeURIComponent($("#searchtext").val());
+                location.href = "/search.html?query=" + url;
+            }
+        }
+    </script>
+</span>
+                </section>
+            
+            -->
+            <footer class="post-full-footer">
+                <!-- Everything inside the #author tags pulls data from the author -->
+                <!-- #author-->
+                
+                    
+                
+                <!-- /author  -->
+            </footer>
+
+            <!-- If you use Disqus comments, just uncomment this block.
+            The only thing you need to change is "test-apkdzgmqhj" - which
+            should be replaced with your own Disqus site-id. -->
+            
+                <section class="post-full-comments">
+                    <div id="disqus_thread"></div>
+                    <script>
+                        var disqus_config = function () {
+                            var this_page_url = 'https://sianlab.github.io/apache-ignite-overview';
+                            var this_page_identifier = '/apache-ignite-overview';
+                            var this_page_title = 'Apache Ignite 살펴보기';
+                        };
+                        (function() {
+                            var d = document, s = d.createElement('script');
+                            s.src = 'https://Siansoft.disqus.com/embed.js';
+                            s.setAttribute('data-timestamp', +new Date());
+                            (d.head || d.body).appendChild(s);
+                        })();
+                    </script>
+                </section>
+            
+
+        </article>
+
+    </div>
+</main>
+
+<!-- Links to Previous/Next posts -->
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+            
+                
+                
+                
+                
+            
+
+            <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
+            
+
+            <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/mavengradle">
+                <div class="post-card-image" style="background-image: url(/assets/built/images/build/build-logo.png)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/mavengradle">
+                <header class="post-card-header">
+                    
+                        
+                            
+                               <span class="post-card-tags">Maven</span>
+                            
+                        
+                            
+                                <span class="post-card-tags">Gradle</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">Maven과 Gradle 차이</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    
+                        <p>빌드 도구란?
+
+</p>
+                    
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+                <span class="reading-time">
+                    
+                    
+                      2 min read
+                    
+                </span>
+            </footer>
+        </div>
+    </article>
+
+            
+
+        </div>
+    </div>
+</aside>
+
+<!-- Floating header which appears on-scroll, included from includes/floating-header.hbs -->
+<div class="floating-header">
+    <div class="floating-header-logo">
+        <a href="https://sianlab.github.io/">
+            
+            <span>Siansoft</span>
+        </a>
+    </div>
+    <span class="floating-header-divider">&mdash;</span>
+    <div class="floating-header-title">Apache Ignite 살펴보기</div>
+    <div class="floating-header-share">
+        <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
+</svg>
+</div>
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=Apache+Ignite+%EC%82%B4%ED%8E%B4%EB%B3%B4%EA%B8%B0&amp;url=https://sianlab.github.io/apache-ignite-overview"
+            onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+
+        </a>
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://sianlab.github.io/apache-ignite-overview"
+            onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
+
+        </a>
+    </div>
+    <progress class="progress" value="0">
+        <div class="progress-container">
+            <span class="progress-bar"></span>
+        </div>
+    </progress>
+</div>
+
+
+<!-- /post -->
+
+<!-- The #contentFor helper here will send everything inside it up to the matching #block helper found in default.hbs -->
+
+
+        <!-- Previous/next page links - displayed on every page -->
+        
+        <!-- The footer at the very bottom of the screen -->
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="https://sianlab.github.io/">Siansoft</a> &copy; 2022</section>
+                <section class="poweredby">Proudly published with <a href="https://jekyllrb.com/">Jekyll</a> &
+                    <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> using
+                    <a href="https://github.com/jekyllt/jasper2" target="_blank" rel="noopener">Jasper2</a></section>
+                <nav class="site-footer-nav">
+                    <a href="/">Latest Posts</a>
+                    
+                    
+                    <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a>
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- The big email subscribe modal content -->
+    
+        <div id="subscribe" class="subscribe-overlay">
+            <a class="subscribe-overlay-close" href="#"></a>
+            <div class="subscribe-overlay-content">
+                
+                <h1 class="subscribe-overlay-title">Search Siansoft</h1>
+                <p class="subscribe-overlay-description">
+                    lunr.js를 이용한 posts 검색 </p>
+                <span id="searchform" method="post" action="/subscribe/" class="">
+    <input class="confirm" type="hidden" name="confirm"  />
+    <input class="location" type="hidden" name="location"  />
+    <input class="referrer" type="hidden" name="referrer"  />
+
+    <div class="form-group">
+        <input class="subscribe-email" onkeyup="myFunc()"
+               id="searchtext" type="text" name="searchtext"
+               placeholder="Search..." />
+    </div>
+    <script type="text/javascript">
+        function myFunc() {
+            if(event.keyCode == 13) {
+                var url = encodeURIComponent($("#searchtext").val());
+                location.href = "/search.html?query=" + url;
+            }
+        }
+    </script>
+</span>
+            </div>
+        </div>
+    
+
+
+    <!-- highlight.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.10.0/components/prism-abap.min.js"></script>
+    <script>$(document).ready(function() {
+      $('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+      });
+    });</script>
+
+    <!-- jQuery + Fitvids, which makes all video embeds responsive -->
+    <script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://demo.ghost.io/assets/js/jquery.fitvids.js?v=724281a32e"></script>
+
+
+    <!-- Paginator increased to "infinit" in _config.yml -->
+    <!-- if paginator.posts  -->
+    <!-- <script>
+        var maxPages = parseInt('');
+    </script>
+    <script src="/assets/js/infinitescroll.js"></script> -->
+    <!-- /endif -->
+
+    
+
+
+    <!-- Add Google Analytics  -->
+    <!-- Google Analytics Tracking code -->
+ <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-xxxxxxxx-x', 'auto');
+  ga('send', 'pageview');
+
+ </script>
+
+
+    <!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. -->
+    
+        <script>
+
+// NOTE: Scroll performance is poor in Safari
+// - this appears to be due to the events firing much more slowly in Safari.
+//   Dropping the scroll event and using only a raf loop results in smoother
+//   scrolling but continuous processing even when not scrolling
+$(document).ready(function () {
+    // Start fitVids
+    var $postContent = $(".post-full-content");
+    $postContent.fitVids();
+    // End fitVids
+
+    var progressBar = document.querySelector('progress');
+    var header = document.querySelector('.floating-header');
+    var title = document.querySelector('.post-full-title');
+
+    var lastScrollY = window.scrollY;
+    var lastWindowHeight = window.innerHeight;
+    var lastDocumentHeight = $(document).height();
+    var ticking = false;
+
+    function onScroll() {
+        lastScrollY = window.scrollY;
+        requestTick();
+    }
+
+    function onResize() {
+        lastWindowHeight = window.innerHeight;
+        lastDocumentHeight = $(document).height();
+        requestTick();
+    }
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(update);
+        }
+        ticking = true;
+    }
+
+    function update() {
+        var trigger = title.getBoundingClientRect().top + window.scrollY;
+        var triggerOffset = title.offsetHeight + 35;
+        var progressMax = lastDocumentHeight - lastWindowHeight;
+
+        // show/hide floating header
+        if (lastScrollY >= trigger + triggerOffset) {
+            header.classList.add('floating-active');
+        } else {
+            header.classList.remove('floating-active');
+        }
+
+        progressBar.setAttribute('max', progressMax);
+        progressBar.setAttribute('value', lastScrollY);
+
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', onScroll, {passive: true});
+    window.addEventListener('resize', onResize, false);
+
+    update();
+});
+</script>
+
+    
+
+    <!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag -->
+    <!-- ghost_foot -->
+
+</body>
+</html>
