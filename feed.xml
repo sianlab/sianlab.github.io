@@ -1,0 +1,692 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.1">Jekyll</generator><link href="https://simplehanlab.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://simplehanlab.github.io/" rel="alternate" type="text/html" /><updated>2021-09-17T02:35:00+00:00</updated><id>https://simplehanlab.github.io/feed.xml</id><title type="html">SimpleHan Lab</title><subtitle>기술 블로그</subtitle><entry><title type="html">Maven과 Gradle 차이</title><link href="https://simplehanlab.github.io/mavengradle" rel="alternate" type="text/html" title="Maven과 Gradle 차이" /><published>2021-09-09T16:00:00+00:00</published><updated>2021-09-09T16:00:00+00:00</updated><id>https://simplehanlab.github.io/mavengradle</id><content type="html" xml:base="https://simplehanlab.github.io/mavengradle">&lt;h1 id=&quot;빌드-도구란&quot;&gt;빌드 도구란?&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;빌드 도구는 빌드 자동화를 시켜주는 실행가능한 프로그램만들어 주는 프로그램 ex) maven, gradle, ant&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;빌드-자동화란&quot;&gt;빌드 자동화란?&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;빌드 자동화의 본질적 목적은 소프트웨어 개발자가 반복해서 하는 코딩을 잘 짜여진 프로세스를 통해 자동으로 실행하여, 
+믿을 수 있는 결과물도 생산해 낼 수 있는 일련의 작업방식 및 방법을 말한다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;지속적인 통합(continuous Integration)과도 일맥상통되는 의미다. 
+수없이 반복해서 최종 결과물을 만들어내야 하는 소프트웨어 개발업무에서 빠질 수 없는 개념적 이해가 되었다. 
+특히 오늘날의 복잡하고 광범위한 협업적 개발 과정에서는 과정과정에서 있을 수 있는 인간적 실수의 가능성을 최소한으로 줄여야 한다.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;출처 : Wikipedia&lt;/p&gt;
+
+&lt;h2 id=&quot;maven-이란&quot;&gt;Maven 이란?&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Project object model (POM)개념의 기반으로 만들어져있으며 빌드 중인 프로젝트, 빌드 순서, 
+다양한 외부 라이브러리의 종속성 관계들을 pom.xml파일에 명시한다.&lt;/li&gt;
+  &lt;li&gt;외부저장소에서 필요한 라이브러리와 플러그인들을 다운로드 한 다음, 로컬시스템의 캐시에 모두 저장한다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;project-object-model-pom&quot;&gt;Project Object Model (POM)&lt;/h3&gt;
+&lt;p&gt;Project Object Model는 이름 그대로 Project Object Model의 정보를 담고있는 파일이다. &lt;br /&gt;
+이 파일에서 주요하게 다루는 기능들은 다음과 같다.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;프로젝트 정보 : 프로젝트의 이름, 개발자 목록, 라이센스 등&lt;/li&gt;
+  &lt;li&gt;빌드 설정 : 소스, 리소스, 라이프 사이클별 실행한 플러그인(goal)등 빌드와 관련된 설정&lt;/li&gt;
+  &lt;li&gt;빌드 환경 : 사용자 환경 별로 달라질 수 있는 프로파일 정보&lt;/li&gt;
+  &lt;li&gt;POM연관 정보 : 의존 프로젝트(모듈), 상위 프로젝트, 포함하고 있는 하위 모듈 등&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;gradle-이란&quot;&gt;Gradle 이란?&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Maven과 Ant에서 볼수 있는 개념들을 사용하는 대안으로써 나온 프로젝트 빌드 관리 툴이다.&lt;/li&gt;
+  &lt;li&gt;Ant처럼 유연한 범용 빌드 도구&lt;/li&gt;
+  &lt;li&gt;Maven을 사용할 수 있는 변환 가능 컨벤션 프레임 워크&lt;/li&gt;
+  &lt;li&gt;Groovy 언어를 사용한 Domain-specific-language를 사용한다. 
+(설정파일을 xml파일을 사용하는 Maven보다 코드가 훨씬 간결하다.)&lt;/li&gt;
+  &lt;li&gt;2007년에 처음 개발되었고, 2013년에 구글에 의해 안드로이드 프로젝트의 빌드 시스템으로 채택되었다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;maven-gradle-차이&quot;&gt;Maven Gradle 차이&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;Maven은 고정적이고 선형적인 단계의 모델을 기반&lt;br /&gt;
+Gradle은 작업 의존성 그래프를 기반&lt;/li&gt;
+  &lt;li&gt;Maven, Gradle 둘 다 다중 모듈 빌드를 병렬로 실행할 수 있지만&lt;br /&gt;
+Gradle은 어떤 task가 업데이트 되었고 안되었는지를 체크하기 때문에 incremental build를 허용한다.&lt;br /&gt;
+이미 업데이트된 task에 대해서는 작업이 실행 되지 않으므로 빌드 시간이 훨씬 단축된다.&lt;/li&gt;
+  &lt;li&gt;Maven은 멀티 프로젝트에서 특정 설정을 다른 모듈에서 사용하려면 상속을 받아야하지&lt;br /&gt;
+Gradle은 설정 주입 방식을 제공한다.&lt;/li&gt;
+  &lt;li&gt;Gradle은 concurrent에 안전한 캐시를 허용한다.&lt;br /&gt;
+2개 이상의 프로젝트에서 동일한 캐시를 사용할 경우,   &lt;br /&gt;
+서로 overwrite되지 않도록 checksum기반의 캐시를 사용하고 캐시를 repository와 동기화시킬 수 있다.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;maven-코드-예제&quot;&gt;Maven 코드 예제&lt;/h2&gt;
+&lt;div class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;project&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;xmlns=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://maven.apache.org/POM/4.0.0&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;xmlns:xsi=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;xsi:schemaLocation=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;modelVersion&amp;gt;&lt;/span&gt;4.0.0&lt;span class=&quot;nt&quot;&gt;&amp;lt;/modelVersion&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;com.example&lt;span class=&quot;nt&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;demo-maven&lt;span class=&quot;nt&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;0.0.1-SNAPSHOT&lt;span class=&quot;nt&quot;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;packaging&amp;gt;&lt;/span&gt;jar&lt;span class=&quot;nt&quot;&gt;&amp;lt;/packaging&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;name&amp;gt;&lt;/span&gt;demo-maven&lt;span class=&quot;nt&quot;&gt;&amp;lt;/name&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;description&amp;gt;&lt;/span&gt;Demo project for Spring Boot&lt;span class=&quot;nt&quot;&gt;&amp;lt;/description&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;parent&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;org.springframework.boot&lt;span class=&quot;nt&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;spring-boot-starter-parent&lt;span class=&quot;nt&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;1.5.4.RELEASE&lt;span class=&quot;nt&quot;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;relativePath/&amp;gt;&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- lookup parent from repository --&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/parent&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;properties&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;project.build.sourceEncoding&amp;gt;&lt;/span&gt;UTF-8&lt;span class=&quot;nt&quot;&gt;&amp;lt;/project.build.sourceEncoding&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;project.reporting.outputEncoding&amp;gt;&lt;/span&gt;UTF-8&lt;span class=&quot;nt&quot;&gt;&amp;lt;/project.reporting.outputEncoding&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;java.version&amp;gt;&lt;/span&gt;1.8&lt;span class=&quot;nt&quot;&gt;&amp;lt;/java.version&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/properties&amp;gt;&lt;/span&gt;
+    
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;dependencies&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;org.springframework.boot&lt;span class=&quot;nt&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;spring-boot-starter&lt;span class=&quot;nt&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;
+    
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;org.springframework.boot&lt;span class=&quot;nt&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;spring-boot-starter-test&lt;span class=&quot;nt&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;scope&amp;gt;&lt;/span&gt;test&lt;span class=&quot;nt&quot;&gt;&amp;lt;/scope&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/dependencies&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;build&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;plugins&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;plugin&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;org.springframework.boot&lt;span class=&quot;nt&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;spring-boot-maven-plugin&lt;span class=&quot;nt&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;/plugin&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/plugins&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/build&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/project&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;gradle-코드-예제&quot;&gt;Gradle 코드 예제&lt;/h2&gt;
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;buildscript&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;ext&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;springBootVersion&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;1.5.4.RELEASE&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    
+    &lt;span class=&quot;nx&quot;&gt;repositories&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;m&lt;/span&gt;  &lt;span class=&quot;nx&quot;&gt;avenCentral&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;dependencies&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;classpath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;apply&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;plugin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;java&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;apply&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;plugin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;idea&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;apply&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;plugin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;org.springframework.boot&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;version&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;0.0.1-SNAPSHOT&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;sourceCompatibility&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;1.8&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;repositories&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;mavenCentral&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+
+&lt;span class=&quot;nx&quot;&gt;dependencies&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;compile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;org.springframework.boot:spring-boot-starter&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;testCompile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;org.springframework.boot:spring-boot-starter-test&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Simplehan</name></author><category term="build" /><category term="maven" /><category term="gradle" /><summary type="html">빌드 도구란?</summary></entry><entry><title type="html">Python 강좌(1) - Python 기본</title><link href="https://simplehanlab.github.io/python-base" rel="alternate" type="text/html" title="Python 강좌(1) - Python 기본" /><published>2021-09-07T23:40:00+00:00</published><updated>2021-09-07T23:40:00+00:00</updated><id>https://simplehanlab.github.io/python-base</id><content type="html" xml:base="https://simplehanlab.github.io/python-base">&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;Python 강좌는 여러 절로 구성되어 있습니다. &lt;/span&gt;&lt;/p&gt;
+&lt;ul class=&quot;table-of-contents-list&quot;&gt;
+    &lt;li&gt;&lt;a href=&quot;./python-base&quot;&gt;Python 강좌(1) - Python 기본&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;./python-control-statement&quot;&gt;Python 강좌(2) - Python 제어문&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;이 글은 python base 입니다.!!&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;syntaxHighlight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;code&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;foo&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;Hello World&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;bar&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Simplehan</name></author><category term="python" /><summary type="html">Python 강좌는 여러 절로 구성되어 있습니다. Python 강좌(1) - Python 기본 Python 강좌(2) - Python 제어문</summary></entry><entry><title type="html">Python 강좌(2) - Python 제어문</title><link href="https://simplehanlab.github.io/python-control-statement" rel="alternate" type="text/html" title="Python 강좌(2) - Python 제어문" /><published>2021-09-07T23:40:00+00:00</published><updated>2021-09-07T23:40:00+00:00</updated><id>https://simplehanlab.github.io/python-control-statement</id><content type="html" xml:base="https://simplehanlab.github.io/python-control-statement">&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;Python 강좌는 여러 절로 구성되어 있습니다. &lt;/span&gt;&lt;/p&gt;
+&lt;ul class=&quot;table-of-contents-list&quot;&gt;
+    &lt;li&gt;&lt;a href=&quot;./python-base&quot;&gt;Python 강좌(1) - Python 기본&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;./python-control-statement&quot;&gt;Python 강좌(2) - Python 제어문&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;이 글은 Python 제어문 입니다.!!&lt;/p&gt;</content><author><name>Simplehan</name></author><category term="python" /><summary type="html">Python 강좌는 여러 절로 구성되어 있습니다. Python 강좌(1) - Python 기본 Python 강좌(2) - Python 제어문</summary></entry><entry><title type="html">PMD 설치 및 사용방법</title><link href="https://simplehanlab.github.io/pmd" rel="alternate" type="text/html" title="PMD 설치 및 사용방법" /><published>2021-01-20T16:30:00+00:00</published><updated>2021-01-20T16:30:00+00:00</updated><id>https://simplehanlab.github.io/pmd</id><content type="html" xml:base="https://simplehanlab.github.io/pmd">&lt;h1 id=&quot;-pmd-란&quot;&gt;※	PMD 란&lt;/h1&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;JAVA 소스 코드를 분석하여 프로그램의 오류 또는 불필요한 부분을 찾아내고 성능을 높이는 오픈 소스 도구&lt;/li&gt;
+  &lt;li&gt;PMD는 미사용 변수, 비어있는 코드 블락, 불필요한 오브젝트 생성과 같은 결함을 유발할 수 있는 코드를 검사한다.&lt;/li&gt;
+  &lt;li&gt;자바 코드를 검사해서 나쁜 코딩을 잡아주고 그에 대한 설명을 지원하며, Eclipse, Jbuider 등에 연동하여 사용한다.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;-pmd-설치방법&quot;&gt;※ PMD 설치방법&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;\assets\built\images\pmd\pmd01.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;이클립스와 연동을 위해 Help → Install New Software 클릭한다&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;\assets\built\images\pmd\pmd02.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Name을 입력하고 다운로드 주소를 입력한다&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;주소 : http://sourceforge.net/projects/pmd/files/pmd-eclipse/update-site&quot;&gt;http://sourceforge.net/projects/pmd/files/pmd-eclipse/update-site&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;\assets\built\images\pmd\pmd03.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;다운로드 시작&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;\assets\built\images\pmd\pmd04.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;다운로드 완료&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;\assets\built\images\pmd\pmd05.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;항목 선택 후 설치 시작&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;\assets\built\images\pmd\pmd06.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;라이선스 동의 후 완료&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;-pmd-사용방법&quot;&gt;※ PMD 사용방법&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;\assets\built\images\pmd\pmd07.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;코드 검사할 파일 우클릭 → PMD → Check code&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;\assets\built\images\pmd\pmd08.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;코드 검사 완료&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;\assets\built\images\pmd\pmd09.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;항목 우클릭 → show details&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;\assets\built\images\pmd\pmd10.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;불량 코드로 지적된 사항 확인&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;-pmd-룰셋&quot;&gt;※ PMD 룰셋&lt;/h4&gt;
+
+&lt;p&gt;• PMD 룰셋이란
+전자정부 표준프레임워크에서는 Code Inspection 을 위한 룰셋으로 논리오류/구문오류/참조오류 영역을 대상으로 하는 총 39개의 룰을 표준으로 선정하였다&lt;/p&gt;
+
+&lt;p&gt;• 룰셋 환경설정
+Eclipse IDE의 환경설정을 통해, 전자정부 표준프레임워크 표준 Inspection 룰셋을 PMD Plugin에 적용할 수 있으며, 다음과 같은 순서로 수행한다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;전자정부 표준프레임워크 표준 Inspection 룰셋
+  PMD를 이용한 Code Inspection 시 기준이 되는 요소는 룰이며, 전자정부 표준프레임워크에서는 PMD가 제공하는 수 많은 룰 중에 기본이 될 만한 것들을 간추려 전자정부 표준프레임워크 표준 Inspection 룰셋이라는 이름으로 구성하였다. 이는 39개의 룰들로 구성되며, 개별 룰에 대한 상세 설명은 다음을 참조하라&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;⊙ &lt;a href=&quot;⊙ 전자정부 표준 inspection 룰셋&quot;&gt;https://www.egovframe.go.kr/wiki/doku.php?id=egovframework:dev2:imp:inspection:usetool#%EC%A0%84%EC%9E%90%EC%A0%95%EB%B6%80&lt;em&gt;%ED%91%9C%EC%A4%80_inspection&lt;/em&gt;%EB%A3%B0%EC%85%8B&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;다음 두가지 경로 중, 하나를 선택해어 전자정부 표준프레임워크 표준 Inspection 룰셋을 다운
+  표준 Inspection 룰셋 한글/영문판의 압축파일 : 개발환경 3.5 이상 버전 사용
+  전자정부 표준프레임워크 온라인 지원 포탈사이트의 다운로드 &amp;gt; 개발환경 &amp;gt; 구현도구 소스코드에서 내려받기&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;내려받은 파일을 임의의 디렉터리에 압축 해제&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Eclipse IDE의 메뉴에서 Window → Preferences 선택
+  &lt;img src=&quot;\assets\built\images\pmd\pmd11.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Preferences 창의 왼쪽 메뉴 구조에서, PMD → Rules Configuration 선택
+  &lt;img src=&quot;\assets\built\images\pmd\pmd12.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Preferences 창에서, use global rule management 선택 후 ruleset 목록 전체선택후 우측의 [x] Remove rules 아이콘 클릭
+  &lt;img src=&quot;\assets\built\images\pmd\pmd13.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Preferences 창에서, 우측의 Import ruleset 아이콘 클릭
+  &lt;img src=&quot;\assets\built\images\pmd\pmd14.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Ruleset 가져오기 팝업창에서, 우측의 Browse…버튼 클릭한후 앞서 압축해제한 룰셋 파일 중 한글판인 EgovInspectionRules_kor-3.5.xml 파일을 선택
+  &lt;img src=&quot;\assets\built\images\pmd\pmd15.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Ruleset 가져오기 팝업창에서, ruleset목록이 확인되면 OK버튼을 클릭
+  &lt;img src=&quot;\assets\built\images\pmd\pmd16.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Perferences 창에서, 목록 좌측의 체크박스를 모두 선택하고 OK버튼을 클릭
+  &lt;img src=&quot;\assets\built\images\pmd\pmd17.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;룰셋을 적용하겠냐는 질문에 YES버튼을 클릭하여 최종 확인.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;</content><author><name>Simplehan</name></author><category term="web" /><category term="PMD" /><summary type="html">※ PMD 란</summary></entry><entry><title type="html">TortoiseGit 사용방법</title><link href="https://simplehanlab.github.io/tortoisegit-2" rel="alternate" type="text/html" title="TortoiseGit 사용방법" /><published>2021-01-13T15:30:00+00:00</published><updated>2021-01-13T15:30:00+00:00</updated><id>https://simplehanlab.github.io/tortoisegit-2</id><content type="html" xml:base="https://simplehanlab.github.io/tortoisegit-2">&lt;h1 id=&quot;-tortoisegit-사용방법&quot;&gt;※	TortoiseGit 사용방법&lt;/h1&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;데이터 받아오기 (Git 데이터 복제)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&quot;\assets\built\images\tortoisegit\tortoise25.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Git 자료를 복제 받기 원하는 곳으로 이동한 후 마우스 우클릭 “Git 복제하기..” 클릭&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;\assets\built\images\tortoisegit\tortoise26.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;새로 생긴 복제창에서 “URL” 부분에 복제할 자료의 Repository 주소를 입력한다&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;\assets\built\images\tortoisegit\tortoise27.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;권한을 가진 Git 사용자 정보를 입력한다&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;\assets\built\images\tortoisegit\tortoise28.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Git 데이터 복제&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;\assets\built\images\tortoisegit\tortoise29.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Git 데이터 복제 완료&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;데이터 업데이트 (Git 데이터 동기화)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&quot;\assets\built\images\tortoisegit\tortoise30.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;데이터 복제된 폴더에서 우클릭 “Git 동기화..” 클릭&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;\assets\built\images\tortoisegit\tortoise31.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;“가져와 병합하기” 클릭&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;\assets\built\images\tortoisegit\tortoise32.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;업데이트 된 내역이 출력됨. 다시 “가져와 병합하기” 클릭&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;\assets\built\images\tortoisegit\tortoise33.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;데이터가 업데이트 되고 변경된 내역이 출력됨&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;데이터 저장 (Git 작업 Commit)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&quot;\assets\built\images\tortoisegit\tortoise34.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;수정한 파일이 위치한 폴더에서 우클릭 “Git 커밋 -&amp;gt; master” 클릭&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;\assets\built\images\tortoisegit\tortoise35.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;작업 후엔 항상 “Commit” 을 해야한다.
+메시지 부분에 자신이 작업한 내용을 간략히 기입한다
+하단의 파일 리스트에서 자신이 작업한 파일들을 선택하고 커밋을 누른다&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;\assets\built\images\tortoisegit\tortoise36.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;커밋 완료. 위 상태에서는 본인 PC에만 저장되고, 서버에는 올라가지 않은 상태이다&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;\assets\built\images\tortoisegit\tortoise37.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;작업한 폴더에서 우클릭 “TortoiseGit → Git Push” 선택&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;\assets\built\images\tortoisegit\tortoise38.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;로컬, 원격 모두 master 인지 확인 후 확인버튼 선택&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;\assets\built\images\tortoisegit\tortoise39.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;서버에 작업내용 “Push” 완료&lt;/p&gt;</content><author><name>Simplehan</name></author><category term="web" /><category term="TortoiseGit" /><summary type="html">※ TortoiseGit 사용방법</summary></entry><entry><title type="html">TortoiseGit 설치방법</title><link href="https://simplehanlab.github.io/tortoisegit-1" rel="alternate" type="text/html" title="TortoiseGit 설치방법" /><published>2021-01-13T15:00:00+00:00</published><updated>2021-01-13T15:00:00+00:00</updated><id>https://simplehanlab.github.io/tortoisegit-1</id><content type="html" xml:base="https://simplehanlab.github.io/tortoisegit-1">&lt;h1 id=&quot;-tortoisegit-설치방법&quot;&gt;※	TortoiseGit 설치방법&lt;/h1&gt;
+
+&lt;h2 id=&quot;-tortoisegit-이란&quot;&gt;●	TortoiseGit 이란&lt;/h2&gt;
+
+&lt;p&gt;윈도우에서 GUI환경을 이용해서 Git을 제어할 수 있도록 도와주는 버전관리 시스템이다
+때문에 Git은 먼저 설치되어 있어야 한다&lt;/p&gt;
+
+&lt;p&gt; &lt;/p&gt;
+&lt;h2 id=&quot;-git-설치방법&quot;&gt;●	Git 설치방법&lt;/h2&gt;
+
+&lt;p&gt;⊙ Git SCM에 접속하여 설치 파일 다운로드&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;\assets\built\images\tortoisegit\tortoise01.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;주소 : https://git-scm.com/&quot;&gt;https://git-scm.com/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;\assets\built\images\tortoisegit\tortoise02.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;\assets\built\images\tortoisegit\tortoise03.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;\assets\built\images\tortoisegit\tortoise04.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;\assets\built\images\tortoisegit\tortoise05.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Git을 사용할 기본 에디터 선택 (기본설정 Vim)&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;\assets\built\images\tortoisegit\tortoise06.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;\assets\built\images\tortoisegit\tortoise07.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;https 전송 인증서 선택 – 기본설정으로 Next&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;\assets\built\images\tortoisegit\tortoise08.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;\assets\built\images\tortoisegit\tortoise09.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;OpenSSL 라이브러리 사용 – 기본설정으로 Next&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;\assets\built\images\tortoisegit\tortoise10.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Git Bash 터미널 에뮬레이터 설정
+Use MinTTY(the default terminal of MSYS2) – Git bash 기본 터미널 사용&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;\assets\built\images\tortoisegit\tortoise11.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;\assets\built\images\tortoisegit\tortoise12.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;기본설정으로 Next&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;\assets\built\images\tortoisegit\tortoise13.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;\assets\built\images\tortoisegit\tortoise14.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Enable file system caching – 빠른 실행을 위해 데이터를 메모리에 캐시
+설정이 완료되면 인스톨&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;\assets\built\images\tortoisegit\tortoise15.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Launch Git Bash에 체크하고 Finish 하면 Git Bash가 실행된다
+특정 폴더에서 우클릭시에도 Git Bash를 실행할 수 있다&lt;/p&gt;
+
+&lt;h2 id=&quot;-tortoisegit-설치방법-1&quot;&gt;●	TortoiseGit 설치방법&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;TortoiseGit 다운로드&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Windows 환경에 맞는 설치 파일을 다운로드
+&lt;a href=&quot;다운로드 : https://tortoisegit.org/download/&quot;&gt;https://tortoisegit.org/download/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;\assets\built\images\tortoisegit\tortoise16.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;설치&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&quot;\assets\built\images\tortoisegit\tortoise17.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;\assets\built\images\tortoisegit\tortoise18.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Tortoise에서 제공하는 기본 PuTTY 기반의 SSH를 선택&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;\assets\built\images\tortoisegit\tortoise19.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;\assets\built\images\tortoisegit\tortoise20.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;설치 준비가 완료되면 Install 진행&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;\assets\built\images\tortoisegit\tortoise21.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;첫번째 언어선택 화면에서 사용 언어를 선택
+추가할 언어팩은 아래 주소에서 추가할 수 있다
+다운로드 : https://tortoisegit.org/download/&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;\assets\built\images\tortoisegit\tortoise22.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Git의 실행파일 위치를 입력해야 한다. Git을 먼저 설치하였다면 자동으로 등록된다&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;\assets\built\images\tortoisegit\tortoise23.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;유저 정보 입력&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;\assets\built\images\tortoisegit\tortoise24.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;설치 완료&lt;/p&gt;</content><author><name>Simplehan</name></author><category term="web" /><category term="TortoiseGit" /><summary type="html">※ TortoiseGit 설치방법</summary></entry><entry><title type="html">CentOS 7 Gitlab 설치 및 설정(2) - Gitlab 설정</title><link href="https://simplehanlab.github.io/gitlab-install-2" rel="alternate" type="text/html" title="CentOS 7 Gitlab 설치 및 설정(2) - Gitlab 설정" /><published>2021-01-13T14:45:00+00:00</published><updated>2021-01-13T14:45:00+00:00</updated><id>https://simplehanlab.github.io/gitlab-install-2</id><content type="html" xml:base="https://simplehanlab.github.io/gitlab-install-2">&lt;h3 id=&quot;centos-7-gitlab-설치-및-설정2---gitlab-설정&quot;&gt;CentOS 7 Gitlab 설치 및 설정(2) - Gitlab 설정&lt;/h3&gt;
+
+&lt;h6 id=&quot;os--centos-7&quot;&gt;OS : CentOS 7&lt;/h6&gt;
+&lt;h6 id=&quot;version--gitlab-ce-community-edition---무료버전&quot;&gt;VERSION : gitlab-ce (community edition - 무료버전)&lt;/h6&gt;
+
+&lt;h6 id=&quot;centos-7-gitlab-설치-및-설정1---gitlab-설치하기&quot;&gt;&lt;a href=&quot;https://simplehanlab.github.io/linux/gitlab-install-1&quot;&gt;CentOS 7 Gitlab 설치 및 설정(1) - Gitlab 설치하기&lt;/a&gt;&lt;/h6&gt;
+
+&lt;h4 id=&quot;1-external-url-설정-변경&quot;&gt;1. External url 설정 변경&lt;/h4&gt;
+
+&lt;h6 id=&quot;설정-파일-위치--etcgitlabgitlabrb&quot;&gt;설정 파일 위치 : /etc/gitlab/gitlab.rb&lt;/h6&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;vim /etc/gitlab/gitlab.rb
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h6 id=&quot;-설정-파일-내에서-external_url-부분을-찾아서-원하는-url-로-변경&quot;&gt;: 설정 파일 내에서 external_url 부분을 찾아서 원하는 url 로 변경&lt;/h6&gt;
+
+&lt;p&gt;&lt;img src=&quot;\assets\built\images\gitlab\2\image-20210113154112679.png&quot; alt=&quot;image-20210113154112679&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;2-저장소-데이터-저장-위치-변경&quot;&gt;2. 저장소 데이터 저장 위치 변경&lt;/h4&gt;
+
+&lt;h6 id=&quot;설정-파일-위치--etcgitlabgitlabrb-1&quot;&gt;설정 파일 위치 : /etc/gitlab/gitlab.rb&lt;/h6&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;vim /etc/gitlab/gitlab.rb
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h6 id=&quot;-설정-파일-내에서-git_data_dirs-경로-변경&quot;&gt;: 설정 파일 내에서 git_data_dirs 경로 변경&lt;/h6&gt;
+
+&lt;p&gt;&lt;img src=&quot;\assets\built\images\gitlab\2\image-20210113154201441.png&quot; alt=&quot;image-20210113154201441&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;3-smtp-설정&quot;&gt;3. SMTP 설정&lt;/h4&gt;
+
+&lt;h6 id=&quot;설정-파일-위치--etcgitlabgitlabrb-2&quot;&gt;설정 파일 위치 : /etc/gitlab/gitlab.rb&lt;/h6&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;vim /etc/gitlab/gitlab.rb
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h6 id=&quot;-smtp-를-이용한-메일링-서비스-이용을-할-경우-파일-내의-smtp-설정-부분-변경&quot;&gt;: SMTP 를 이용한 메일링 서비스 이용을 할 경우 파일 내의 SMTP 설정 부분 변경&lt;/h6&gt;
+
+&lt;p&gt;&lt;img src=&quot;\assets\built\images\gitlab\2\image-20210113154428321.png&quot; alt=&quot;image-20210113154428321&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;※Gitlab SMTP 설정 관련 공식 문서 : &lt;a href=&quot;https://docs.gitlab.com/omnibus/settings/smtp.html&quot;&gt;Gitlab SMTP 설정 관련 Docs&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;4-gitlab-변경된-설정-적용하기&quot;&gt;4. Gitlab 변경된 설정 적용하기&lt;/h4&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;gitlab-ctl stop				// gitlab 중지
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;gitlab-ctl reconfigure			// 설정 적용
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;gitlab-ctl restart				// gitlab 재시작
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Simplehan</name></author><category term="linux" /><category term="gitlab" /><summary type="html">CentOS 7 Gitlab 설치 및 설정(2) - Gitlab 설정</summary></entry><entry><title type="html">CentOS 7 Gitlab 설치 및 설정(1) - Gitlab 설치하기</title><link href="https://simplehanlab.github.io/gitlab-install-1" rel="alternate" type="text/html" title="CentOS 7 Gitlab 설치 및 설정(1) - Gitlab 설치하기" /><published>2021-01-13T12:45:00+00:00</published><updated>2021-01-13T12:45:00+00:00</updated><id>https://simplehanlab.github.io/gitlab-install-1</id><content type="html" xml:base="https://simplehanlab.github.io/gitlab-install-1">&lt;h3 id=&quot;centos-7-gitlab-설치-및-설정1---gitlab-설치하기&quot;&gt;CentOS 7 Gitlab 설치 및 설정(1) - Gitlab 설치하기&lt;/h3&gt;
+
+&lt;h6 id=&quot;os--centos-7&quot;&gt;OS : CentOS 7&lt;/h6&gt;
+&lt;h6 id=&quot;version--gitlab-ce-community-edition---무료버전&quot;&gt;VERSION : gitlab-ce (community edition - 무료버전)&lt;/h6&gt;
+
+&lt;h4 id=&quot;1-gitlab-설치시-필요한-패키지-설치&quot;&gt;1. Gitlab 설치시 필요한 패키지 설치&lt;/h4&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;yum &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-y&lt;/span&gt; curl policycoreutils-python openssh-server
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;systemctl &lt;span class=&quot;nb&quot;&gt;enable &lt;/span&gt;sshd
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;systemctl start sshd
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;firewall-cmd &lt;span class=&quot;nt&quot;&gt;--permanent&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--add-service&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;http
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;firewall-cmd &lt;span class=&quot;nt&quot;&gt;--permanent&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--add-service&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;https
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;systemctl reload firewalld
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;2-설치-전후-의존성-패키지-설치여부-확인&quot;&gt;2. 설치 전/후 의존성 패키지 설치여부 확인&lt;/h4&gt;
+
+&lt;h6 id=&quot;1-policycoreutils-python&quot;&gt;1. policycoreutils-python&lt;/h6&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;yum list installed | &lt;span class=&quot;nb&quot;&gt;grep &lt;/span&gt;policycoreutils-python
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;\assets\built\images\gitlab\1\image-20210113144623259.png&quot; alt=&quot;image-20210113144623259&quot; /&gt;&lt;/p&gt;
+
+&lt;h6 id=&quot;2-openssh-server&quot;&gt;2. openssh-server&lt;/h6&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;yum list installed | &lt;span class=&quot;nb&quot;&gt;grep &lt;/span&gt;openssh-server
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;\assets\built\images\gitlab\1\image-20210113144640124.png&quot; alt=&quot;image-20210113144640124&quot; /&gt;&lt;/p&gt;
+
+&lt;h6 id=&quot;3--openssh-server-구동-여부-확인&quot;&gt;3.  openssh-server 구동 여부 확인&lt;/h6&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;systemctl status sshd
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;\assets\built\images\gitlab\1\image-20210113144737316.png&quot; alt=&quot;image-20210113144737316&quot; /&gt;&lt;/p&gt;
+
+&lt;h6 id=&quot;4-메일링-서비스를-위한-postfix-설치필요시&quot;&gt;4. 메일링 서비스를 위한 postfix 설치(필요시)&lt;/h6&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;yum &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;postfix
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;systemctl &lt;span class=&quot;nb&quot;&gt;enable &lt;/span&gt;postfix
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;systemctl start postfix
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;3-gitlab-설치하기&quot;&gt;3. Gitlab 설치하기&lt;/h4&gt;
+
+&lt;h6 id=&quot;1-gitlab-ce-package-repository-추가&quot;&gt;1. Gitlab-ce Package repository 추가&lt;/h6&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;   curl https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.rpm.sh | &lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;bash
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h6 id=&quot;2-gitlab-을-접속하기-위한-url-설정-후-gitlab-ce-설치&quot;&gt;2. Gitlab 을 접속하기 위한 url 설정 후 gitlab-ce 설치&lt;/h6&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;   &lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;EXTERNAL_URL&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;자신의 도메인이나 접속가능한 IP:접속할 Port번호&quot;&lt;/span&gt; yum &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-y&lt;/span&gt; gitlab-ce
+   ex&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;EXTERNAL_URL&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;https://localhost:8080&quot;&lt;/span&gt; yum &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-y&lt;/span&gt; gitlab-ce
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h6 id=&quot;3-설치-완료후-external_url-에-설정된-주소로-접속-후-gitlab-페이지-확인&quot;&gt;3. 설치 완료후 EXTERNAL_URL 에 설정된 주소로 접속 후 Gitlab 페이지 확인&lt;/h6&gt;
+
+&lt;h6 id=&quot;4-초기-페이지-에서-root-의-패스워드를-새로-지정하기-위한-페이지가-나온다&quot;&gt;4. 초기 페이지 에서 root 의 패스워드를 새로 지정하기 위한 페이지가 나온다.&lt;/h6&gt;
+
+&lt;h4 id=&quot;3-gitlab-명령어&quot;&gt;3. Gitlab 명령어&lt;/h4&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;gitlab-ctl stop				// gitlab 중지
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;gitlab-ctl reconfigure			// 설정 적용
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;gitlab-ctl restart				// gitlab 재시작
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Simplehan</name></author><category term="linux" /><category term="gitlab" /><summary type="html">CentOS 7 Gitlab 설치 및 설정(1) - Gitlab 설치하기</summary></entry><entry><title type="html">워드프레스(wordpress) 설치형 사용법</title><link href="https://simplehanlab.github.io/wordpress-use-installer" rel="alternate" type="text/html" title="워드프레스(wordpress) 설치형 사용법" /><published>2020-07-14T18:45:00+00:00</published><updated>2020-07-14T18:45:00+00:00</updated><id>https://simplehanlab.github.io/wordpress-use-installer</id><content type="html" xml:base="https://simplehanlab.github.io/wordpress-use-installer">&lt;h1 id=&quot;워드프레스-설치형-사용법&quot;&gt;워드프레스 설치형 사용법&lt;/h1&gt;
+
+&lt;h2 id=&quot;wordpress-설치형-사용법&quot;&gt;WordPress 설치형 사용법&lt;/h2&gt;
+&lt;p&gt; 
+설치형 워드프레스를 쉽게 사용하기위한 플랫폼들이 많은데&lt;/p&gt;
+
+&lt;p&gt;• &lt;a href=&quot;http://www.wampserver.com/en/&quot;&gt;WAMP&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;• &lt;a href=&quot;http://www.mamp.info/en/index.html&quot;&gt;MAMP&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;• &lt;a href=&quot;http://bitnami.org/stack/lampstack&quot;&gt;LAMP&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;• &lt;a href=&quot;http://www.apachefriends.org/en/xampp.html&quot;&gt;XAMPP&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;전부 한국어를 지원하지 않으므로, 국내 개발된 autoset을 활용한 워드프레스 사용법입니다.&lt;/p&gt;
+
+&lt;p&gt;• &lt;a href=&quot;http://autoset.net/xe/download_autoset_10_7_2&quot;&gt;AutoSet&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;\assets\built\images\wordpress\b1.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;운영체제 시스템에 따라 알맞게 다운로드 합니다.&lt;/p&gt;
+
+&lt;p&gt;다른 아파치서버나 mysql 서버와 충돌이 날 수 있으므로 종료 후 설치를 진행합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;\assets\built\images\wordpress\b2.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;\assets\built\images\wordpress\b3.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;\assets\built\images\wordpress\b4.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;\assets\built\images\wordpress\b5.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;설치가 완료 된 후 오토셋을 실행시 다음과 같은 화면이 나옵니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;\assets\built\images\wordpress\b6.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;기본으로는 웹 서버와 mysql 시작이라고 나올것인데 시작해주시면 됩니다.&lt;/p&gt;
+
+&lt;p&gt;그후 제어탭을 눌러 phpMyAdmin에 접속합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;\assets\built\images\wordpress\b7.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;초기화면에서 기본값으로 로그인 할 경우&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;//기본값
+사용자명 : root
+패스워드 : autoset 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;\assets\built\images\wordpress\b8.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;다음과 같은 화면이 나오는데,&lt;/p&gt;
+
+&lt;p&gt;해당화면에서 데이터베이스에 들어가 wordpress에서 사용될 DB를 생성합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;\assets\built\images\wordpress\b9.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;그리고 워드프레스 최신버전을 설치해줍니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://ko.wordpress.org/download/&quot;&gt;워드프레스 다운로드&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;\assets\built\images\wordpress\b10.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;압축파일을 오토셋의 public_html 폴더에 해제해줍니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;\assets\built\images\wordpress\b11.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;그 후 localhost/wordpress 에 접속하여 워드프레스 환경설정을 해줍니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;\assets\built\images\wordpress\b12.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;\assets\built\images\wordpress\b13.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;\assets\built\images\wordpress\b14.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;또한 설치형은 플러그인을 무료로 사용 가능합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;\assets\built\images\wordpress\b15.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;\assets\built\images\wordpress\b16.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;\assets\built\images\wordpress\b17.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;이러한 식으로 플러그인을 찾아 추가해 사용 할 수 있습니다.&lt;/p&gt;</content><author><name>Simplehan</name></author><category term="web" /><category term="WordPress" /><summary type="html">워드프레스 설치형 사용법</summary></entry><entry><title type="html">워드프레스(wordpress) 사용법</title><link href="https://simplehanlab.github.io/wordpress-use" rel="alternate" type="text/html" title="워드프레스(wordpress) 사용법" /><published>2020-07-13T18:33:00+00:00</published><updated>2020-07-13T18:33:00+00:00</updated><id>https://simplehanlab.github.io/wordpress-use</id><content type="html" xml:base="https://simplehanlab.github.io/wordpress-use">&lt;h1 id=&quot;워드프레스-사용법&quot;&gt;워드프레스 사용법&lt;/h1&gt;
+
+&lt;h2 id=&quot;wordpress-사용법&quot;&gt;WordPress 사용법&lt;/h2&gt;
+
+&lt;p&gt;먼저 &lt;a href=&quot;https://brew.sh/&quot;&gt;사이트&lt;/a&gt;에 접속하여 회원가입 후 사이트 생성을 통해&lt;/p&gt;
+
+&lt;p&gt;기본적인 테마, 호스트 등을 설정 할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;과정의 이미지는 다음과 같습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;\assets\built\images\wordpress\a1.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;\assets\built\images\wordpress\a2.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;\assets\built\images\wordpress\a3.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;\assets\built\images\wordpress\a4.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;이러한 과정을 거쳐 최종적으로 무료로 시작을 눌러 완료 할 수 있습니다. (유료 호스팅시 결제를 통해 완료도 가능합니다.)&lt;/p&gt;
+
+&lt;p&gt;또한 워드프레스는 사이트 설정시 테마를 선택하여 좀 더 편리하게 사이트를 생성 할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;\assets\built\images\wordpress\a5.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;그 후, 추가적인 수정은 사용자 정의하기 탭에서 가능합니다.&lt;/p&gt;
+
+&lt;p&gt;플러그인은 유료결제시에만 이용이 가능한 것으로 보입니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;\assets\built\images\wordpress\a6.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;추가적인 커스터마이징시 위젯에서 html태그를 생성해 임의로 추가하여 사용 할 수도 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;\assets\built\images\wordpress\a7.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;그리고 사이트에서 사용되는 이미지의 관리는 미디어 라이브러리를 통해 가능합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;\assets\built\images\wordpress\a8.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;</content><author><name>Simplehan</name></author><category term="web" /><category term="WordPress" /><summary type="html">워드프레스 사용법</summary></entry></feed>

@@ -1,0 +1,1312 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Document Settings -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Base Meta -->
+    <!-- dynamically fixing the title for tag/author pages -->
+
+
+
+    <title>[iOS] Swift 기본 (2)</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Styles'n'Scripts -->
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.edited.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/syntax.css" />
+
+    <!-- custom.css -->
+    <link rel="stylesheet" type="text/css" href="/assets/built/custom.css" />
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- 웹폰트 추가 -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/nanumgothic.css">
+
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <style>.hljs { background: none; }</style>
+
+    <!--[if IE]>
+        <style>
+            p, ol, ul{
+                width: 100%;
+            }
+            blockquote{
+                width: 100%;
+            }
+        </style>
+    <![endif]-->
+    
+    <!-- This tag outputs SEO meta+structured data and other important settings -->
+    <meta name="description" content="기술 블로그" />
+    <link rel="shortcut icon" href="https://simplehanlab.github.io/assets/built/images/favicon.jpg" type="image/png" />
+    <link rel="canonical" href="https://simplehanlab.github.io/ios-swift2" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+
+     <!--title below is coming from _includes/dynamic_title-->
+    <meta property="og:site_name" content="SimpleHan Lab" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="[iOS] Swift 기본 (2)" />
+    <meta property="og:description" content="5. 클래스와 구조체 클래스는 class로 정의하고, 구조체는 struct로 정의합니다. class Dog { var name: String? var age: Int? func simpleDescription() -&gt; String { if let name = self.name { return"🐶 \(name)" } else { return"🐶 No name" } } } struct Coffee { var name: String? var size: String? func" />
+    <meta property="og:url" content="https://simplehanlab.github.io/ios-swift2" />
+    <meta property="og:image" content="https://simplehanlab.github.io/assets/built/images/ios/ios-logo.png" />
+    <meta property="article:publisher" content="https://www.facebook.com/" />
+    <meta property="article:author" content="https://www.facebook.com/" />
+    <meta property="article:published_time" content="2019-08-23T11:23:00+00:00" />
+    <meta property="article:modified_time" content="2019-08-23T11:23:00+00:00" />
+    <meta property="article:tag" content="xcode" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="[iOS] Swift 기본 (2)" />
+    <meta name="twitter:description" content="5. 클래스와 구조체 클래스는 class로 정의하고, 구조체는 struct로 정의합니다. class Dog { var name: String? var age: Int? func simpleDescription() -&gt; String { if let name = self.name { return"🐶 \(name)" } else { return"🐶 No name" } } } struct Coffee { var name: String? var size: String? func" />
+    <meta name="twitter:url" content="https://simplehanlab.github.io/" />
+    <meta name="twitter:image" content="https://simplehanlab.github.io/assets/built/images/ios/ios-logo.png" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="SimpleHan Lab" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="xcode" />
+    <meta name="twitter:site" content="@" />
+    <meta name="twitter:creator" content="@" />
+    <meta property="og:image:width" content="1400" />
+    <meta property="og:image:height" content="933" />
+
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Organization",
+        "name": "SimpleHan Lab",
+        "logo": "https://simplehanlab.github.io/"
+    },
+    "url": "https://simplehanlab.github.io/ios-swift2",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://simplehanlab.github.io/assets/built/images/ios/ios-logo.png",
+        "width": 2000,
+        "height": 666
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://simplehanlab.github.io/ios-swift2"
+    },
+    "description": "5. 클래스와 구조체 클래스는 class로 정의하고, 구조체는 struct로 정의합니다. class Dog { var name: String? var age: Int? func simpleDescription() -&gt; String { if let name = self.name { return"🐶 \(name)" } else { return"🐶 No name" } } } struct Coffee { var name: String? var size: String? func"
+}
+    </script>
+
+    <!-- <script type="text/javascript" src="https://demo.ghost.io/public/ghost-sdk.min.js?v=724281a32e"></script>
+    <script type="text/javascript">
+    ghost.init({
+    	clientId: "ghost-frontend",
+    	clientSecret: "f84a07a72b17"
+    });
+    </script> -->
+
+    <meta name="generator" content="Jekyll 3.6.2" />
+    <link rel="alternate" type="application/rss+xml" title="[iOS] Swift 기본 (2)" href="/feed.xml" />
+
+
+</head>
+<body class="post-template">
+
+    <div class="site-wrapper">
+        <!-- All the main content gets inserted here, index.hbs, post.hbs, etc -->
+        <!-- default -->
+
+<!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template -->
+
+<header class="site-header outer">
+    <div class="inner">
+        <nav class="site-nav">
+    <div class="site-nav-left">
+        
+            
+                <a class="site-nav-logo" href="https://simplehanlab.github.io/">SimpleHan Lab</a>
+            
+        
+        
+            <ul class="nav" role="menu">
+    <li class="nav-about" role="menuitem"><a href="/about/">About</a></li>
+    <li class="nav-jekyll" role="menuitem"><a href="/category/react/">react</a></li>
+    <li class="nav-python" role="menuitem"><a href="/category/spring/">spring</a></li>
+    <li class="nav-java" role="menuitem"><a href="/category/ios/">ios</a></li>
+    <li class="nav-jekyll" role="menuitem"><a href="/category/jekyll/">jekyll</a></li>
+    <li class="nav-python" role="menuitem"><a href="/category/minimal-mistakes/">minimal-mistakes</a></li>
+    <li class="nav-python" role="menuitem"><a href="/category/ssl/">ssl</a></li>
+    <li class="nav-python" role="menuitem"><a href="/category/tensorflow/">tensorflow</a></li>
+    <li class="nav-python" role="menuitem"><a href="/category/ssh/">ssh</a></li>
+    <li class="nav-archive" role="menuitem">
+        <a href="/archive.html">All Posts</a>
+    </li>
+    <li class="nav-archive" role="menuitem">
+        <a href="/categories.html">카테고리별 Posts</a>
+    </li>
+    <li class="nav-archive" role="menuitem">
+        <a href="/author_archive.html">Tag별 Posts</a>
+    </li>
+</ul>
+        
+    </div>
+    <div class="site-nav-right">
+        <div class="social-links">
+            
+            
+        </div>
+        
+            <a class="subscribe-button" href="#subscribe">Search</a>
+        
+    </div>
+</nav>
+
+    </div>
+</header>
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<main id="site-main" class="site-main outer" role="main">
+    <div class="inner">
+
+        <article class="post-full  tag-xcode tag-swift tag-ios  ">
+
+            <header class="post-full-header">
+                <section class="post-full-meta">
+                    <time class="post-full-meta-date" datetime="23 August 2019">23 August 2019</time>
+                    
+                        <span class="date-divider">/</span>
+                        
+                            
+                            <a href='/category/ios/'>IOS</a>
+                            
+                        
+                    
+                </section>
+                <h1 class="post-full-title">[iOS] Swift 기본 (2)</h1>
+            </header>
+
+            <!--
+            
+            <figure class="post-full-image" style="background-image: url(/assets/built/images/ios/ios-logo.png)">
+            </figure>
+            
+            -->
+
+            <section class="post-full-content">
+                <div class="kg-card-markdown">
+                    <h3 id="5-클래스와-구조체">5. 클래스와 구조체</h3>
+
+<p>클래스는 class로 정의하고, 구조체는 struct로 정의합니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kd">class</span> <span class="kt">Dog</span> <span class="p">{</span> 
+    <span class="k">var</span> <span class="nv">name</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> 
+    <span class="k">var</span> <span class="nv">age</span><span class="p">:</span> <span class="kt">Int</span><span class="p">?</span> 
+    <span class="kd">func</span> <span class="nf">simpleDescription</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">String</span> <span class="p">{</span> 
+      <span class="k">if</span> <span class="k">let</span> <span class="nv">name</span> <span class="o">=</span> <span class="k">self</span><span class="o">.</span><span class="n">name</span> <span class="p">{</span> 
+        <span class="k">return</span><span class="s">"🐶 </span><span class="se">\(</span><span class="n">name</span><span class="se">)</span><span class="s">"</span> 
+      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span> 
+        <span class="k">return</span><span class="s">"🐶 No name"</span> 
+      <span class="p">}</span> 
+    <span class="p">}</span> 
+  <span class="p">}</span>
+  <span class="kd">struct</span> <span class="kt">Coffee</span> <span class="p">{</span> 
+    <span class="k">var</span> <span class="nv">name</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> 
+    <span class="k">var</span> <span class="nv">size</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> 
+    <span class="kd">func</span> <span class="nf">simpleDescription</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">String</span> <span class="p">{</span> 
+      <span class="k">if</span> <span class="k">let</span> <span class="nv">name</span> <span class="o">=</span> <span class="k">self</span><span class="o">.</span><span class="n">name</span> <span class="p">{</span> 
+        <span class="k">return</span><span class="s">"☕️ </span><span class="se">\(</span><span class="n">name</span><span class="se">)</span><span class="s">"</span> 
+      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span> 
+        <span class="k">return</span><span class="s">"☕️ No name"</span> 
+      <span class="p">}</span> 
+    <span class="p">}</span> 
+  <span class="p">}</span> 
+  <span class="k">var</span> <span class="nv">myDog</span> <span class="o">=</span> <span class="kt">Dog</span><span class="p">()</span> <span class="n">myDog</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s">"찡코"</span> 
+  <span class="n">myDog</span><span class="o">.</span><span class="n">age</span> <span class="o">=</span> <span class="nf">print</span><span class="p">(</span><span class="n">myDog</span><span class="o">.</span><span class="nf">simpleDescription</span><span class="p">())</span> <span class="c1">// 🐶 찡코</span>
+  <span class="k">var</span> <span class="nv">myCoffee</span> <span class="o">=</span> <span class="kt">Coffee</span><span class="p">()</span> <span class="n">myCoffee</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s">"아메리카노"</span> 
+  <span class="n">myCoffee</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="s">"Venti"</span><span class="nf">print</span><span class="p">(</span><span class="n">myCoffee</span><span class="o">.</span><span class="nf">simpleDescription</span><span class="p">())</span> <span class="c1">// ☕️ 아메리카노</span>
+</code></pre></div></div>
+
+<p>클래스는 상속이 가능합니다. 구조체는 불가능합니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kd">class</span> <span class="kt">Animal</span> <span class="p">{</span> 
+    <span class="k">let</span> <span class="nv">numberOfLegs</span> <span class="o">=</span> <span class="mi">4</span> 
+  <span class="p">}</span> 
+  <span class="kd">class</span> <span class="kt">Dog</span><span class="p">:</span> <span class="kt">Animal</span> <span class="p">{</span> 
+    <span class="k">var</span> <span class="nv">name</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> 
+    <span class="k">var</span> <span class="nv">age</span><span class="p">:</span> <span class="kt">Int</span><span class="p">?</span> 
+  <span class="p">}</span> 
+  <span class="k">var</span> <span class="nv">myDog</span> <span class="o">=</span> <span class="kt">Dog</span><span class="p">()</span> 
+  <span class="nf">print</span><span class="p">(</span><span class="n">myDog</span><span class="o">.</span><span class="n">numberOfLegs</span><span class="p">)</span> <span class="c1">// Animal 클래스로부터 상속받은 값 (4)</span>
+</code></pre></div></div>
+
+<p>클래스는 참조Reference하고, 구조체는 복사Copy합니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">var</span> <span class="nv">dog1</span> <span class="o">=</span> <span class="kt">Dog</span><span class="p">()</span>  <span class="c1">// dog1은 새로 만들어진 Dog()를 참조합니다.</span>
+  <span class="k">var</span> <span class="nv">dog2</span> <span class="o">=</span> <span class="n">dog1</span>   <span class="c1">// dog2는 dog1이 참조하는 Dog()를 똑같이 참조합니다. </span>
+  <span class="n">dog1</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s">"찡코"</span><span class="c1">// dog1의 이름을 바꾸면 Dog()의 이름이 바뀌기 때문에,</span>
+  <span class="nf">print</span><span class="p">(</span><span class="n">dog2</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>  <span class="c1">// dog2의 이름을 가져와도 바뀐 이름("찡코")이 출력됩니다.</span>
+  <span class="k">var</span> <span class="nv">coffee1</span> <span class="o">=</span> <span class="kt">Coffee</span><span class="p">()</span>   <span class="c1">// coffee1은 새로 만들어진 Coffee() 그 자체입니다.</span>
+  <span class="k">var</span> <span class="nv">coffee2</span> <span class="o">=</span> <span class="n">coffee1</span>    <span class="c1">// coffee2는 coffee1을 복사한 값 자체입니다. </span>
+  <span class="n">coffee1</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s">"아메리카노"</span><span class="c1">// coffee1의 이름을 바꿔도 </span>
+  <span class="n">coffee2</span><span class="o">.</span><span class="n">name</span>             <span class="c1">// coffee2는 완전히 별개이기 때문에 이름이 바뀌지 않습니다. (nil)</span>
+</code></pre></div></div>
+
+<p>생성자 (Initializer)
+  클래스와 구조체 모두 생성자를 가지고 있습니다. 생성자에서는 속성의 초깃값을 지정할 수 있습니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kd">class</span> <span class="kt">Dog</span> <span class="p">{</span> 
+    <span class="k">var</span> <span class="nv">name</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> 
+    <span class="k">var</span> <span class="nv">age</span><span class="p">:</span> <span class="kt">Int</span><span class="p">?</span> 
+    <span class="nf">init</span><span class="p">()</span> <span class="p">{</span> 
+      <span class="k">self</span><span class="o">.</span><span class="n">age</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">}</span> 
+    <span class="p">}</span> 
+  <span class="p">}</span>
+  <span class="kd">struct</span> <span class="kt">Coffee</span> <span class="p">{</span> 
+    <span class="k">var</span> <span class="nv">name</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> 
+    <span class="k">var</span> <span class="nv">size</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> 
+    <span class="nf">init</span><span class="p">()</span> <span class="p">{</span> 
+        <span class="k">self</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="s">"Tall"</span> 
+      <span class="p">}</span> 
+  <span class="p">}</span> 
+</code></pre></div></div>
+
+<p>만약 속성이 옵셔널이 아니라면 항상 초깃값을 가져야 합니다. 만약 옵셔널이 아닌 속성이 초깃값을 가지고 있지 않으면 컴파일 에러가 발생합니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kd">class</span> <span class="kt">Dog</span> <span class="p">{</span> 
+    <span class="k">var</span> <span class="nv">name</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> 
+    <span class="k">var</span> <span class="nv">age</span><span class="p">:</span> <span class="kt">Int</span><span class="c1">// 컴파일 에러! </span>
+  <span class="p">}</span> 
+  <span class="n">stored</span> <span class="n">property</span> <span class="err">'</span><span class="n">age</span><span class="err">'</span> <span class="n">without</span> <span class="n">initial</span> <span class="n">value</span> <span class="n">prevents</span> <span class="n">synthesized</span> <span class="n">initializers</span>
+</code></pre></div></div>
+
+<p>속성을 정의할 때 초깃값을 지정해 주는 방법과,</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kd">class</span> <span class="kt">Dog</span> <span class="p">{</span> 
+    <span class="k">var</span> <span class="nv">name</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> 
+    <span class="k">var</span> <span class="nv">age</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">0</span><span class="c1">// 속성을 정의할 때 초깃값 지정 </span>
+  <span class="p">}</span> 
+</code></pre></div></div>
+
+<p>생성자에서 초깃값을 지정해주는 방법이 있습니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kd">class</span> <span class="kt">Dog</span> <span class="p">{</span> 
+    <span class="k">var</span> <span class="nv">name</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> 
+    <span class="k">var</span> <span class="nv">age</span><span class="p">:</span> <span class="kt">Int</span> 
+    <span class="nf">init</span><span class="p">()</span> <span class="p">{</span> 
+      <span class="k">self</span><span class="o">.</span><span class="n">age</span> <span class="o">=</span> <span class="mi">0</span><span class="c1">// 생성자에서 초깃값 지정</span>
+    <span class="p">}</span> 
+  <span class="p">}</span> 
+</code></pre></div></div>
+
+<p>생성자도 함수와 마찬가지로 파라미터를 받을 수 있습니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kd">class</span> <span class="kt">Dog</span> <span class="p">{</span> 
+    <span class="k">var</span> <span class="nv">name</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> 
+    <span class="k">var</span> <span class="nv">age</span><span class="p">:</span> <span class="kt">Int</span> 
+    <span class="nf">init</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="kt">String</span><span class="p">?,</span> <span class="nv">age</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="p">{</span> <span class="k">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span> <span class="k">self</span><span class="o">.</span><span class="n">age</span> <span class="o">=</span> <span class="n">age</span> <span class="p">}</span> 
+  <span class="p">}</span> 
+  <span class="k">var</span> <span class="nv">myDog</span> <span class="o">=</span> <span class="kt">Dog</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="s">"찡코"</span><span class="p">,</span> <span class="nv">age</span><span class="p">:</span> <span class="mi">3</span><span class="p">)</span> 
+</code></pre></div></div>
+
+<p>만약 상속받은 클래스라면 생성자에서 상위 클래스의 생성자를 호출해주어야 합니다. 만약 생성자의 파라미터가 상위 클래스의 파라미터와 같다면, override 키워드를 붙여주어야 합니다. super.init()은 클래스 속성들의 초깃값이 모두 설정 된 후에 해야 합니다. 그리고 나서부터 자기 자신에 대한 self 키워드를 사용할 수 있습니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kd">class</span> <span class="kt">Dog</span><span class="p">:</span> <span class="kt">Animal</span> <span class="p">{</span> 
+  <span class="k">var</span> <span class="nv">name</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> 
+  <span class="k">var</span> <span class="nv">age</span><span class="p">:</span> <span class="kt">Int</span>
+  <span class="nf">overrideinit</span><span class="p">()</span> <span class="p">{</span> 
+    <span class="k">self</span><span class="o">.</span><span class="n">age</span> <span class="o">=</span> <span class="mi">0</span><span class="c1">// 초깃값 설정</span>
+    <span class="k">super</span><span class="o">.</span><span class="nf">init</span><span class="p">()</span> <span class="c1">// 상위 클래스 생성자 호출</span>
+    <span class="nf">print</span><span class="p">(</span><span class="k">self</span><span class="o">.</span><span class="nf">simpleDescription</span><span class="p">())</span> <span class="c1">// 여기서부터 `self` 접근 가능 </span>
+  <span class="p">}</span> 
+  <span class="kd">func</span> <span class="nf">simpleDescription</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">String</span> <span class="p">{</span> 
+    <span class="k">if</span> <span class="k">let</span> <span class="nv">name</span> <span class="o">=</span> <span class="k">self</span><span class="o">.</span><span class="n">name</span> <span class="p">{</span> 
+      <span class="k">return</span><span class="s">"🐶 </span><span class="se">\(</span><span class="n">name</span><span class="se">)</span><span class="s">"</span> 
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span> 
+        <span class="k">return</span><span class="s">"🐶 No name"</span> 
+      <span class="p">}</span> 
+    <span class="p">}</span> 
+  <span class="p">}</span> 
+</code></pre></div></div>
+
+<p>만약, 위 예시 코드를 아래처럼 바꿔서 super.init()을 하기 전에 self에 접근한다면 컴파일 에러가 발생합니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nf">overrideinit</span><span class="p">()</span> <span class="p">{</span> 
+    <span class="k">self</span><span class="o">.</span><span class="n">age</span> <span class="o">=</span> <span class="nf">print</span><span class="p">(</span><span class="k">self</span><span class="o">.</span><span class="nf">simpleDescription</span><span class="p">())</span> <span class="c1">// 컴파일 에러!</span>
+    <span class="k">super</span><span class="o">.</span><span class="nf">init</span><span class="p">()</span> 
+  <span class="p">}</span>  
+</code></pre></div></div>
+
+<p>error: use of ‘self’ in method call ‘simpleDescription’ before super.init initializes self deinit은 메모리에서 해제된 직후에 호출됩니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kd">class</span> <span class="kt">Dog</span> <span class="p">{</span> <span class="o">...</span><span class="kd">deinit</span> <span class="p">{</span> <span class="nf">print</span><span class="p">(</span><span class="s">"메모리에서 해제됨"</span><span class="p">)</span> <span class="p">}</span> <span class="p">}</span> 
+</code></pre></div></div>
+
+<p>속성 (Properties)
+  속성은 크게 두 가지로 나뉩니다. 값을 가지는 속성Stored Property과 계산되는 속성Computed Property 입니다. 쉽게 말하면 속성이 값 자체를 가지고 있는지, 혹은 어떠한 연산을 수행한 뒤 그 결과를 반환하는지의 차이입니다. 우리가 지금까지 정의하고 사용한 name, age와 같은 속성들은 모두 Stored Property입니다. Computed Property는 get, set을 사용해서 정의할 수 있습니다. set에서는 새로 설정될 값을 newValue라는 예약어를 통해 접근할 수 있습니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kd">struct</span> <span class="kt">Hex</span> <span class="p">{</span> 
+    <span class="k">var</span> <span class="nv">decimal</span><span class="p">:</span> <span class="kt">Int</span><span class="p">?</span> 
+    <span class="k">var</span> <span class="nv">hexString</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="p">{</span> 
+      <span class="k">get</span> <span class="p">{</span> 
+        <span class="k">if</span> <span class="k">let</span> <span class="nv">decimal</span> <span class="o">=</span> <span class="k">self</span><span class="o">.</span><span class="n">decimal</span> <span class="p">{</span> 
+          <span class="nf">returnString</span><span class="p">(</span><span class="n">decimal</span><span class="p">,</span> <span class="nv">radix</span><span class="p">:</span> <span class="mi">16</span><span class="p">)</span> 
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span> 
+          <span class="k">return</span> <span class="kc">nil</span> 
+        <span class="p">}</span> 
+      <span class="p">}</span> <span class="k">set</span> <span class="p">{</span> 
+        <span class="k">if</span> <span class="k">let</span> <span class="nv">newValue</span> <span class="o">=</span> <span class="n">newValue</span> <span class="p">{</span> 
+          <span class="k">self</span><span class="o">.</span><span class="n">decimal</span> <span class="o">=</span> <span class="kt">Int</span><span class="p">(</span><span class="n">newValue</span><span class="p">,</span> <span class="nv">radix</span><span class="p">:</span> <span class="mi">16</span><span class="p">)</span> 
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span> 
+          <span class="k">self</span><span class="o">.</span><span class="n">decimal</span> <span class="o">=</span> <span class="kc">nil</span> 
+        <span class="p">}</span> 
+      <span class="p">}</span> 
+    <span class="p">}</span> 
+  <span class="p">}</span> 
+  <span class="k">var</span> <span class="nv">hex</span> <span class="o">=</span> <span class="kt">Hex</span><span class="p">()</span> 
+  <span class="n">hex</span><span class="o">.</span><span class="n">decimal</span> <span class="o">=</span> <span class="mi">10</span> 
+  <span class="n">hex</span><span class="o">.</span><span class="n">hexString</span> <span class="c1">// "a" </span>
+  <span class="n">hex</span><span class="o">.</span><span class="n">hexString</span> <span class="o">=</span> <span class="s">"b"</span> 
+  <span class="n">hex</span><span class="o">.</span><span class="n">decimal</span> <span class="c1">// 11</span>
+</code></pre></div></div>
+
+<p>위 코드에서 hexString은 실제 값을 가지고 있지는 않지만, decimal로부터 값을 받아와 16진수 문자열로 만들어서 반환합니다. decimal은 Stored Property, hexString은 Computed Property입니다. 참고로, get만 정의할 경우에는 get 키워드를 생략할 수 있습니다. 이런 속성을 읽기 전용Read Only이라고 합니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kd">class</span> <span class="kt">Hex</span> <span class="p">{</span> <span class="o">...</span><span class="k">var</span> <span class="nv">hexCode</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="p">{</span> <span class="k">if</span> <span class="k">let</span> <span class="nv">hex</span> <span class="o">=</span> <span class="k">self</span><span class="o">.</span><span class="n">hexString</span> <span class="p">{</span> <span class="k">return</span> <span class="s">"0x"</span> <span class="o">+</span> <span class="n">hex</span> <span class="p">}</span> <span class="k">return</span> <span class="kc">nil</span> <span class="p">}</span> <span class="p">}</span> 
+</code></pre></div></div>
+
+<p>get, set과 비슷한 willSet, didSet을 이용하면 속성에 값이 지정되기 직전과 직후에 원하는 코드를 실행할 수 있습니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kd">struct</span> <span class="kt">Hex</span> <span class="p">{</span> 
+    <span class="k">var</span> <span class="nv">decimal</span><span class="p">:</span> <span class="kt">Int</span><span class="p">?</span> <span class="p">{</span> 
+      <span class="k">willSet</span> <span class="p">{</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"</span><span class="se">\(</span><span class="k">self</span><span class="o">.</span><span class="n">decimal</span><span class="se">)</span><span class="s">에서 </span><span class="se">\(</span><span class="n">newValue</span><span class="se">)</span><span class="s">로 값이 바뀔 예정입니다."</span><span class="p">)</span> 
+      <span class="p">}</span> <span class="k">didSet</span> <span class="p">{</span> 
+        <span class="nf">print</span><span class="p">(</span><span class="s">"</span><span class="se">\(</span><span class="n">oldValue</span><span class="se">)</span><span class="s">에서 </span><span class="se">\(</span><span class="k">self</span><span class="o">.</span><span class="n">decimal</span><span class="se">)</span><span class="s">로 값이 바뀌었습니다."</span><span class="p">)</span> 
+      <span class="p">}</span> 
+    <span class="p">}</span> 
+  <span class="p">}</span> 
+</code></pre></div></div>
+
+<p>마찬가지로, willSet에서는 새로운 값을 newValue로 얻어올 수 있고, didSet에서는 예전 값을 oldValue라는 예약어를 통해 얻어올 수 있습니다. willSet과 didSet은 일반적으로 어떤 속성의 값이 바뀌었을 때 UI를 업데이트하거나 특정 메서드를 호출하는 등의 역할을 할 때에 사용됩니다.</p>
+
+<h3 id="6-튜플">6. 튜플</h3>
+
+<p>튜플Tuple은 어떠한 값들의 묶음입니다. 배열과 비슷한 개념이지만, 배열과는 다르게 길이가 고정되어 있습니다. 
+  값에 접근할 때에도 [] 대신 .을 사용합니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">var</span> <span class="nv">coffeeInfo</span> <span class="o">=</span> <span class="p">(</span><span class="s">"아메리카노"</span><span class="p">,</span> <span class="mi">5100</span><span class="p">)</span> 
+  <span class="n">coffeeInfo</span><span class="o">.</span><span class="mi">0</span><span class="c1">// 아메리카노 </span>
+  <span class="n">coffeeInfo</span><span class="o">.</span><span class="mi">1</span><span class="c1">// 5100 </span>
+  <span class="n">coffeeInfo</span><span class="o">.</span><span class="mi">1</span> <span class="o">=</span> <span class="mi">5100</span>
+</code></pre></div></div>
+
+<p>이 튜플의 파라미터에 이름을 붙일 수도 있습니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">var</span> <span class="nv">namedCoffeeInfo</span> <span class="o">=</span> <span class="p">(</span><span class="nv">coffee</span><span class="p">:</span> <span class="s">"아메리카노"</span><span class="p">,</span> <span class="nv">price</span><span class="p">:</span> <span class="mi">5100</span><span class="p">)</span> 
+  <span class="n">namedCoffeeInfo</span><span class="o">.</span><span class="n">coffee</span> <span class="c1">// 아메리카노 </span>
+  <span class="n">namedCoffeeInfo</span><span class="o">.</span><span class="n">price</span> <span class="c1">// 5100 </span>
+  <span class="n">namedCoffeeInfo</span><span class="o">.</span><span class="n">price</span> <span class="o">=</span> <span class="mi">5100</span>
+</code></pre></div></div>
+
+<p>이렇게 보면, 앞서 살펴본 구조체와 비슷한데, 실제로도 간단한 자료형을 만들 때에는 구조체 대신 튜플을 사용하기도 합니다. 튜플의 타입 어노테이션은 이렇게 되어있습니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">var</span> <span class="nv">coffeeInfo</span><span class="p">:</span> <span class="p">(</span><span class="kt">String</span><span class="p">,</span> <span class="kt">Int</span><span class="p">)</span> 
+  <span class="k">var</span> <span class="nv">namedCoffeeInfo</span><span class="p">:</span> <span class="p">(</span><span class="nv">coffee</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">price</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> 
+</code></pre></div></div>
+
+<p>튜플을 조금 응용하면, 아래와 같이 여러 변수에 값을 지정할 수도 있습니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">let</span> <span class="p">(</span><span class="nv">coffee</span><span class="p">,</span> <span class="nv">price</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="s">"아메리카노"</span><span class="p">,</span> <span class="mi">5100</span><span class="p">)</span> 
+  <span class="n">coffee</span> <span class="c1">// 아메리카노 </span>
+  <span class="n">price</span> <span class="c1">// 5100</span>
+</code></pre></div></div>
+
+<p>튜플이 가진 값을 가지고 변수에 값을 지정할 때, 무시하고 싶은 값이 있다면 _ 키워드를 사용해서 할 수 있습니다. 아래 코드에서는 “라떼”라는 첫 번째 값을 무시합니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">let</span> <span class="p">(</span><span class="nv">_</span><span class="p">,</span> <span class="nv">latteSize</span><span class="p">,</span> <span class="nv">lattePrice</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="s">"라떼"</span><span class="p">,</span> <span class="s">"Venti"</span><span class="p">,</span> <span class="mi">5600</span><span class="p">)</span> 
+  <span class="n">latteSize</span> <span class="c1">// Venti </span>
+  <span class="n">lattePrice</span> <span class="c1">// 5600</span>
+</code></pre></div></div>
+
+<p>물론, 튜플을 반환하는 함수도 만들 수 있습니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c1">/// 커피 이름에 맞는 커피 가격 정보를 반환합니다. 일치하는 커피 이름이 없다면 `nil`을 반환합니다.////// - parameter name: 커피 이름////// - returns: 커피 이름과 가격 정보로 구성된 튜플을 반환합니다.</span>
+  <span class="kd">func</span> <span class="nf">coffeeInfo</span><span class="p">(</span><span class="k">for</span> <span class="nv">name</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">price</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)?</span> <span class="p">{</span> 
+    <span class="k">let</span> <span class="nv">coffeeInfoList</span><span class="p">:</span> <span class="p">[(</span><span class="nv">name</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">price</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)]</span> <span class="o">=</span> <span class="p">[</span> <span class="p">(</span><span class="s">"아메리카노"</span><span class="p">,</span> <span class="mi">5100</span><span class="p">),</span> <span class="p">(</span><span class="s">"라떼"</span><span class="p">,</span> <span class="mi">5600</span><span class="p">),</span> <span class="p">]</span> 
+      <span class="k">for</span> <span class="n">coffeeInfo</span> <span class="k">in</span> <span class="n">coffeeInfoList</span> <span class="p">{</span> 
+        <span class="k">if</span> <span class="n">coffeeInfo</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="n">name</span> <span class="p">{</span> 
+          <span class="k">return</span> <span class="n">coffeeInfo</span> 
+        <span class="p">}</span> 
+      <span class="p">}</span> 
+    <span class="k">return</span> <span class="kc">nil</span> 
+  <span class="p">}</span>
+  <span class="nf">coffeeInfo</span><span class="p">(</span><span class="nv">for</span><span class="p">:</span> <span class="s">"아메리카노"</span><span class="p">)?</span><span class="o">.</span><span class="n">price</span> <span class="c1">// 5100 </span>
+  <span class="nf">coffeeInfo</span><span class="p">(</span><span class="nv">for</span><span class="p">:</span> <span class="s">"에스프레소"</span><span class="p">)?</span><span class="o">.</span><span class="n">price</span> <span class="c1">// nil</span>
+  <span class="k">let</span> <span class="p">(</span><span class="nv">_</span><span class="p">,</span> <span class="nv">lattePrice</span><span class="p">)</span> <span class="o">=</span> <span class="nf">coffeeInfo</span><span class="p">(</span><span class="nv">for</span><span class="p">:</span> <span class="s">"라떼"</span><span class="p">)</span><span class="o">!</span> <span class="n">lattePrice</span> <span class="c1">// 5600 </span>
+</code></pre></div></div>
+
+<h3 id="7-enum">7. Enum</h3>
+
+<p>열거라는 뜻을 가진 Enumeration에서 따온 용어입니다. 한글로 번역할 때에는 열거형이라는 말을 많이 사용합니다. 1월부터 12월까지를 enum으로 한 번 정의해보겠습니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kd">enum</span> <span class="kt">Month</span><span class="p">:</span> <span class="kt">Int</span> <span class="p">{</span> 
+    <span class="k">case</span> <span class="n">january</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">case</span> <span class="n">february</span> 
+    <span class="k">case</span> <span class="n">march</span> 
+    <span class="k">case</span> <span class="n">april</span> 
+    <span class="k">case</span> <span class="n">may</span> 
+    <span class="k">case</span> <span class="n">june</span> 
+    <span class="k">case</span> <span class="n">july</span> 
+    <span class="k">case</span> <span class="n">august</span> 
+    <span class="k">case</span> <span class="n">september</span> 
+    <span class="k">case</span> <span class="n">october</span> 
+    <span class="k">case</span> <span class="n">november</span> 
+    <span class="k">case</span> <span class="n">december</span> 
+    <span class="kd">func</span> <span class="nf">simpleDescription</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">String</span> <span class="p">{</span> 
+      <span class="kt">Switch</span> <span class="k">self</span> <span class="p">{</span> 
+        <span class="k">case</span> <span class="o">.</span><span class="nv">january</span><span class="p">:</span> <span class="k">return</span><span class="s">"1월"</span>
+        <span class="k">case</span> <span class="o">.</span><span class="nv">february</span><span class="p">:</span> <span class="k">return</span><span class="s">"2월"</span>
+        <span class="k">case</span> <span class="o">.</span><span class="nv">march</span><span class="p">:</span> <span class="k">return</span><span class="s">"3월"</span>
+        <span class="k">case</span> <span class="o">.</span><span class="nv">april</span><span class="p">:</span> <span class="k">return</span><span class="s">"4월"</span>
+        <span class="k">case</span> <span class="o">.</span><span class="nv">may</span><span class="p">:</span> <span class="k">return</span><span class="s">"5월"</span>
+        <span class="k">case</span> <span class="o">.</span><span class="nv">june</span><span class="p">:</span> <span class="k">return</span><span class="s">"6월"</span>
+        <span class="k">case</span> <span class="o">.</span><span class="nv">july</span><span class="p">:</span> <span class="k">return</span><span class="s">"7월"</span>
+        <span class="k">case</span> <span class="o">.</span><span class="nv">august</span><span class="p">:</span> <span class="k">return</span><span class="s">"8월"</span>
+        <span class="k">case</span> <span class="o">.</span><span class="nv">september</span><span class="p">:</span> <span class="k">return</span><span class="s">"9월"</span>
+        <span class="k">case</span> <span class="o">.</span><span class="nv">october</span><span class="p">:</span> <span class="k">return</span><span class="s">"10월"</span>
+        <span class="k">case</span> <span class="o">.</span><span class="nv">november</span><span class="p">:</span> <span class="k">return</span><span class="s">"11월"</span>
+        <span class="k">case</span> <span class="o">.</span><span class="nv">december</span><span class="p">:</span> <span class="k">return</span><span class="s">"12월"</span> 
+      <span class="p">}</span> 
+    <span class="p">}</span> 
+  <span class="p">}</span> 
+  <span class="k">let</span> <span class="nv">december</span> <span class="o">=</span> <span class="kt">Month</span><span class="o">.</span><span class="n">december</span> <span class="nf">print</span><span class="p">(</span><span class="n">december</span><span class="o">.</span><span class="nf">simpleDescription</span><span class="p">())</span> <span class="c1">// 12월</span>
+  <span class="nf">print</span><span class="p">(</span><span class="n">december</span><span class="o">.</span><span class="n">rawValue</span><span class="p">)</span>            <span class="c1">// 12</span>
+</code></pre></div></div>
+
+<p>위 예시에서 작성한 Month는 Int를 원시값Raw Value으로 가지도록 정의되었습니다. 그렇기 때문에 각 케이스들은 1부터 12까지의 값을 가지고 있습니다. rawValue 속성이 바로 그 값을 나타내는데, 반대로 원시값을 가지고 Enum을 만들 수도 있습니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">let</span> <span class="nv">october</span> <span class="o">=</span> <span class="kt">Month</span><span class="p">(</span><span class="nv">rawValue</span><span class="p">:</span> <span class="mi">10</span><span class="p">)</span> <span class="nf">print</span><span class="p">(</span><span class="n">october</span><span class="p">)</span> <span class="c1">// Optional(Month.october)</span>
+</code></pre></div></div>
+
+<p>Month(rawValue:)의 반환값이 옵셔널인 이유는, Enum에서 정의되지 않은 원시값을 가지고 생성할 경우 nil을 반환하기 때문입니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kt">Month</span><span class="p">(</span><span class="nv">rawValue</span><span class="p">:</span> <span class="mi">13</span><span class="p">)</span> <span class="c1">// nil</span>
+</code></pre></div></div>
+
+<p>일반적으로 Enum은 Int만을 원시값으로 가질 수 있다고 생각합니다. 다른 프로그래밍 언어에서는 모두 그렇기 때문입니다. 하지만, Swift의 Enum은 조금 독특합니다. 아래 예시는 String을 원시값으로 가지는 Enum입니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kd">enum</span> <span class="kt">IssueState</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">case</span> <span class="kd">open</span> <span class="o">=</span> <span class="s">"open"</span><span class="k">case</span> <span class="n">closed</span> <span class="o">=</span> <span class="s">"closed"</span> <span class="p">}</span> 
+</code></pre></div></div>
+
+<p>만약 어떤 API의 응답에서 내려주는 state의 값이 open 또는 closed라면, if-else 없이도 IssueState(rawValue:)를 사용해서 Enum을 생성할 수 있습니다. Enum은 원시값을 가지지 않을 수도 있습니다. 원시값을 가져야 할 필요가 없다면 굳이 만들지 않아도 됩니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kd">enum</span> <span class="kt">Spoon</span> <span class="p">{</span> 
+    <span class="k">case</span> <span class="n">dirt</span> 
+    <span class="k">case</span> <span class="n">bronze</span> 
+    <span class="k">case</span> <span class="n">silver</span> 
+    <span class="k">case</span> <span class="n">gold</span> 
+    <span class="kd">func</span> <span class="nf">simpleDescription</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">switch</span> <span class="k">self</span> <span class="p">{</span> 
+      <span class="k">case</span> <span class="o">.</span><span class="nv">dirt</span><span class="p">:</span> <span class="k">return</span><span class="s">"흙수저"</span>
+      <span class="k">case</span> <span class="o">.</span><span class="nv">bronze</span><span class="p">:</span> <span class="k">return</span><span class="s">"동수저"</span>
+      <span class="k">case</span> <span class="o">.</span><span class="nv">silver</span><span class="p">:</span> <span class="k">return</span><span class="s">"은수저"</span>
+      <span class="k">case</span> <span class="o">.</span><span class="nv">gold</span><span class="p">:</span> <span class="k">return</span><span class="s">"금수저"</span> <span class="p">}</span> 
+    <span class="p">}</span> 
+  <span class="p">}</span> 
+</code></pre></div></div>
+
+<p>Enum을 예측할 수 있다면 Enum의 이름을 생략할 수 있습니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">let</span> <span class="nv">spoon</span><span class="p">:</span> <span class="kt">Spoon</span> <span class="o">=</span> <span class="o">.</span><span class="n">gold</span> <span class="c1">// 변수에 타입 어노테이션이 있기 때문에 생략 가능</span>
+  <span class="kd">func</span> <span class="nf">doSomething</span><span class="p">(</span><span class="n">with</span> <span class="nv">spoon</span><span class="p">:</span> <span class="kt">Spoon</span><span class="p">)</span> <span class="p">{</span> <span class="cm">/* ... */</span><span class="p">}</span>  
+  <span class="nf">doSomething</span><span class="p">(</span><span class="nv">with</span><span class="p">:</span> <span class="o">.</span><span class="n">silver</span><span class="p">)</span> <span class="c1">// 함수 정의에 타입 어노테이션이 있기 때문에 생략 가능</span>
+</code></pre></div></div>
+
+<p>연관 값(Associated Values)을 가지는 Enum</p>
+
+<p>Enum은 연관 값Associated Values을 가질 수 있습니다. 아래 예시는 어떤 API에 대한 에러를 정의한 것인데요. invalidParameter 케이스는 필드 이름과 메시지를 가지도록 정의되었습니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kd">enum</span> <span class="kt">NetworkError</span> <span class="p">{</span> <span class="k">case</span> <span class="nf">invalidParameter</span><span class="p">(</span><span class="kt">String</span><span class="p">,</span> <span class="kt">String</span><span class="p">)</span> <span class="k">case</span> <span class="n">timeout</span> <span class="p">}</span> 
+  <span class="k">let</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">NetworkError</span> <span class="o">=</span> <span class="o">.</span><span class="nf">invalidParameter</span><span class="p">(</span><span class="s">"email"</span><span class="p">,</span> <span class="s">"이메일 형식이 올바르지 않습니다."</span><span class="p">)</span> 
+</code></pre></div></div>
+
+<p>이 값을 꺼내올 수 있는 방법으로는 if-case 또는 switch를 활용하는 방법이 있습니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">if</span> <span class="k">case</span> <span class="o">.</span><span class="nf">invalidParameter</span><span class="p">(</span><span class="k">let</span> <span class="nv">field</span><span class="p">,</span> <span class="k">let</span> <span class="nv">message</span><span class="p">)</span> <span class="o">=</span> <span class="n">error</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">field</span><span class="p">)</span> <span class="c1">// email</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">message</span><span class="p">)</span> <span class="c1">// 이메일 형식이 올바르지 않습니다. </span>
+  <span class="p">}</span> <span class="k">switch</span> <span class="n">error</span> <span class="p">{</span> 
+    <span class="k">case</span> <span class="o">.</span><span class="nf">invalidParameter</span><span class="p">(</span><span class="k">let</span> <span class="nv">field</span><span class="p">,</span> <span class="k">let</span> <span class="nv">message</span><span class="p">):</span> <span class="nf">print</span><span class="p">(</span><span class="n">field</span><span class="p">)</span> <span class="c1">// email</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">message</span><span class="p">)</span> <span class="c1">// 이메일 형식이 올바르지 않습니다.default: break </span>
+  <span class="p">}</span> 
+  <span class="cm">/*응용하기: NetworkError에 message라는 읽기 전용 속성을 추가하고, 에러에 대한 명확한 메시지를 반환하도록 만들어봅시다. 더 나아가서, 있을법한 다른 에러에 대한 경우도 추가해봅시다.*/</span>
+</code></pre></div></div>
+
+<p>사실, 옵셔널은 Enum입니다. 실제 구조도 다음과 같습니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kd">public</span> <span class="kd">enum</span> <span class="kt">Optional</span><span class="o">&lt;</span><span class="kt">Wrapped</span><span class="o">&gt;</span> <span class="p">{</span> <span class="k">case</span> <span class="k">none</span> <span class="k">case</span> <span class="nf">some</span><span class="p">(</span><span class="kt">Wrapped</span><span class="p">)</span> <span class="p">}</span>
+</code></pre></div></div>
+
+<p>옵셔널이 왜 ‘값’과 ‘없는 값’을 포함하고 있다고 설명했는지, 그리고 왜 ‘감싸다’라는 표현을 사용했는지 이해가 되십니까? 옵셔널은 Enum이기 때문에, 아래와 같은 구문도 사용할 수 있습니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">let</span> <span class="nv">age</span><span class="p">:</span> <span class="kt">Int</span><span class="p">?</span> <span class="o">=</span> <span class="mi">20</span>
+  <span class="k">switch</span> <span class="n">age</span> <span class="p">{</span> 
+    <span class="k">case</span> <span class="o">.</span><span class="nv">none</span><span class="p">:</span> <span class="c1">// `nil`인 경우print("나이 정보가 없습니다.") </span>
+    <span class="k">case</span> <span class="o">.</span><span class="nf">some</span><span class="p">(</span><span class="k">let</span> <span class="nv">x</span><span class="p">)</span> <span class="k">where</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">20</span><span class="p">:</span> <span class="nf">print</span><span class="p">(</span><span class="s">"청소년"</span><span class="p">)</span> 
+    <span class="k">case</span> <span class="o">.</span><span class="nf">some</span><span class="p">(</span><span class="k">let</span> <span class="nv">x</span><span class="p">)</span> <span class="k">where</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">65</span><span class="p">:</span> <span class="nf">print</span><span class="p">(</span><span class="s">"성인"</span><span class="p">)</span> 
+    <span class="k">default</span><span class="p">:</span> <span class="nf">print</span><span class="p">(</span><span class="s">"어르신"</span><span class="p">)</span> 
+  <span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="8-프로토콜">8. 프로토콜</h3>
+
+<p>프로토콜Protocol은 인터페이스입니다. 최소한으로 가져야 할 속성이나 메서드를 정의합니다. 구현은 하지 않습니다. 진짜로 정의만 합니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c1">/// 전송가능한 인터페이스를 정의합니다.</span>
+  <span class="kd">protocol</span> <span class="kt">Sendable</span> <span class="p">{</span> <span class="k">var</span> <span class="nv">from</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span> <span class="k">var</span> <span class="nv">to</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span> <span class="kd">func</span> <span class="nf">send</span><span class="p">()</span> <span class="p">}</span> 
+</code></pre></div></div>
+
+<p>클래스와 구조체에 프로토콜을 적용Conform시킬 수 있습니다. 프로토콜을 적용하면, 프로토콜에서 정의한 속성와 메서드를 모두 구현해야 합니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kd">struct</span> <span class="kt">Mail</span><span class="p">:</span> <span class="kt">Sendable</span> <span class="p">{</span> 
+    <span class="k">var</span> <span class="nv">from</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> 
+    <span class="k">var</span> <span class="nv">to</span><span class="p">:</span> <span class="kt">String</span>
+    <span class="kd">func</span> <span class="nf">send</span><span class="p">()</span> <span class="p">{</span> 
+      <span class="nf">print</span><span class="p">(</span><span class="s">"Send a mail from </span><span class="se">\(</span><span class="k">self</span><span class="o">.</span><span class="n">from</span><span class="se">)</span><span class="s"> to </span><span class="se">\(</span><span class="k">self</span><span class="o">.</span><span class="n">to</span><span class="se">)</span><span class="s">"</span><span class="p">)</span> 
+    <span class="p">}</span> 
+  <span class="p">}</span> 
+  <span class="kd">struct</span> <span class="kt">Feedback</span><span class="p">:</span> <span class="kt">Sendable</span> <span class="p">{</span> 
+    <span class="k">var</span> <span class="nv">from</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="p">{</span> <span class="k">return</span> <span class="kc">nil</span><span class="c1">// 피드백은 무조건 익명으로 보냅니다. </span>
+  <span class="p">}</span> 
+  <span class="k">var</span> <span class="nv">to</span><span class="p">:</span> <span class="kt">String</span>
+  <span class="kd">func</span> <span class="nf">send</span><span class="p">()</span> <span class="p">{</span> <span class="nf">print</span><span class="p">(</span><span class="s">"Send a feedback to </span><span class="se">\(</span><span class="k">self</span><span class="o">.</span><span class="n">to</span><span class="se">)</span><span class="s">"</span><span class="p">)</span> <span class="p">}</span> <span class="p">}</span> 
+</code></pre></div></div>
+
+<p>프로토콜은 마치 추상클래스처럼 사용될 수 있습니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kd">func</span> <span class="nf">sendAnything</span><span class="p">(</span><span class="n">_</span> <span class="nv">sendable</span><span class="p">:</span> <span class="kt">Sendable</span><span class="p">)</span> <span class="p">{</span> 
+    <span class="n">sendable</span><span class="o">.</span><span class="nf">send</span><span class="p">()</span> 
+  <span class="p">}</span> 
+  <span class="k">let</span> <span class="nv">mail</span> <span class="o">=</span> <span class="kt">Mail</span><span class="p">(</span><span class="nv">from</span><span class="p">:</span> <span class="s">"ac85kr@gmail.com"</span><span class="p">,</span> <span class="nv">to</span><span class="p">:</span> <span class="s">"gksxowns93@ohcomon.com"</span><span class="p">)</span> 
+  <span class="nf">sendAnything</span><span class="p">(</span><span class="n">mail</span><span class="p">)</span> 
+  <span class="k">let</span> <span class="nv">feedback</span> <span class="o">=</span> <span class="kt">Feedback</span><span class="p">(</span><span class="nv">from</span><span class="p">:</span> <span class="s">"ac85kr@gmail.com"</span><span class="p">)</span> 
+  <span class="nf">sendAnything</span><span class="p">(</span><span class="n">feedback</span><span class="p">)</span> 
+</code></pre></div></div>
+
+<p>sendAnything() 함수는 Sendable 타입을 파라미터로 받습니다. Mail와 Feedback은 엄연히 다른 타입이지만, 모두 Sendable을 따르고 있으므로 sendAnything() 함수에 전달될 수 있습니다. 그리고, Sendable에서는 send() 함수를 정의하고 있기 때문에 호출이 가능합니다. 프로토콜은 또다른 프로토콜을 따를 수 있습니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kd">protocol</span> <span class="kt">Messagable</span> <span class="p">{</span> <span class="k">var</span> <span class="nv">message</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span> <span class="p">}</span> <span class="kd">protocol</span> <span class="kt">Sendable</span><span class="p">:</span> <span class="kt">Messagable</span> <span class="p">{</span> <span class="o">...</span> <span class="p">}</span> 
+</code></pre></div></div>
+
+<p>Sendable은 Messagable을 기본적으로 따르는 프로토콜입니다. 따라서, Sendable을 적용하려면 var message: String? { get }을 정의해주어야 합니다.</p>
+
+<p>Any는 모든 타입에 대응합니다. AnyObject는 모든 객체Object에 대응합니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">let</span> <span class="nv">anyNumber</span><span class="p">:</span> <span class="kt">Any</span> <span class="o">=</span> <span class="mi">10</span>
+  <span class="k">let</span> <span class="nv">anyString</span><span class="p">:</span> <span class="kt">Any</span> <span class="o">=</span> <span class="s">"Hi"</span>
+  <span class="k">let</span> <span class="nv">anyInstance</span><span class="p">:</span> <span class="kt">AnyObject</span> <span class="o">=</span> <span class="kt">Dog</span><span class="p">()</span> 
+</code></pre></div></div>
+
+<p>Any와 AnyObject는 프로토콜입니다. Swift에서 사용 가능한 모든 타입은 Any를 따르도록 설계되었고, 모든 클래스들에는 AnyObject 프로토콜이 적용되어있습니다.</p>
+
+<p>타입 캐스팅 (Type Casting) anyNumber에 10을 넣었다고 해서 anyNumber가 Int는 아닙니다. ‘Any 프로토콜을 따르는 어떤 값’이기 때문입니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">anyNumber</span> <span class="o">+</span> <span class="mi">1</span><span class="c1">// 컴파일 에러!</span>
+</code></pre></div></div>
+
+<p>이럴 때에는 as를 이용해서 다운 캐스팅Down Casting을 해야 합니다. Any는 Int보다 더 큰 범위이기 때문에, 작은 범위로 줄인다고 하여 ‘다운 캐스팅’입니다. Any는 Int 뿐만 아니라 String과 같은 전혀 엉뚱한 타입도 포함되어 있기 때문에 무조건 Int로 변환되지 않습니다. 따라서 as?를 사용해서 옵셔널을 취해야 합니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">let</span> <span class="nv">number</span><span class="p">:</span> <span class="kt">Int</span><span class="p">?</span> <span class="o">=</span> <span class="n">anyNumber</span> <span class="k">as?</span> <span class="kt">Int</span>
+</code></pre></div></div>
+
+<p>옵셔널이기 때문에, 옵셔널 바인딩 문법도 사용할 수 있습니다. 실제로 이렇게 사용하는 경우가 굉장히 많습니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">if</span> <span class="k">let</span> <span class="nv">number</span> <span class="o">=</span> <span class="n">anyNumber</span> <span class="k">as?</span> <span class="kt">Int</span> <span class="p">{</span> <span class="nf">print</span><span class="p">(</span><span class="n">number</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="p">}</span> 
+</code></pre></div></div>
+
+<p>타입 검사
+  타입 캐스팅까지는 필요 없고, 만약 어떤 값이 특정한 타입인지를 검사할 때에는 is를 사용할 수 있습니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nf">print</span><span class="p">(</span><span class="n">anyNumber</span> <span class="n">isInt</span><span class="p">)</span>    <span class="c1">// true</span>
+  <span class="nf">print</span><span class="p">(</span><span class="n">anyNumber</span> <span class="n">isAny</span><span class="p">)</span>    <span class="c1">// true</span>
+  <span class="nf">print</span><span class="p">(</span><span class="n">anyNumber</span> <span class="n">isString</span><span class="p">)</span> <span class="c1">// false</span>
+  <span class="nf">print</span><span class="p">(</span><span class="n">anyString</span> <span class="n">isString</span><span class="p">)</span> <span class="c1">// true</span>
+</code></pre></div></div>
+
+<p>Swift 주요 프로토콜
+  Swift에는 기본적으로 제공하는 기초적인 프로토콜들이 있습니다. 알아두면 개발할 때 굉장히 유용하게 사용할 수 있습니다.
+  CustomStringConvertible
+  자기 자신을 표현하는 문자열을 정의합니다. print(), String() 또는 “()”에서 사용될 때의 값입니다. CustomStringConvertible의 정의는 아래와 같이 생겼습니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">CustomStringConvertible</span> <span class="p">{</span> <span class="c1">/// A textual representation of `self`.</span>
+    <span class="kd">public</span> <span class="k">var</span> <span class="nv">description</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span> 
+  <span class="p">}</span> 
+</code></pre></div></div>
+
+<p>실제로 적용시…</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kd">struct</span> <span class="kt">Dog</span><span class="p">:</span> <span class="kt">CustomStringConvertible</span> <span class="p">{</span> 
+    <span class="k">var</span> <span class="nv">name</span><span class="p">:</span> <span class="kt">Stringvar</span> <span class="nv">description</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span> 
+      <span class="k">return</span><span class="s">"🐶 </span><span class="se">\(</span><span class="k">self</span><span class="o">.</span><span class="n">name</span><span class="se">)</span><span class="s">"</span> 
+    <span class="p">}</span> 
+  <span class="p">}</span> 
+  <span class="k">let</span> <span class="nv">dog</span> <span class="o">=</span> <span class="kt">Dog</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="s">"찡코"</span><span class="p">)</span> 
+  <span class="nf">print</span><span class="p">(</span><span class="n">dog</span><span class="p">)</span> <span class="c1">// 🐶 찡코</span>
+</code></pre></div></div>
+
+<p>ExpressibleBy
+  우리는 지금까지 10은 Int, “Hi”는 String이라고 ‘당연하게’ 인지하고 있었습니다. 하지만, 엄밀히 하자면 10은 원래 Int(10)으로 선언되어야 하고, “Hi”는 String(“Hi”)로 선언되어야 합니다. Int와 String 모두 생성자를 가지는 구조체이기 때문입니다.
+  이렇게, 생성자를 사용하지 않고도 생성할 수 있게 만드는 것을 리터럴Literal이라고 합니다. 직역하면 ‘문자 그대로’라는 뜻입니다. 아래 코드는 문자 그대로 10, 문자 그대로 “Hi”, 문자 그대로 배열이고 딕셔너리입니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">let</span> <span class="nv">number</span> <span class="o">=</span> <span class="mi">10</span>
+  <span class="k">let</span> <span class="nv">string</span> <span class="o">=</span> <span class="s">"Hi"</span>
+  <span class="k">let</span> <span class="nv">array</span> <span class="o">=</span> <span class="p">[</span><span class="s">"a"</span><span class="p">,</span> <span class="s">"b"</span><span class="p">,</span> <span class="s">"c"</span><span class="p">]</span> 
+  <span class="k">let</span> <span class="nv">dictionary</span> <span class="o">=</span> <span class="p">[</span> <span class="s">"key1"</span><span class="p">:</span> <span class="s">"value1"</span><span class="p">,</span> <span class="s">"key2"</span><span class="p">:</span> <span class="s">"value2"</span><span class="p">,</span> <span class="p">]</span> 
+</code></pre></div></div>
+
+<p>이 리터럴을 가능하게 해주는 프로토콜이 바로 ExpressibleByXXXLiteral 입니다. Int는 ExpressibleByIntegerLiteral을, String은 ExpressibleByStringLiteral을, Array는 ExpressibleByArrayLiteral을, Dictionary는 ExpressibleByDictionaryLiteral 프로토콜을 따르고 있습니다. 각 프로토콜은 리터럴 값을 받는 생성자를 정의하고 있습니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kd">struct</span> <span class="kt">DollarConverter</span><span class="p">:</span> <span class="kt">ExpressibleByIntegerLiteral</span> <span class="p">{</span> 
+    <span class="n">type</span> <span class="n">alias</span> <span class="kt">IntegerLiteralType</span> <span class="o">=</span> <span class="kt">Int</span>
+    <span class="k">let</span> <span class="nv">price</span> <span class="o">=</span> <span class="mi">1_177</span>
+    <span class="k">var</span> <span class="nv">dollars</span><span class="p">:</span> <span class="kt">Int</span> <span class="nf">init</span><span class="p">(</span><span class="n">integerLiteral</span> <span class="nv">value</span><span class="p">:</span> <span class="kt">IntegerLiteralType</span><span class="p">)</span> <span class="p">{</span> <span class="k">self</span><span class="o">.</span><span class="n">dollars</span> <span class="o">=</span> <span class="n">value</span> <span class="o">*</span> <span class="k">self</span><span class="o">.</span><span class="n">price</span> <span class="p">}</span> 
+  <span class="p">}</span> 
+  <span class="k">let</span> <span class="nv">converter</span><span class="p">:</span> <span class="kt">DollarConverter</span> <span class="o">=</span> <span class="mi">100</span> <span class="n">converter</span><span class="o">.</span><span class="n">dollars</span> <span class="c1">// 117700</span>
+</code></pre></div></div>
+
+<p>Tip: typealias는 C의 typedef와 같습니다. typealias MyInt = Int라고 하면, 새로 생성된 MyInt는 Int와 완전히 동일한 타입입니다. 프로토콜에서도 typealias를 정의할 수 있습니다.</p>
+
+<p>Tip: 1177은 가독성을 위해 1_177로 쓸 수 있습니다. 12_345는 12345랑 같아요. 1234_5도 12345와 같습니다.
+  분명히 구조체를 만들었는데, ExpressibleByIntegerLiteral을 적용하니까 = 100과 같은 문법을 사용할 수 있게 되었습니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">let</span> <span class="nv">oddEvenFilter</span><span class="p">:</span> <span class="kt">OddEvenFilter</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span> 
+  <span class="n">oddEvenFilter</span><span class="o">.</span><span class="n">odds</span>  <span class="c1">// [1, 3, 5, 7] </span>
+  <span class="n">oddEvenFilter</span><span class="o">.</span><span class="n">evens</span> <span class="c1">// [2, 4] </span>
+</code></pre></div></div>
+
+<h3 id="9-익스텐션">9. 익스텐션</h3>
+
+<p>Swift에서는 이미 정의된 타입에 새로운 속성이나 메서드를 추가할 수 있습니다. 익스텐션Extension이라는 기능인데, extension 키워드를 사용해서 정의할 수 있습니다.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kd">extension</span> <span class="kt">String</span> <span class="p">{</span> 
+  <span class="k">var</span> <span class="nv">length</span><span class="p">:</span> <span class="kt">Int</span> <span class="p">{</span> <span class="k">return</span> <span class="k">self</span><span class="o">.</span><span class="n">characters</span><span class="o">.</span><span class="n">count</span> <span class="p">}</span> 
+    <span class="kd">func</span> <span class="nf">reversed</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">String</span> <span class="p">{</span> 
+      <span class="k">return</span> <span class="k">self</span><span class="o">.</span><span class="n">characters</span><span class="o">.</span><span class="nf">reversed</span><span class="p">()</span><span class="o">.</span><span class="n">map</span> <span class="p">{</span> <span class="kt">String</span><span class="p">(</span><span class="nv">$0</span><span class="p">)</span> <span class="p">}</span><span class="o">.</span><span class="nf">joined</span><span class="p">(</span><span class="nv">separator</span><span class="p">:</span> <span class="s">""</span><span class="p">)</span> 
+    <span class="p">}</span> 
+  <span class="p">}</span> 
+  <span class="k">let</span> <span class="nv">str</span> <span class="o">=</span> <span class="s">"안녕하세요"</span> <span class="n">str</span><span class="o">.</span><span class="n">length</span> <span class="c1">// 5 str.reversed() // 요세하녕안</span>
+  <span class="c1">//응용하기: 거꾸로 된 문자열을 반환하는 대신에, 자기 자신을 거꾸로 바꿔버리는 reverse().. 힌트: mutating 키워드와 self </span>
+</code></pre></div></div>
+
+<p>여기까지 Swift 언어의 기본 및 사용방법에 대해 알아보았으며, 다음부터는 코르도바를 활용한 블루투스 프로젝트 생성 예제에 대해 포스트 해보겠습니다. 감사합니다.</p>
+
+                </div>
+            </section>
+            
+                
+                <a href='/tag/xcode/'>XCODE</a>,
+                
+            
+                
+                <a href='/tag/swift/'>SWIFT</a>,
+                
+            
+                
+                <a href='/tag/ios/'>IOS</a>
+                
+            
+            <!-- Email subscribe form at the bottom of the page -->
+            <!--
+            
+                <section class="subscribe-form">
+                    <h3 class="subscribe-form-title">Subscribe to SimpleHan Lab</h3>
+                    <p>Get the latest posts delivered right to your inbox</p>
+                    <span id="searchform" method="post" action="/subscribe/" class="">
+    <input class="confirm" type="hidden" name="confirm"  />
+    <input class="location" type="hidden" name="location"  />
+    <input class="referrer" type="hidden" name="referrer"  />
+
+    <div class="form-group">
+        <input class="subscribe-email" onkeyup="myFunc()"
+               id="searchtext" type="text" name="searchtext"
+               placeholder="Search..." />
+    </div>
+    <script type="text/javascript">
+        function myFunc() {
+            if(event.keyCode == 13) {
+                var url = encodeURIComponent($("#searchtext").val());
+                location.href = "/search.html?query=" + url;
+            }
+        }
+    </script>
+</span>
+                </section>
+            
+            -->
+            <footer class="post-full-footer">
+                <!-- Everything inside the #author tags pulls data from the author -->
+                <!-- #author-->
+                
+                    
+                        <section class="author-card">
+                            
+                                <img class="author-profile-image" src="/assets/built/images/author-logo.jpg" alt="Simplehan" />
+                            
+                            <section class="author-card-content">
+                                <h4 class="author-card-name"><a href="/author/Simplehan">Simplehan</a></h4>
+                                
+                                    <p>We are amazing developers.</p>
+                                
+                            </section>
+                        </section>
+                        <div class="post-full-footer-right">
+                            <a class="author-card-button" href="/author/Simplehan">Read More</a>
+                        </div>
+                    
+                
+                <!-- /author  -->
+            </footer>
+
+            <!-- If you use Disqus comments, just uncomment this block.
+            The only thing you need to change is "test-apkdzgmqhj" - which
+            should be replaced with your own Disqus site-id. -->
+            
+                <section class="post-full-comments">
+                    <div id="disqus_thread"></div>
+                    <script>
+                        var disqus_config = function () {
+                            var this_page_url = 'https://simplehanlab.github.io/ios-swift2';
+                            var this_page_identifier = '/ios-swift2';
+                            var this_page_title = '[iOS] Swift 기본 (2)';
+                        };
+                        (function() {
+                            var d = document, s = d.createElement('script');
+                            s.src = 'https://simplehanlab.disqus.com/embed.js';
+                            s.setAttribute('data-timestamp', +new Date());
+                            (d.head || d.body).appendChild(s);
+                        })();
+                    </script>
+                </section>
+            
+
+        </article>
+
+    </div>
+</main>
+
+<!-- Links to Previous/Next posts -->
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+            
+                
+                
+                
+                
+                    <article class="read-next-card"
+                        
+                            style="background-image: url(/assets/built/images/blog-cover1.png)"
+                        
+                    >
+                        <header class="read-next-card-header">
+                            <small class="read-next-card-header-sitetitle">&mdash; SimpleHan Lab &mdash;</small>
+                            
+                                <h3 class="read-next-card-header-title"><a href="/tag/xcode/">Xcode</a></h3>
+                            
+                        </header>
+                        <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
+</div>
+                        <div class="read-next-card-content">
+                            <ul>
+                                
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/ios-use-cordova">코르도바 활용 블루투스 프로젝트 생성</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/ios-swift">[iOS] Swift 기본 (1)</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/ios-xcode">[iOS] Xcode 설치 프로젝트 생성</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                            </ul>
+                        </div>
+                        <footer class="read-next-card-footer">
+                            <a href="/tag/xcode/">
+                                
+                                    See all 3 posts  →
+                                
+                            </a>
+                        </footer>
+                    </article>
+                
+            
+
+            <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/ios-use-cordova">
+                <div class="post-card-image" style="background-image: url(/assets/built/images/ios/ios-logo.png)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/ios-use-cordova">
+                <header class="post-card-header">
+                    
+                        
+                            
+                               <span class="post-card-tags">Xcode</span>
+                            
+                        
+                            
+                               <span class="post-card-tags">Cordova</span>
+                            
+                        
+                            
+                               <span class="post-card-tags">Ble</span>
+                            
+                        
+                            
+                                <span class="post-card-tags">Ios</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">코르도바 활용 블루투스 프로젝트 생성</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    
+                        <p>1. 코르도바 개발환경 설정
+
+</p>
+                    
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                        
+                        <img class="author-profile-image" src="/assets/built/images/author-logo.jpg" alt="Simplehan" />
+                        
+                        <span class="post-card-author">
+                            <a href="/author/Simplehan/">Simplehan</a>
+                        </span>
+                    
+                
+                <span class="reading-time">
+                    
+                    
+                      3 min read
+                    
+                </span>
+            </footer>
+        </div>
+    </article>
+
+            
+
+            <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/ios-swift">
+                <div class="post-card-image" style="background-image: url(/assets/built/images/ios/ios-logo.png)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/ios-swift">
+                <header class="post-card-header">
+                    
+                        
+                            
+                               <span class="post-card-tags">Xcode</span>
+                            
+                        
+                            
+                               <span class="post-card-tags">Swift</span>
+                            
+                        
+                            
+                                <span class="post-card-tags">Ios</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">[iOS] Swift 기본 (1)</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    
+                        <p>1. 변수와 상수
+
+</p>
+                    
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                        
+                        <img class="author-profile-image" src="/assets/built/images/author-logo.jpg" alt="Simplehan" />
+                        
+                        <span class="post-card-author">
+                            <a href="/author/Simplehan/">Simplehan</a>
+                        </span>
+                    
+                
+                <span class="reading-time">
+                    
+                    
+                      8 min read
+                    
+                </span>
+            </footer>
+        </div>
+    </article>
+
+            
+
+        </div>
+    </div>
+</aside>
+
+<!-- Floating header which appears on-scroll, included from includes/floating-header.hbs -->
+<div class="floating-header">
+    <div class="floating-header-logo">
+        <a href="https://simplehanlab.github.io/">
+            
+            <span>SimpleHan Lab</span>
+        </a>
+    </div>
+    <span class="floating-header-divider">&mdash;</span>
+    <div class="floating-header-title">[iOS] Swift 기본 (2)</div>
+    <div class="floating-header-share">
+        <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
+</svg>
+</div>
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=%5BiOS%5D+Swift+%EA%B8%B0%EB%B3%B8+%282%29&amp;url=https://simplehanlab.github.io/ios-swift2"
+            onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+
+        </a>
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://simplehanlab.github.io/ios-swift2"
+            onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
+
+        </a>
+    </div>
+    <progress class="progress" value="0">
+        <div class="progress-container">
+            <span class="progress-bar"></span>
+        </div>
+    </progress>
+</div>
+
+
+<!-- /post -->
+
+<!-- The #contentFor helper here will send everything inside it up to the matching #block helper found in default.hbs -->
+
+
+        <!-- Previous/next page links - displayed on every page -->
+        
+        <!-- The footer at the very bottom of the screen -->
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="https://simplehanlab.github.io/">SimpleHan Lab</a> &copy; 2021</section>
+                <section class="poweredby">Proudly published with <a href="https://jekyllrb.com/">Jekyll</a> &
+                    <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> using
+                    <a href="https://github.com/jekyllt/jasper2" target="_blank" rel="noopener">Jasper2</a></section>
+                <nav class="site-footer-nav">
+                    <a href="/">Latest Posts</a>
+                    
+                    
+                    <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a>
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- The big email subscribe modal content -->
+    
+        <div id="subscribe" class="subscribe-overlay">
+            <a class="subscribe-overlay-close" href="#"></a>
+            <div class="subscribe-overlay-content">
+                
+                <h1 class="subscribe-overlay-title">Search SimpleHan Lab</h1>
+                <p class="subscribe-overlay-description">
+                    lunr.js를 이용한 posts 검색 </p>
+                <span id="searchform" method="post" action="/subscribe/" class="">
+    <input class="confirm" type="hidden" name="confirm"  />
+    <input class="location" type="hidden" name="location"  />
+    <input class="referrer" type="hidden" name="referrer"  />
+
+    <div class="form-group">
+        <input class="subscribe-email" onkeyup="myFunc()"
+               id="searchtext" type="text" name="searchtext"
+               placeholder="Search..." />
+    </div>
+    <script type="text/javascript">
+        function myFunc() {
+            if(event.keyCode == 13) {
+                var url = encodeURIComponent($("#searchtext").val());
+                location.href = "/search.html?query=" + url;
+            }
+        }
+    </script>
+</span>
+            </div>
+        </div>
+    
+
+
+    <!-- highlight.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.10.0/components/prism-abap.min.js"></script>
+    <script>$(document).ready(function() {
+      $('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+      });
+    });</script>
+
+    <!-- jQuery + Fitvids, which makes all video embeds responsive -->
+    <script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://demo.ghost.io/assets/js/jquery.fitvids.js?v=724281a32e"></script>
+
+
+    <!-- Paginator increased to "infinit" in _config.yml -->
+    <!-- if paginator.posts  -->
+    <!-- <script>
+        var maxPages = parseInt('');
+    </script>
+    <script src="/assets/js/infinitescroll.js"></script> -->
+    <!-- /endif -->
+
+    
+
+
+    <!-- Add Google Analytics  -->
+    <!-- Google Analytics Tracking code -->
+ <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-xxxxxxxx-x', 'auto');
+  ga('send', 'pageview');
+
+ </script>
+
+
+    <!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. -->
+    
+        <script>
+
+// NOTE: Scroll performance is poor in Safari
+// - this appears to be due to the events firing much more slowly in Safari.
+//   Dropping the scroll event and using only a raf loop results in smoother
+//   scrolling but continuous processing even when not scrolling
+$(document).ready(function () {
+    // Start fitVids
+    var $postContent = $(".post-full-content");
+    $postContent.fitVids();
+    // End fitVids
+
+    var progressBar = document.querySelector('progress');
+    var header = document.querySelector('.floating-header');
+    var title = document.querySelector('.post-full-title');
+
+    var lastScrollY = window.scrollY;
+    var lastWindowHeight = window.innerHeight;
+    var lastDocumentHeight = $(document).height();
+    var ticking = false;
+
+    function onScroll() {
+        lastScrollY = window.scrollY;
+        requestTick();
+    }
+
+    function onResize() {
+        lastWindowHeight = window.innerHeight;
+        lastDocumentHeight = $(document).height();
+        requestTick();
+    }
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(update);
+        }
+        ticking = true;
+    }
+
+    function update() {
+        var trigger = title.getBoundingClientRect().top + window.scrollY;
+        var triggerOffset = title.offsetHeight + 35;
+        var progressMax = lastDocumentHeight - lastWindowHeight;
+
+        // show/hide floating header
+        if (lastScrollY >= trigger + triggerOffset) {
+            header.classList.add('floating-active');
+        } else {
+            header.classList.remove('floating-active');
+        }
+
+        progressBar.setAttribute('max', progressMax);
+        progressBar.setAttribute('value', lastScrollY);
+
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', onScroll, {passive: true});
+    window.addEventListener('resize', onResize, false);
+
+    update();
+});
+</script>
+
+    
+
+    <!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag -->
+    <!-- ghost_foot -->
+
+</body>
+</html>
