@@ -11,7 +11,7 @@
 
 
 
-    <title>React Native Base</title>
+    <title>Letsencrypt + Nginx SSL인증서(HTTPS) 적용 (Ubuntu22.04 개정판)</title>
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Styles'n'Scripts -->
@@ -46,30 +46,30 @@
     <!-- This tag outputs SEO meta+structured data and other important settings -->
     <meta name="description" content="기술 블로그" />
     <link rel="shortcut icon" href="https://sianlab.github.io/assets/built/images/favicon.jpg" type="image/png" />
-    <link rel="canonical" href="https://sianlab.github.io/react-native-base" />
+    <link rel="canonical" href="https://sianlab.github.io/ssl-letsencrypt-ubuntu22" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
 
      <!--title below is coming from _includes/dynamic_title-->
     <meta property="og:site_name" content="Siansoft" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="React Native Base" />
-    <meta property="og:description" content="1. React native 프로젝트에 NativeBase 적용하기 기본 사용 조건 Visual Studio Code Android Studio node.js 프로젝트를 만들 때는 expo를 사용하는 방법, native-cli를 사용하는 방법 2가지가 있다. 이번 글에서는 native-cli를 사용한 방법을 설명한다. react-native cli 설치 npm install -g react-native-cli 프로젝트 생성 react-native init project_name 프로젝트 동작 cd project_name //생성한 프로젝트" />
-    <meta property="og:url" content="https://sianlab.github.io/react-native-base" />
-    <meta property="og:image" content="https://sianlab.github.io/assets/built/images/react/react-logo.png" />
+    <meta property="og:title" content="Letsencrypt + Nginx SSL인증서(HTTPS) 적용 (Ubuntu22.04 개정판)" />
+    <meta property="og:description" content="서론 이전에 ubuntu 18버전에 Let’s Encrypt를 이용하여 SSL 환경을 구성한 포스트를 작성했었다. 몇년이 지나고 현재 ubuntu 22 버전에 다시 SSL을 세팅할 일이 생겨서 이전에 작성한 포스트를 보며 변경된 부분을 개정하여 본 포스트를 작성하였다. 환경 Ubuntu 22.04 apt-get 을 통해 설치한 Nginx 도메인 ( 이전에는 ngrok를 이용한 임시 도메인을 사용하였지만 이번에는" />
+    <meta property="og:url" content="https://sianlab.github.io/ssl-letsencrypt-ubuntu22" />
+    <meta property="og:image" content="https://sianlab.github.io/assets/built/images/nginx-tomcat/nginx-logo.png" />
     <meta property="article:publisher" content="https://www.facebook.com/" />
     <meta property="article:author" content="https://www.facebook.com/" />
-    <meta property="article:published_time" content="2020-03-06T03:35:00+09:00" />
-    <meta property="article:modified_time" content="2020-03-06T03:35:00+09:00" />
-    <meta property="article:tag" content="javascript" />
+    <meta property="article:published_time" content="2022-06-13T00:00:00+09:00" />
+    <meta property="article:modified_time" content="2022-06-13T00:00:00+09:00" />
+    <meta property="article:tag" content="https" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="React Native Base" />
-    <meta name="twitter:description" content="1. React native 프로젝트에 NativeBase 적용하기 기본 사용 조건 Visual Studio Code Android Studio node.js 프로젝트를 만들 때는 expo를 사용하는 방법, native-cli를 사용하는 방법 2가지가 있다. 이번 글에서는 native-cli를 사용한 방법을 설명한다. react-native cli 설치 npm install -g react-native-cli 프로젝트 생성 react-native init project_name 프로젝트 동작 cd project_name //생성한 프로젝트" />
+    <meta name="twitter:title" content="Letsencrypt + Nginx SSL인증서(HTTPS) 적용 (Ubuntu22.04 개정판)" />
+    <meta name="twitter:description" content="서론 이전에 ubuntu 18버전에 Let’s Encrypt를 이용하여 SSL 환경을 구성한 포스트를 작성했었다. 몇년이 지나고 현재 ubuntu 22 버전에 다시 SSL을 세팅할 일이 생겨서 이전에 작성한 포스트를 보며 변경된 부분을 개정하여 본 포스트를 작성하였다. 환경 Ubuntu 22.04 apt-get 을 통해 설치한 Nginx 도메인 ( 이전에는 ngrok를 이용한 임시 도메인을 사용하였지만 이번에는" />
     <meta name="twitter:url" content="https://sianlab.github.io/" />
-    <meta name="twitter:image" content="https://sianlab.github.io/assets/built/images/react/react-logo.png" />
+    <meta name="twitter:image" content="https://sianlab.github.io/assets/built/images/nginx-tomcat/nginx-logo.png" />
     <meta name="twitter:label1" content="Written by" />
     <meta name="twitter:data1" content="Siansoft" />
     <meta name="twitter:label2" content="Filed under" />
-    <meta name="twitter:data2" content="javascript" />
+    <meta name="twitter:data2" content="https" />
     <meta name="twitter:site" content="@" />
     <meta name="twitter:creator" content="@" />
     <meta property="og:image:width" content="1400" />
@@ -84,18 +84,18 @@
         "name": "Siansoft",
         "logo": "https://sianlab.github.io/"
     },
-    "url": "https://sianlab.github.io/react-native-base",
+    "url": "https://sianlab.github.io/ssl-letsencrypt-ubuntu22",
     "image": {
         "@type": "ImageObject",
-        "url": "https://sianlab.github.io/assets/built/images/react/react-logo.png",
+        "url": "https://sianlab.github.io/assets/built/images/nginx-tomcat/nginx-logo.png",
         "width": 2000,
         "height": 666
     },
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://sianlab.github.io/react-native-base"
+        "@id": "https://sianlab.github.io/ssl-letsencrypt-ubuntu22"
     },
-    "description": "1. React native 프로젝트에 NativeBase 적용하기 기본 사용 조건 Visual Studio Code Android Studio node.js 프로젝트를 만들 때는 expo를 사용하는 방법, native-cli를 사용하는 방법 2가지가 있다. 이번 글에서는 native-cli를 사용한 방법을 설명한다. react-native cli 설치 npm install -g react-native-cli 프로젝트 생성 react-native init project_name 프로젝트 동작 cd project_name //생성한 프로젝트"
+    "description": "서론 이전에 ubuntu 18버전에 Let’s Encrypt를 이용하여 SSL 환경을 구성한 포스트를 작성했었다. 몇년이 지나고 현재 ubuntu 22 버전에 다시 SSL을 세팅할 일이 생겨서 이전에 작성한 포스트를 보며 변경된 부분을 개정하여 본 포스트를 작성하였다. 환경 Ubuntu 22.04 apt-get 을 통해 설치한 Nginx 도메인 ( 이전에는 ngrok를 이용한 임시 도메인을 사용하였지만 이번에는"
 }
     </script>
 
@@ -108,7 +108,7 @@
     </script> -->
 
     <meta name="generator" content="Jekyll 3.6.2" />
-    <link rel="alternate" type="application/rss+xml" title="React Native Base" href="/feed.xml" />
+    <link rel="alternate" type="application/rss+xml" title="Letsencrypt + Nginx SSL인증서(HTTPS) 적용 (Ubuntu22.04 개정판)" href="/feed.xml" />
 
 
 </head>
@@ -173,131 +173,145 @@ into the {body} of the default.hbs template -->
 <main id="site-main" class="site-main outer" role="main">
     <div class="inner">
 
-        <article class="post-full  tag-javascript tag-react tag-react-native tag-node tag-redux tag-router tag-code-splitting tag-server-side-rendering  ">
+        <article class="post-full  tag-https tag-ssl tag-letsencrypt  ">
 
             <header class="post-full-header">
                 <section class="post-full-meta">
-                    <time class="post-full-meta-date" datetime=" 6 March 2020"> 6 March 2020</time>
+                    <time class="post-full-meta-date" datetime="13 June 2022">13 June 2022</time>
                     
                         <span class="date-divider">/</span>
                         
                             
-                            <a href='/category/react/'>REACT</a>
+                            <a href='/category/ssl/'>SSL</a>
                             
                         
                     
                 </section>
-                <h1 class="post-full-title">React Native Base</h1>
+                <h1 class="post-full-title">Letsencrypt + Nginx SSL인증서(HTTPS) 적용 (Ubuntu22.04 개정판)</h1>
             </header>
 
             <!--
             
-            <figure class="post-full-image" style="background-image: url(/assets/built/images/react/react-logo.png)">
+            <figure class="post-full-image" style="background-image: url(/assets/built/images/nginx-tomcat/nginx-logo.png)">
             </figure>
             
             -->
 
             <section class="post-full-content">
                 <div class="kg-card-markdown">
-                    <h3 id="1-react-native-프로젝트에-nativebase-적용하기">1. React native 프로젝트에 NativeBase 적용하기</h3>
+                    <h2 id="서론">서론</h2>
 
-<p>기본 사용 조건</p>
-<ol>
-  <li>Visual Studio Code</li>
-  <li>Android Studio</li>
-  <li>node.js</li>
-</ol>
+<p>이전에 <a href="https://sianlab.github.io/ssl-letsencrypt/" title="Letsencrypt + Nginx SSL인증서(HTTPS) 적용">ubuntu 18버전에 Let’s Encrypt를 이용하여 SSL 환경을 구성한 포스트</a>를 작성했었다. 몇년이 지나고 현재 ubuntu 22 버전에 다시 SSL을 세팅할 일이 생겨서 이전에 작성한 포스트를 보며 변경된 부분을 개정하여 본 포스트를 작성하였다.</p>
 
-<p>프로젝트를 만들 때는 expo를 사용하는 방법, native-cli를 사용하는 방법 2가지가 있다.
-이번 글에서는 native-cli를 사용한 방법을 설명한다.</p>
+<h3 id="환경">환경</h3>
 
-<p>react-native cli 설치</p>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">npm</span> <span class="n">install</span> <span class="o">-</span><span class="n">g</span> <span class="n">react</span><span class="o">-</span><span class="kd">native</span><span class="o">-</span><span class="n">cli</span>
+<ul>
+  <li>Ubuntu 22.04</li>
+  <li>apt-get 을 통해 설치한 Nginx</li>
+  <li>도메인 ( 이전에는 ngrok를 이용한 임시 도메인을 사용하였지만 이번에는 실 도메인 사용 )</li>
+</ul>
+
+<h2 id="lets-encrypt">Let’s Encrypt</h2>
+
+<ul>
+  <li>웹 사이트에 HTTPS (SSL / TLS)를 사용하기 위해 필요한 디지털 인증서를 무료로 제공</li>
+  <li>인증서의 자동 갱신을 지원</li>
+  <li>자세한 내용은  <a href="https://letsencrypt.org/about/"> Let’s Encrypt 공식 사이트</a> 에서 확인</li>
+</ul>
+
+<h2 id="nginx-설치">Nginx 설치</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>apt-get <span class="nb">install </span>nginx
 </code></pre></div></div>
 
-<p>프로젝트 생성</p>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">react</span><span class="o">-</span><span class="kd">native</span> <span class="n">init</span> <span class="n">project_name</span>
+<p>80 포트를 사용하는 또다른 서비스가 존재한다면 서비스를 중지하거나 삭제 한 후 nginx 설치</p>
+
+<p>설치완료 후 간단하게 curl을 이용하여 웹사이트가 오픈되었는 지 확인해보았다. curl을 사용하기 어려운 환경이라거나 브라우저로 직접 확인해보고 싶다면 localhost 주소에 http 기본 포트인 80 포트로 접속해보면 된다.</p>
+
+<p><img src="\assets\built\images\letsencrypt\ubuntu22\ssl1.jpg" alt="img" /></p>
+
+<p><img src="\assets\built\images\letsencrypt\ubuntu22\ssl2.jpg" alt="img" /></p>
+
+<p>Nginx 화면이 나오지 않을 시에는</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>service nginx restart
 </code></pre></div></div>
 
-<p>프로젝트 동작</p>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">cd</span> <span class="n">project_name</span> <span class="c1">//생성한 프로젝트 폴더로 이동</span>
+<p>명령어로 nginx 를 재시작 해본 뒤 다시 웹 브라우저에서 접속시도 nginx index 화면이 제대로 나온다면 이제 Let’s Encrypt 를 이용하여 SSL 인증서를 받아보자</p>
 
-<span class="n">react</span><span class="o">-</span><span class="kd">native</span> <span class="n">run</span><span class="o">-</span><span class="n">ios</span>  <span class="c1">// ios 일 때</span>
+<h2 id="certbot--설치">certbot  설치</h2>
 
-<span class="n">react</span><span class="o">-</span><span class="kd">native</span> <span class="n">run</span><span class="o">-</span><span class="n">android</span> <span class="c1">// android 일 때</span>
+<p>이전에 작성한 글을 따라 certbot 저장소를 추가하려고 했는데 아래와 같이 deprecated 됬다고 한다.</p>
+
+<p><img src="\assets\built\images\letsencrypt\ubuntu22\ssl3.jpg" alt="img" /></p>
+
+<p>그래서 <a href="https://certbot.eff.org/instructions?ws=nginx&amp;os=ubuntufocal/" title="certbot install 사이트">certbot install 사이트</a>를 참고하여 certbot을 설치하였다.</p>
+
+<p>certbot 사이트에 따르면 certbot 설치 시 이제는 snap을 이용하는 것으로 보인다. snap은 ubuntu에 기본적으로 설치되어 있다고 하니 따로 설치하지 않고 바로 명령어를 이용하여 certbot을 설치하였다. (ubuntu 어느 버전부터 기본 설치가 되어 있는지는 확인하지 못하였다.)</p>
+
+<p>certbot 설치 전에 snap을 최신화해주자.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>snap <span class="nb">install </span>core<span class="p">;</span> <span class="nb">sudo </span>snap refresh core
 </code></pre></div></div>
 
-<p><img src="\assets\built\images\react\baseinstallok.png" alt="img" /></p>
+<p>다음으로 certbot을 설치한다.</p>
 
-<p>설치가 완료되면 위와 같은 메시지가 표시된다.</p>
-
-<p>NativeBase 사용</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">React</span><span class="o">,</span> <span class="o">{</span> <span class="nc">Component</span> <span class="o">}</span> <span class="n">from</span> <span class="err">'</span><span class="n">react</span><span class="err">'</span><span class="o">;</span>
-<span class="kn">import</span> <span class="err">{</span> <span class="nn">Container</span><span class="o">,</span> <span class="nc">Header</span><span class="o">,</span> <span class="nc">Content</span><span class="o">,</span> <span class="nc">Button</span><span class="o">,</span> <span class="nc">Text</span> <span class="o">}</span> <span class="n">from</span> <span class="err">'</span><span class="kd">native</span><span class="o">-</span><span class="n">base</span><span class="err">'</span><span class="o">;</span>
-<span class="n">export</span> <span class="k">default</span> <span class="kd">class</span> <span class="nc">ButtonExample</span> <span class="kd">extends</span> <span class="nc">Component</span> <span class="o">{</span>
-  <span class="n">render</span><span class="o">()</span> <span class="o">{</span>
-    <span class="k">return</span> <span class="o">(</span>
-      <span class="o">&lt;</span><span class="nc">Container</span><span class="o">&gt;</span>
-        <span class="o">&lt;</span><span class="nc">Header</span> <span class="o">/&gt;</span>
-        <span class="o">&lt;</span><span class="nc">Content</span><span class="o">&gt;</span>
-          <span class="o">&lt;</span><span class="nc">Button</span><span class="o">&gt;</span>
-            <span class="o">&lt;</span><span class="nc">Text</span><span class="o">&gt;</span><span class="nc">Click</span> <span class="nc">Me</span><span class="o">!&lt;/</span><span class="nc">Text</span><span class="o">&gt;</span>
-          <span class="o">&lt;/</span><span class="nc">Button</span><span class="o">&gt;</span>
-        <span class="o">&lt;/</span><span class="nc">Content</span><span class="o">&gt;</span>
-      <span class="o">&lt;/</span><span class="nc">Container</span><span class="o">&gt;</span>
-    <span class="o">);</span>
-  <span class="o">}</span>
-<span class="o">}</span>
-<span class="n">기본</span> <span class="n">사용방식은</span> <span class="o">&lt;</span><span class="nc">Container</span><span class="o">&gt;</span> <span class="n">안에</span> <span class="o">&lt;</span><span class="nc">Header</span><span class="o">&gt;,</span> <span class="o">&lt;</span><span class="nc">Content</span><span class="o">&gt;</span> <span class="n">를</span> <span class="n">넣어</span> <span class="n">사용한다</span>
-
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>snap <span class="nb">install</span> <span class="nt">--classic</span> certbot
 </code></pre></div></div>
 
-<p>자세한 사용방법은 아래 공식 홈페이지에 설명되어 있다.
-https://docs.nativebase.io/Components.html#button-def-headref</p>
+<p>설치 완료 시 아래와 같은 화면이 나왔다.</p>
 
-<p>개발환경 설정에 유용한 라이브러리</p>
-<ol>
-  <li>React-Native        프로젝트 공식 사이트</li>
-  <li>NativeBase          NativeBase UI 프레임워크 공식 사이트</li>
-  <li>reactnavigation     react-native 페이지이동 라이브러리</li>
-  <li>vector-icons        무료지원 아이콘 라이브러리</li>
-</ol>
+<p><img src="\assets\built\images\letsencrypt\ubuntu22\ssl4.jpg" alt="img" /></p>
 
+<p>다음으로 certbot 명령어를 바로 사용할 수 있게 아래와 같이 링크를 만들어준다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo ln</span> <span class="nt">-s</span> /snap/bin/certbot /usr/bin/certbot
+</code></pre></div></div>
+
+<p>아래와 같이 아무 에러도 없다면 링크파일 생성에 성공한 것이다.</p>
+
+<p><img src="\assets\built\images\letsencrypt\ubuntu22\ssl5.jpg" alt="img" /></p>
+
+<p>이제 certbot을 이용하여 인증서를 내려받고 nginx에 연동을 한다. 설치 가이드에 따르면 인증서 내려받기 및 nginx 연동까지 자동으로 해주는 방법과 그냥 인증서만 내려받는 방법 두가지가 소개되어 있는데, nginx도 기본으로 설치하고 따로 세팅한 부분이 없으므로 nginx 설정까지 자동으로 해주는 명령어를 이용해보았다.</p>
+
+<p>아래 명령어를 입력하자.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>certbot <span class="nt">--nginx</span>
+</code></pre></div></div>
+
+<p>그러면 아래와 같이 이메일과 자신의 도메인을 입력하면 certbot이 자동으로 환경을 구성해준다.</p>
+
+<p><img src="\assets\built\images\letsencrypt\ubuntu22\ssl6.jpg" alt="img" /></p>
+
+<p>인증서와 키파일의 저장 경로도 표시해주니 필요 시 따로 기록해두면 될 것 같다.</p>
+
+<h2 id="인증서-갱신">인증서 갱신</h2>
+
+<p>certbot이 인증서의 자동 갱신도 지원해주기 때문에 갱신에 관해 별도로 신경쓰지 않아도 되는 것으로 보인다. 가이드 페이지에 갱신 테스트 명령어도 있으니 필요한 사람은 직접 입력해보면 될 것 같다.</p>
+
+<h2 id="https-확인">HTTPS 확인</h2>
+
+<p>발급 받은 인증서가 제대로 인증되는 지 확인을 위해 이용중인 브라우저로 내 도메인 사이트에 접속해본다. 아래와 같이 URL 표시줄에 자물쇠 표시가 나타나면 성공한 것이다.</p>
+
+<p><img src="\assets\built\images\letsencrypt\ubuntu22\ssl7.jpg" alt="img" /></p>
+
+<h2 id="troubleshooting">troubleshooting</h2>
+
+<p>본 포스트 내용을 진행중에 따로 에러가 난 부분이 없어서 추후 에러사항이 있다면 추가해나갈 계획이다.</p>
 
                 </div>
             </section>
             
                 
-                <a href='/tag/javascript/'>JAVASCRIPT</a>,
+                <a href='/tag/https/'>HTTPS</a>,
                 
             
                 
-                <a href='/tag/react/'>REACT</a>,
+                <a href='/tag/ssl/'>SSL</a>,
                 
             
                 
-                <a href='/tag/react-native/'>REACT-NATIVE</a>,
-                
-            
-                
-                <a href='/tag/node/'>NODE</a>,
-                
-            
-                
-                <a href='/tag/redux/'>REDUX</a>,
-                
-            
-                
-                <a href='/tag/router/'>ROUTER</a>,
-                
-            
-                
-                <a href='/tag/code-splitting/'>CODE SPLITTING</a>,
-                
-            
-                
-                <a href='/tag/server-side-rendering/'>SERVER SIDE RENDERING</a>
+                <a href='/tag/letsencrypt/'>LETSENCRYPT</a>
                 
             
             <!-- Email subscribe form at the bottom of the page -->
@@ -345,9 +359,9 @@ https://docs.nativebase.io/Components.html#button-def-headref</p>
                     <div id="disqus_thread"></div>
                     <script>
                         var disqus_config = function () {
-                            var this_page_url = 'https://sianlab.github.io/react-native-base';
-                            var this_page_identifier = '/react-native-base';
-                            var this_page_title = 'React Native Base';
+                            var this_page_url = 'https://sianlab.github.io/ssl-letsencrypt-ubuntu22';
+                            var this_page_identifier = '/ssl-letsencrypt-ubuntu22';
+                            var this_page_title = 'Letsencrypt + Nginx SSL인증서(HTTPS) 적용 (Ubuntu22.04 개정판)';
                         };
                         (function() {
                             var d = document, s = d.createElement('script');
@@ -381,7 +395,7 @@ https://docs.nativebase.io/Components.html#button-def-headref</p>
                         <header class="read-next-card-header">
                             <small class="read-next-card-header-sitetitle">&mdash; Siansoft &mdash;</small>
                             
-                                <h3 class="read-next-card-header-title"><a href="/tag/javascript/">Javascript</a></h3>
+                                <h3 class="read-next-card-header-title"><a href="/tag/https/">Https</a></h3>
                             
                         </header>
                         <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
@@ -391,6 +405,78 @@ https://docs.nativebase.io/Components.html#button-def-headref</p>
                                 
                                 
                                   
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
                                 
                                   
                                 
@@ -432,23 +518,9 @@ https://docs.nativebase.io/Components.html#button-def-headref</p>
                                 
                                   
                                     
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                    
                                         
                                         
-                                            <li><a href="/android-project-structure">Android 프로젝트 구조</a></li>
+                                            <li><a href="/ssl-nginx-tomcat">Nginx + Tomcat8 연동</a></li>
                                         
                                     
                                   
@@ -457,132 +529,17 @@ https://docs.nativebase.io/Components.html#button-def-headref</p>
                                     
                                         
                                         
-                                            <li><a href="/react-back-end">React back-end</a></li>
+                                            <li><a href="/ssl-letsencrypt">Letsencrypt + Nginx SSL인증서(HTTPS) 적용</a></li>
                                         
                                     
-                                  
-                                
-                                  
-                                    
-                                        
-                                        
-                                            <li><a href="/router-codesplitting-serverrendering">React Router, Code Splitting, Server Side Rendering</a></li>
-                                        
-                                    
-                                  
-                                
-                                  
-                                    
-                                        
-                                        
-                                    
-                                  
-                                
-                                  
-                                    
-                                        
-                                        
-                                    
-                                  
-                                
-                                  
-                                
-                                  
-                                    
-                                        
-                                        
-                                    
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                    
-                                        
-                                        
-                                    
-                                  
-                                
-                                  
-                                    
-                                        
-                                        
-                                    
-                                  
-                                
-                                  
-                                    
-                                        
-                                        
-                                    
-                                  
-                                
-                                  
-                                    
-                                        
-                                        
-                                    
-                                  
-                                
-                                  
-                                    
-                                        
-                                        
-                                    
-                                  
-                                
-                                  
-                                    
-                                        
-                                        
-                                    
-                                  
-                                
-                                  
-                                    
-                                        
-                                        
-                                    
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
                                   
                                 
                             </ul>
                         </div>
                         <footer class="read-next-card-footer">
-                            <a href="/tag/javascript/">
+                            <a href="/tag/https/">
                                 
-                                    See all 13 posts  →
+                                    See all 2 posts  →
                                 
                             </a>
                         </footer>
@@ -592,66 +549,6 @@ https://docs.nativebase.io/Components.html#button-def-headref</p>
 
             <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
             
-                
-
-    <article class="post-card post-template">
-        
-            <a class="post-card-image-link" href="/openjdk-cacerts">
-                <div class="post-card-image" style="background-image: url(/assets/built/images/java/java-logo.png)"></div>
-            </a>
-        
-        <div class="post-card-content">
-            <a class="post-card-content-link" href="/openjdk-cacerts">
-                <header class="post-card-header">
-                    
-                        
-                            
-                               <span class="post-card-tags">Java</span>
-                            
-                        
-                            
-                               <span class="post-card-tags">Jdk</span>
-                            
-                        
-                            
-                               <span class="post-card-tags">Linux</span>
-                            
-                        
-                            
-                               <span class="post-card-tags">Ubuntu</span>
-                            
-                        
-                            
-                                <span class="post-card-tags">Openjdk</span>
-                            
-                        
-                    
-
-                    <h2 class="post-card-title">Open JDK 사용 시 Https 접속 시 에러 해결</h2>
-                </header>
-                <section class="post-card-excerpt">
-                    
-                        <p>Oracle에서 JDK 유료화를 진행하려 함에 따라 open jdk 의 활용이 높아지고 있다.
-
-</p>
-                    
-                </section>
-            </a>
-            <footer class="post-card-meta">
-                
-                    
-                
-                <span class="reading-time">
-                    
-                    
-                      1 min read
-                    
-                </span>
-            </footer>
-        </div>
-    </article>
-
-            
 
             <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
             
@@ -659,36 +556,30 @@ https://docs.nativebase.io/Components.html#button-def-headref</p>
 
     <article class="post-card post-template">
         
-            <a class="post-card-image-link" href="/openbank-api-2">
-                <div class="post-card-image" style="background-image: url(/assets/built/images/openbank/api-logo.png)"></div>
+            <a class="post-card-image-link" href="/apache-ignite-overview">
+                <div class="post-card-image" style="background-image: url(/assets/built/images/apache-ignite/cover.png)"></div>
             </a>
         
         <div class="post-card-content">
-            <a class="post-card-content-link" href="/openbank-api-2">
+            <a class="post-card-content-link" href="/apache-ignite-overview">
                 <header class="post-card-header">
                     
                         
                             
-                               <span class="post-card-tags">Restapi</span>
+                               <span class="post-card-tags">Apache-ignite</span>
                             
                         
                             
-                               <span class="post-card-tags">Openbanking</span>
-                            
-                        
-                            
-                                <span class="post-card-tags">오픈뱅킹</span>
+                                <span class="post-card-tags">Ignite</span>
                             
                         
                     
 
-                    <h2 class="post-card-title">오픈뱅킹 서비스 API 통신 - 2 (사용자 인증)</h2>
+                    <h2 class="post-card-title">Apache Ignite 살펴보기</h2>
                 </header>
                 <section class="post-card-excerpt">
                     
-                        <p>사용자 인증
-
-</p>
+                        <p>아파치 재단에서 Apache Ignite라는 분산형 데이터베이스 서비스를 출시했다. 메모리와 저장장치 간 데이터를 분산하여 속도, 안정성 모두 고려하여 개발된 데이터베이스로 보인다. 사이트에 접속해보면 여러가지 기술들이 나열되어 있는데 이론적인 이야기는 일단 제쳐두고 간단하게 메모리 DB로</p>
                     
                 </section>
             </a>
@@ -699,7 +590,7 @@ https://docs.nativebase.io/Components.html#button-def-headref</p>
                 <span class="reading-time">
                     
                     
-                      2 min read
+                      6 min read
                     
                 </span>
             </footer>
@@ -721,18 +612,18 @@ https://docs.nativebase.io/Components.html#button-def-headref</p>
         </a>
     </div>
     <span class="floating-header-divider">&mdash;</span>
-    <div class="floating-header-title">React Native Base</div>
+    <div class="floating-header-title">Letsencrypt + Nginx SSL인증서(HTTPS) 적용 (Ubuntu22.04 개정판)</div>
     <div class="floating-header-share">
         <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
     <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
 </svg>
 </div>
-        <a class="floating-header-share-tw" href="https://twitter.com/share?text=React+Native+Base&amp;url=https://sianlab.github.io/react-native-base"
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=Letsencrypt+%2B+Nginx+SSL%EC%9D%B8%EC%A6%9D%EC%84%9C%28HTTPS%29+%EC%A0%81%EC%9A%A9+%28Ubuntu22.04+%EA%B0%9C%EC%A0%95%ED%8C%90%29&amp;url=https://sianlab.github.io/ssl-letsencrypt-ubuntu22"
             onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
 
         </a>
-        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://sianlab.github.io/react-native-base"
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://sianlab.github.io/ssl-letsencrypt-ubuntu22"
             onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
 

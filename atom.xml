@@ -8,6 +8,21 @@
     
       
       <item>
+        <title>Letsencrypt + Nginx SSL인증서(HTTPS) 적용 (Ubuntu22.04 개정판)</title>
+        
+          <description>&lt;h2 id=&quot;서론&quot;&gt;서론&lt;/h2&gt;
+
+</description>
+        
+        <pubDate>Mon, 13 Jun 2022 00:00:00 +0900</pubDate>
+        <link>
+        https://sianlab.github.io/ssl-letsencrypt-ubuntu22</link>
+        <guid isPermaLink="true">https://sianlab.github.io/ssl-letsencrypt-ubuntu22</guid>
+      </item>
+      
+    
+      
+      <item>
         <title>Apache Ignite 살펴보기</title>
         
           <description>&lt;p&gt;아파치 재단에서 Apache Ignite라는 분산형 데이터베이스 서비스를 출시했다. 메모리와 저장장치 간 데이터를 분산하여 속도, 안정성 모두 고려하여 개발된 데이터베이스로 보인다. 사이트에 접속해보면 여러가지 기술들이 나열되어 있는데 이론적인 이야기는 일단 제쳐두고 간단하게 메모리 DB로 사용해 본 내용을 본 포스트에 기재한다.&lt;/p&gt;

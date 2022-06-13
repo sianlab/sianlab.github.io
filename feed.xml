@@ -1,4 +1,102 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="https://sianlab.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://sianlab.github.io/" rel="alternate" type="text/html" /><updated>2022-06-07T18:09:07+09:00</updated><id>https://sianlab.github.io/feed.xml</id><title type="html">Siansoft</title><subtitle>기술 블로그</subtitle><entry><title type="html">Apache Ignite 살펴보기</title><link href="https://sianlab.github.io/apache-ignite-overview" rel="alternate" type="text/html" title="Apache Ignite 살펴보기" /><published>2022-06-07T00:00:00+09:00</published><updated>2022-06-07T00:00:00+09:00</updated><id>https://sianlab.github.io/apache-ignite-overview</id><content type="html" xml:base="https://sianlab.github.io/apache-ignite-overview"><![CDATA[<p>아파치 재단에서 Apache Ignite라는 분산형 데이터베이스 서비스를 출시했다. 메모리와 저장장치 간 데이터를 분산하여 속도, 안정성 모두 고려하여 개발된 데이터베이스로 보인다. 사이트에 접속해보면 여러가지 기술들이 나열되어 있는데 이론적인 이야기는 일단 제쳐두고 간단하게 메모리 DB로 사용해 본 내용을 본 포스트에 기재한다.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="https://sianlab.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://sianlab.github.io/" rel="alternate" type="text/html" /><updated>2022-06-13T16:22:35+09:00</updated><id>https://sianlab.github.io/feed.xml</id><title type="html">Siansoft</title><subtitle>기술 블로그</subtitle><entry><title type="html">Letsencrypt + Nginx SSL인증서(HTTPS) 적용 (Ubuntu22.04 개정판)</title><link href="https://sianlab.github.io/ssl-letsencrypt-ubuntu22" rel="alternate" type="text/html" title="Letsencrypt + Nginx SSL인증서(HTTPS) 적용 (Ubuntu22.04 개정판)" /><published>2022-06-13T00:00:00+09:00</published><updated>2022-06-13T00:00:00+09:00</updated><id>https://sianlab.github.io/ssl-letsencrypt-ubuntu22</id><content type="html" xml:base="https://sianlab.github.io/ssl-letsencrypt-ubuntu22"><![CDATA[<h2 id="서론">서론</h2>
+
+<p>이전에 <a href="https://sianlab.github.io/ssl-letsencrypt/" title="Letsencrypt + Nginx SSL인증서(HTTPS) 적용">ubuntu 18버전에 Let’s Encrypt를 이용하여 SSL 환경을 구성한 포스트</a>를 작성했었다. 몇년이 지나고 현재 ubuntu 22 버전에 다시 SSL을 세팅할 일이 생겨서 이전에 작성한 포스트를 보며 변경된 부분을 개정하여 본 포스트를 작성하였다.</p>
+
+<h3 id="환경">환경</h3>
+
+<ul>
+  <li>Ubuntu 22.04</li>
+  <li>apt-get 을 통해 설치한 Nginx</li>
+  <li>도메인 ( 이전에는 ngrok를 이용한 임시 도메인을 사용하였지만 이번에는 실 도메인 사용 )</li>
+</ul>
+
+<h2 id="lets-encrypt">Let’s Encrypt</h2>
+
+<ul>
+  <li>웹 사이트에 HTTPS (SSL / TLS)를 사용하기 위해 필요한 디지털 인증서를 무료로 제공</li>
+  <li>인증서의 자동 갱신을 지원</li>
+  <li>자세한 내용은  <a href="https://letsencrypt.org/about/"> Let’s Encrypt 공식 사이트</a> 에서 확인</li>
+</ul>
+
+<h2 id="nginx-설치">Nginx 설치</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>apt-get <span class="nb">install </span>nginx
+</code></pre></div></div>
+
+<p>80 포트를 사용하는 또다른 서비스가 존재한다면 서비스를 중지하거나 삭제 한 후 nginx 설치</p>
+
+<p>설치완료 후 간단하게 curl을 이용하여 웹사이트가 오픈되었는 지 확인해보았다. curl을 사용하기 어려운 환경이라거나 브라우저로 직접 확인해보고 싶다면 localhost 주소에 http 기본 포트인 80 포트로 접속해보면 된다.</p>
+
+<p><img src="\assets\built\images\letsencrypt\ubuntu22\ssl1.jpg" alt="img" /></p>
+
+<p><img src="\assets\built\images\letsencrypt\ubuntu22\ssl2.jpg" alt="img" /></p>
+
+<p>Nginx 화면이 나오지 않을 시에는</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>service nginx restart
+</code></pre></div></div>
+
+<p>명령어로 nginx 를 재시작 해본 뒤 다시 웹 브라우저에서 접속시도 nginx index 화면이 제대로 나온다면 이제 Let’s Encrypt 를 이용하여 SSL 인증서를 받아보자</p>
+
+<h2 id="certbot--설치">certbot  설치</h2>
+
+<p>이전에 작성한 글을 따라 certbot 저장소를 추가하려고 했는데 아래와 같이 deprecated 됬다고 한다.</p>
+
+<p><img src="\assets\built\images\letsencrypt\ubuntu22\ssl3.jpg" alt="img" /></p>
+
+<p>그래서 <a href="https://certbot.eff.org/instructions?ws=nginx&amp;os=ubuntufocal/" title="certbot install 사이트">certbot install 사이트</a>를 참고하여 certbot을 설치하였다.</p>
+
+<p>certbot 사이트에 따르면 certbot 설치 시 이제는 snap을 이용하는 것으로 보인다. snap은 ubuntu에 기본적으로 설치되어 있다고 하니 따로 설치하지 않고 바로 명령어를 이용하여 certbot을 설치하였다. (ubuntu 어느 버전부터 기본 설치가 되어 있는지는 확인하지 못하였다.)</p>
+
+<p>certbot 설치 전에 snap을 최신화해주자.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>snap <span class="nb">install </span>core<span class="p">;</span> <span class="nb">sudo </span>snap refresh core
+</code></pre></div></div>
+
+<p>다음으로 certbot을 설치한다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>snap <span class="nb">install</span> <span class="nt">--classic</span> certbot
+</code></pre></div></div>
+
+<p>설치 완료 시 아래와 같은 화면이 나왔다.</p>
+
+<p><img src="\assets\built\images\letsencrypt\ubuntu22\ssl4.jpg" alt="img" /></p>
+
+<p>다음으로 certbot 명령어를 바로 사용할 수 있게 아래와 같이 링크를 만들어준다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo ln</span> <span class="nt">-s</span> /snap/bin/certbot /usr/bin/certbot
+</code></pre></div></div>
+
+<p>아래와 같이 아무 에러도 없다면 링크파일 생성에 성공한 것이다.</p>
+
+<p><img src="\assets\built\images\letsencrypt\ubuntu22\ssl5.jpg" alt="img" /></p>
+
+<p>이제 certbot을 이용하여 인증서를 내려받고 nginx에 연동을 한다. 설치 가이드에 따르면 인증서 내려받기 및 nginx 연동까지 자동으로 해주는 방법과 그냥 인증서만 내려받는 방법 두가지가 소개되어 있는데, nginx도 기본으로 설치하고 따로 세팅한 부분이 없으므로 nginx 설정까지 자동으로 해주는 명령어를 이용해보았다.</p>
+
+<p>아래 명령어를 입력하자.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>certbot <span class="nt">--nginx</span>
+</code></pre></div></div>
+
+<p>그러면 아래와 같이 이메일과 자신의 도메인을 입력하면 certbot이 자동으로 환경을 구성해준다.</p>
+
+<p><img src="\assets\built\images\letsencrypt\ubuntu22\ssl6.jpg" alt="img" /></p>
+
+<p>인증서와 키파일의 저장 경로도 표시해주니 필요 시 따로 기록해두면 될 것 같다.</p>
+
+<h2 id="인증서-갱신">인증서 갱신</h2>
+
+<p>certbot이 인증서의 자동 갱신도 지원해주기 때문에 갱신에 관해 별도로 신경쓰지 않아도 되는 것으로 보인다. 가이드 페이지에 갱신 테스트 명령어도 있으니 필요한 사람은 직접 입력해보면 될 것 같다.</p>
+
+<h2 id="https-확인">HTTPS 확인</h2>
+
+<p>발급 받은 인증서가 제대로 인증되는 지 확인을 위해 이용중인 브라우저로 내 도메인 사이트에 접속해본다. 아래와 같이 URL 표시줄에 자물쇠 표시가 나타나면 성공한 것이다.</p>
+
+<p><img src="\assets\built\images\letsencrypt\ubuntu22\ssl7.jpg" alt="img" /></p>
+
+<h2 id="troubleshooting">troubleshooting</h2>
+
+<p>본 포스트 내용을 진행중에 따로 에러가 난 부분이 없어서 추후 에러사항이 있다면 추가해나갈 계획이다.</p>]]></content><author><name>sian</name></author><category term="SSL" /><category term="https" /><category term="SSL" /><category term="letsencrypt" /><summary type="html"><![CDATA[서론]]></summary></entry><entry><title type="html">Apache Ignite 살펴보기</title><link href="https://sianlab.github.io/apache-ignite-overview" rel="alternate" type="text/html" title="Apache Ignite 살펴보기" /><published>2022-06-07T00:00:00+09:00</published><updated>2022-06-07T00:00:00+09:00</updated><id>https://sianlab.github.io/apache-ignite-overview</id><content type="html" xml:base="https://sianlab.github.io/apache-ignite-overview"><![CDATA[<p>아파치 재단에서 Apache Ignite라는 분산형 데이터베이스 서비스를 출시했다. 메모리와 저장장치 간 데이터를 분산하여 속도, 안정성 모두 고려하여 개발된 데이터베이스로 보인다. 사이트에 접속해보면 여러가지 기술들이 나열되어 있는데 이론적인 이야기는 일단 제쳐두고 간단하게 메모리 DB로 사용해 본 내용을 본 포스트에 기재한다.</p>
 
 <p>만약 지원하는 기술 및 각종 가이드가 궁금한 사람은 아래 사이트에 접속해서 확인해보면 된다.</p>
 
@@ -870,87 +968,4 @@ Use MinTTY(the default terminal of MSYS2) – Git bash 기본 터미널 사용</
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>gitlab-ctl stop				// gitlab 중지
 <span class="nb">sudo </span>gitlab-ctl reconfigure			// 설정 적용
 <span class="nb">sudo </span>gitlab-ctl restart				// gitlab 재시작
-</code></pre></div></div>]]></content><author><name>sian</name></author><category term="linux" /><category term="gitlab" /><summary type="html"><![CDATA[CentOS 7 Gitlab 설치 및 설정(1) - Gitlab 설치하기]]></summary></entry><entry><title type="html">워드프레스(wordpress) 설치형 사용법</title><link href="https://sianlab.github.io/wordpress-use-installer" rel="alternate" type="text/html" title="워드프레스(wordpress) 설치형 사용법" /><published>2020-07-14T18:45:00+09:00</published><updated>2020-07-14T18:45:00+09:00</updated><id>https://sianlab.github.io/wordpress-use-installer</id><content type="html" xml:base="https://sianlab.github.io/wordpress-use-installer"><![CDATA[<h1 id="워드프레스-설치형-사용법">워드프레스 설치형 사용법</h1>
-
-<h2 id="wordpress-설치형-사용법">WordPress 설치형 사용법</h2>
-<p> 
-설치형 워드프레스를 쉽게 사용하기위한 플랫폼들이 많은데</p>
-
-<p>• <a href="http://www.wampserver.com/en/">WAMP</a></p>
-
-<p>• <a href="http://www.mamp.info/en/index.html">MAMP</a></p>
-
-<p>• <a href="http://bitnami.org/stack/lampstack">LAMP</a></p>
-
-<p>• <a href="http://www.apachefriends.org/en/xampp.html">XAMPP</a></p>
-
-<p>전부 한국어를 지원하지 않으므로, 국내 개발된 autoset을 활용한 워드프레스 사용법입니다.</p>
-
-<p>• <a href="http://autoset.net/xe/download_autoset_10_7_2">AutoSet</a></p>
-
-<p><img src="\assets\built\images\wordpress\b1.png" alt="img" /></p>
-
-<p>운영체제 시스템에 따라 알맞게 다운로드 합니다.</p>
-
-<p>다른 아파치서버나 mysql 서버와 충돌이 날 수 있으므로 종료 후 설치를 진행합니다.</p>
-
-<p><img src="\assets\built\images\wordpress\b2.png" alt="img" /></p>
-
-<p><img src="\assets\built\images\wordpress\b3.png" alt="img" /></p>
-
-<p><img src="\assets\built\images\wordpress\b4.png" alt="img" /></p>
-
-<p><img src="\assets\built\images\wordpress\b5.png" alt="img" /></p>
-
-<p>설치가 완료 된 후 오토셋을 실행시 다음과 같은 화면이 나옵니다.</p>
-
-<p><img src="\assets\built\images\wordpress\b6.png" alt="img" /></p>
-
-<p>기본으로는 웹 서버와 mysql 시작이라고 나올것인데 시작해주시면 됩니다.</p>
-
-<p>그후 제어탭을 눌러 phpMyAdmin에 접속합니다.</p>
-
-<p><img src="\assets\built\images\wordpress\b7.png" alt="img" /></p>
-
-<p>초기화면에서 기본값으로 로그인 할 경우</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//기본값
-사용자명 : root
-패스워드 : autoset 
-</code></pre></div></div>
-
-<p><img src="\assets\built\images\wordpress\b8.png" alt="img" /></p>
-
-<p>다음과 같은 화면이 나오는데,</p>
-
-<p>해당화면에서 데이터베이스에 들어가 wordpress에서 사용될 DB를 생성합니다.</p>
-
-<p><img src="\assets\built\images\wordpress\b9.png" alt="img" /></p>
-
-<p>그리고 워드프레스 최신버전을 설치해줍니다.</p>
-
-<p><a href="https://ko.wordpress.org/download/">워드프레스 다운로드</a></p>
-
-<p><img src="\assets\built\images\wordpress\b10.png" alt="img" /></p>
-
-<p>압축파일을 오토셋의 public_html 폴더에 해제해줍니다.</p>
-
-<p><img src="\assets\built\images\wordpress\b11.png" alt="img" /></p>
-
-<p>그 후 localhost/wordpress 에 접속하여 워드프레스 환경설정을 해줍니다.</p>
-
-<p><img src="\assets\built\images\wordpress\b12.png" alt="img" /></p>
-
-<p><img src="\assets\built\images\wordpress\b13.png" alt="img" /></p>
-
-<p><img src="\assets\built\images\wordpress\b14.png" alt="img" /></p>
-
-<p>또한 설치형은 플러그인을 무료로 사용 가능합니다.</p>
-
-<p><img src="\assets\built\images\wordpress\b15.png" alt="img" /></p>
-
-<p><img src="\assets\built\images\wordpress\b16.png" alt="img" /></p>
-
-<p><img src="\assets\built\images\wordpress\b17.png" alt="img" /></p>
-
-<p>이러한 식으로 플러그인을 찾아 추가해 사용 할 수 있습니다.</p>]]></content><author><name>sian</name></author><category term="web" /><category term="WordPress" /><summary type="html"><![CDATA[워드프레스 설치형 사용법]]></summary></entry></feed>
+</code></pre></div></div>]]></content><author><name>sian</name></author><category term="linux" /><category term="gitlab" /><summary type="html"><![CDATA[CentOS 7 Gitlab 설치 및 설정(1) - Gitlab 설치하기]]></summary></entry></feed>
