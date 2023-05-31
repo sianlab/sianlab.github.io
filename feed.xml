@@ -1,4 +1,197 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-05-31T11:32:30+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Siansoft</title><subtitle>기술 블로그</subtitle><entry><title type="html">Unity AR App 개발 - Nreal glasses 360도 영상 App 개발</title><link href="http://localhost:4000/unity_6" rel="alternate" type="text/html" title="Unity AR App 개발 - Nreal glasses 360도 영상 App 개발" /><published>2023-05-17T09:50:00+09:00</published><updated>2023-05-17T09:50:00+09:00</updated><id>http://localhost:4000/unity_6</id><content type="html" xml:base="http://localhost:4000/unity_6"><![CDATA[<h2 id="서론">서론</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-05-31T17:27:34+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Siansoft</title><subtitle>기술 블로그</subtitle><entry><title type="html">[ElectronJS] React 앱을 데스크톱 응용프로그램으로 변환(포팅)하기</title><link href="http://localhost:4000/react_porting_by_electron" rel="alternate" type="text/html" title="[ElectronJS] React 앱을 데스크톱 응용프로그램으로 변환(포팅)하기" /><published>2023-05-31T17:00:00+09:00</published><updated>2023-05-31T17:00:00+09:00</updated><id>http://localhost:4000/react_porting_by_electron</id><content type="html" xml:base="http://localhost:4000/react_porting_by_electron"><![CDATA[<h2 id="서론">서론</h2>
+
+<p>React 기반의 웹 사이트를 데스크톱 응용 프로그램으로 포팅하는 방법이 있을까 싶어서 찾아보던 중 알게 된 ElectronJS.
+ElectronJS를 이용하면 굉장히 간단한 설정 몇번으로 React 기반(정확하게는 JS, HTML, CSS 기반)의 데스크톱 응용프로그램을 만들거나 포팅을 할 수 있다.
+이 포스트는 React -&gt; Windowns 응용 프로그램으로 포팅하는 아주 기본적인 설명을 작성한 포스트이다.</p>
+
+<h3 id="환경">환경</h3>
+
+<ul>
+  <li>Windows 11</li>
+  <li>Visual Studio Code 1.63.2</li>
+  <li>npx 9.5.1</li>
+  <li>yarn 1.22.19</li>
+  <li>React 18.2.0, react-scripts 5.0.1 (create-react-app)</li>
+  <li>electron 25.0.0</li>
+  <li>electron-builder 23.6.0</li>
+</ul>
+
+<h2 id="1-react-앱-준비">1.	React 앱 준비</h2>
+
+<p>본 포스팅을 위해 create-react-app을 통해 기본 react 앱을 생성하기로 하였다.
+윈도우 커맨드 창을 열어서 앱을 생성하기 원하는 위치로 이동한 뒤 아래 명령어를 입력한다.</p>
+
+<div class="language-terminal highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">npx create-react-app my-electron-app
+</span></code></pre></div></div>
+<p><img src="\assets\built\images\electron\react_porting_by_electron_1.jpg" alt="img" /></p>
+
+<p>프로젝트가 생성되면 해당 프로젝트 경로에서 아래 명령어를 통해 react 앱을 실행시킨다.</p>
+
+<div class="language-terminal highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">yarn start
+</span></code></pre></div></div>
+<p><img src="\assets\built\images\electron\react_porting_by_electron_2.jpg" alt="img" />
+<img src="\assets\built\images\electron\react_porting_by_electron_3.jpg" alt="img" />
+<img src="\assets\built\images\electron\react_porting_by_electron_4.jpg" alt="img" /></p>
+
+<p>create-react-app 기본포트인 3000번 포트로 접속하여 react 앱이 잘 올라갔는 지 확인한다.</p>
+
+<h2 id="2-electronjs-준비-및-개발환경에서-구동해보기">2.	ElectronJS 준비 및 개발환경에서 구동해보기</h2>
+
+<p>react 앱이 잘 구동되는 모습을 확인했다면 이제 electron 관련된 모듈들을 프로젝트에 추가한다.</p>
+
+<p>아래 명령어를 통해 프로젝트에 필요한 electron 관련 모듈을 추가하자.</p>
+
+<p>(이미지에는 -d 로 되어 있는데 -D 로 대문자로 입력해주자.)</p>
+
+<div class="language-terminal highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">yarn add -D electron electron-builder
+</span></code></pre></div></div>
+<p><img src="\assets\built\images\electron\react_porting_by_electron_5.jpg" alt="img" /></p>
+
+<p>프로젝트 폴더로 이동하여 <strong>package.json</strong> 파일을 열어서 두 모듈이 잘 추가가 되었나 확인한다.</p>
+
+<p><img src="\assets\built\images\electron\react_porting_by_electron_6.jpg" alt="img" /></p>
+
+<p>모듈이 추가된 모습을 확인했다면 아래 코드를 <strong>package.json</strong> 파일에 입력한다.</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"scripts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="err">...</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">기존</span><span class="w"> </span><span class="err">스크립트들</span><span class="w">
+  </span><span class="nl">"electron-start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"set ELECTRON_START_URL=http://localhost:3000 &amp;&amp; electron ."</span><span class="p">,</span><span class="w">
+</span><span class="p">}</span><span class="err">,</span><span class="w">
+</span><span class="nl">"main"</span><span class="p">:</span><span class="w"> </span><span class="s2">"public/Main.js"</span><span class="err">,</span><span class="w">
+</span><span class="nl">"homepage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"./"</span><span class="err">,</span><span class="w">
+</span></code></pre></div></div>
+<p><img src="\assets\built\images\electron\react_porting_by_electron_7.jpg" alt="img" /></p>
+
+<p>위에 작성한 main 속성에 해당하는 js 파일을 참조하여 electron을 실행하기 때문에 프로젝트의 <strong>public</strong> 경로 안에 <strong>Main.js</strong> 파일을 생성한 뒤 아래 코드를 붙여넣는다.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="p">{</span><span class="nx">app</span><span class="p">,</span> <span class="nx">BrowserWindow</span><span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">electron</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">path</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">url</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">url</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="kd">function</span> <span class="nx">createWindow</span><span class="p">()</span> <span class="p">{</span>
+    <span class="cm">/*
+    * 넓이 1920에 높이 1080의 FHD 풀스크린 앱을 실행시킵니다.
+    * */</span>
+    <span class="kd">const</span> <span class="nx">win</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">BrowserWindow</span><span class="p">({</span>
+        <span class="na">width</span><span class="p">:</span><span class="mi">1920</span><span class="p">,</span>
+        <span class="na">height</span><span class="p">:</span><span class="mi">1080</span>
+    <span class="p">});</span>
+
+    <span class="cm">/*
+    * ELECTRON_START_URL을 직접 제공할경우 해당 URL을 로드합니다.
+    * 만일 URL을 따로 지정하지 않을경우 (프로덕션빌드) React 앱이
+    * 빌드되는 build 폴더의 index.html 파일을 로드합니다.
+    * */</span>
+    <span class="kd">const</span> <span class="nx">startUrl</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">ELECTRON_START_URL</span> <span class="o">||</span> <span class="nx">url</span><span class="p">.</span><span class="nx">format</span><span class="p">({</span>
+        <span class="na">pathname</span><span class="p">:</span> <span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="dl">'</span><span class="s1">/../build/index.html</span><span class="dl">'</span><span class="p">),</span>
+        <span class="na">protocol</span><span class="p">:</span> <span class="dl">'</span><span class="s1">file:</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">slashes</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">});</span>
+
+    <span class="cm">/*
+    * startUrl에 배정되는 url을 맨 위에서 생성한 BrowserWindow에서 실행시킵니다.
+    * */</span>
+    <span class="nx">win</span><span class="p">.</span><span class="nx">loadURL</span><span class="p">(</span><span class="nx">startUrl</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">ready</span><span class="dl">'</span><span class="p">,</span> <span class="nx">createWindow</span><span class="p">);</span>
+</code></pre></div></div>
+<p><img src="\assets\built\images\electron\react_porting_by_electron_8.jpg" alt="img" /></p>
+
+<p>그 다음 react 앱이 실행되어 있는 상태로 터미널을 한개 더 실행하여 <strong>electron-start</strong> 명령어를 입력한다.</p>
+
+<div class="language-terminal highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">yarn electron-start   #</span><span class="w"> </span>다른 터미널에서 yarn start로 react 앱이 구동되고 있어야 함!
+</code></pre></div></div>
+<p><img src="\assets\built\images\electron\react_porting_by_electron_9.jpg" alt="img" /></p>
+
+<p>electron 구동이 완료되면 아래와 같이 데스크톱 응용 프로그램으로 실행되는 모습을 확인할 수 있다.</p>
+
+<p><img src="\assets\built\images\electron\react_porting_by_electron_10.jpg" alt="img" /></p>
+
+<p>이미 구동되고 있는 3000포트의 react 앱을 불러오는 것이기 때문에 코드 수정 등이 바로바로 반영되는 모습을 확인할 수 있다.
+예시로, 아래와 같이 메인 화면에 문구를 추가하고 저장하면 응용 프로그램이 바로 수정되는 모습을 볼 수 있다.</p>
+
+<p><img src="\assets\built\images\electron\react_porting_by_electron_11.jpg" alt="img" /></p>
+
+<h2 id="3-응용-프로그램으로-빌드하기">3.	응용 프로그램으로 빌드하기</h2>
+
+<p>2번에서 진행한 내용은 개발단계로써, 3000포트에 띄운 react 앱을 응용 프로그램이 호출하는 것 뿐이다.
+하지만 ElectronJS를 통해 빌드를 하면 위와 같이 react 앱이 미리 구동되어 있을 필요가 없이 자체적으로 react 앱을 실행시켜서
+정말 하나의 데스크톱 응용 프로그램처럼 동작하게 된다.</p>
+
+<p>이제 빌드를 위해 다시 <strong>package.json</strong> 파일을 열어서 scripts 항목에 명령어 추가 및 build 항목을 추가하자.</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"scripts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="err">...</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">기존</span><span class="w"> </span><span class="err">스크립트들</span><span class="w">
+  </span><span class="nl">"electron-pack"</span><span class="p">:</span><span class="w"> </span><span class="s2">"yarn build &amp;&amp; electron-builder"</span><span class="w">
+</span><span class="p">}</span><span class="err">,</span><span class="w">
+</span><span class="err">...,</span><span class="w">
+</span><span class="nl">"build"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"productName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my-electron-app"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"asar"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"appId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"com.app.electron"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"extends"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"files"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"*.js"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"public"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"build"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"node_modules"</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="err">,</span><span class="w">
+</span></code></pre></div></div>
+<p><img src="\assets\built\images\electron\react_porting_by_electron_12.jpg" alt="img" /></p>
+
+<p>파일 저장 후 아래 명령어를 입력하여 빌드를 진행해보자.</p>
+
+<div class="language-terminal highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">yarn electron-pack
+</span></code></pre></div></div>
+<p><img src="\assets\built\images\electron\react_porting_by_electron_13.jpg" alt="img" /></p>
+
+<p>빌드가 정상적으로 진행됬다면 아래와 같은 문구가 나온다.</p>
+
+<p><img src="\assets\built\images\electron\react_porting_by_electron_14.jpg" alt="img" /></p>
+
+<p>이제 프로젝트 경로에 진입해서 <strong>dist</strong> 폴더를 열어보면 아래와 같이 exe 파일이 빌드되어 있는 모습을 볼 수 있다.
+해당 exe 파일을 실행해주면 react 앱을 데스크톱에 설치해준다.</p>
+
+<p><img src="\assets\built\images\electron\react_porting_by_electron_15.jpg" alt="img" /></p>
+
+<p>설치가 완료되면 데스크톱 응용 프로그램으로 실행되는 모습을 확인할 수 있다.
+기존 3000포트에 react 앱을 구동시켜놓았다면 react 앱을 종료한 뒤 프로그램을 실행해보자.
+react 앱이 돌아가고 있지 않아도 프로그램이 정상 작동하는 모습을 확인할 수 있다.</p>
+
+<p><img src="\assets\built\images\electron\react_porting_by_electron_16.jpg" alt="img" /></p>
+
+<p>응용 프로그램을 설치한 것이기 때문에 <strong>프로그램 추가/제거</strong>에서도 해당 프로그램을 확인할 수 있다.</p>
+
+<p><img src="\assets\built\images\electron\react_porting_by_electron_17.jpg" alt="img" /></p>
+
+<h2 id="진행-중-마주친-에러">진행 중 마주친 에러</h2>
+
+<div class="language-terminal highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">Application entry file "public\Main.js" in the "C:\develop\Nodejs workplace\my-electron-app\dist\win-unpacked\resources\app.asar" does not exist. Seems like a wrong configuration.
+</span></code></pre></div></div>
+<p><img src="\assets\built\images\electron\react_porting_by_electron_18.jpg" alt="img" /></p>
+
+<p>포스트 작성 진행 중 위와 같은 에러를 마주친 적이 있는데 처음 진행시에는 <strong>package.json</strong> 파일 안의 <strong>build</strong> 항목에
+<strong>“extends”: null</strong> 속성이 없는 상태로 진행을 하였다. 그랬더니 위와 같은 에러가 발생했다.</p>
+
+<p><strong>package.json</strong> 파일 안에 아래와 같이 추가해주자.</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"build"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="err">...</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"extends"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+</span><span class="p">}</span><span class="err">,</span><span class="w">
+</span></code></pre></div></div>
+
+<h2 id="마치며">마치며</h2>
+
+<p>급하게 알아보느라 다른 분들의 포스트를 기반으로 진행하여 build 항목 안의 속성들이 무슨 의미를 가지고 있는지 등등을
+알아보지 않은 채로 일단 포스트를 작성하게 되었다. 추후 시간이 남을 때 더 자세히 알아봐야겠다.</p>
+
+<h2 id="참조-사이트">참조 사이트</h2>
+<p><a href="https://blog.codefactory.ai/electron/create-desktop-app-with-react-and-electron/1-project-setting/">https://blog.codefactory.ai/electron/create-desktop-app-with-react-and-electron/1-project-setting/</a></p>
+
+<p><a href="https://velog.io/@threejoon/React-Electron-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0">https://velog.io/@threejoon/React-Electron-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0</a></p>]]></content><author><name>sian</name></author><category term="Electron" /><category term="Electron, ElectronJS, React" /><summary type="html"><![CDATA[서론]]></summary></entry><entry><title type="html">Unity AR App 개발 - Nreal glasses 360도 영상 App 개발</title><link href="http://localhost:4000/unity_6" rel="alternate" type="text/html" title="Unity AR App 개발 - Nreal glasses 360도 영상 App 개발" /><published>2023-05-17T09:50:00+09:00</published><updated>2023-05-17T09:50:00+09:00</updated><id>http://localhost:4000/unity_6</id><content type="html" xml:base="http://localhost:4000/unity_6"><![CDATA[<h2 id="서론">서론</h2>
 
 <p>Unity 기반 안드로이드용 AR app 개발을 하기 위해 조사 및 테스트한 내용을 정리하기 위해 본 포스트를 작성하였다.
 여섯번째로 이전 포스트에 이어서 Nreal glasses 360도 영상 App 개발에 대해 알아보자.</p>
@@ -1089,16 +1282,4 @@ Gradle은 설정 주입 방식을 제공한다.</li>
     <span class="nx">compile</span><span class="p">(</span><span class="dl">'</span><span class="s1">org.springframework.boot:spring-boot-starter</span><span class="dl">'</span><span class="p">)</span>
     <span class="nx">testCompile</span><span class="p">(</span><span class="dl">'</span><span class="s1">org.springframework.boot:spring-boot-starter-test</span><span class="dl">'</span><span class="p">)</span>
 <span class="p">}</span>
-</code></pre></div></div>]]></content><author><name>sian</name></author><category term="build" /><category term="maven" /><category term="gradle" /><summary type="html"><![CDATA[빌드 도구란?]]></summary></entry><entry><title type="html">Python 강좌(1) - Python 기본</title><link href="http://localhost:4000/python-base" rel="alternate" type="text/html" title="Python 강좌(1) - Python 기본" /><published>2021-09-08T08:40:00+09:00</published><updated>2021-09-08T08:40:00+09:00</updated><id>http://localhost:4000/python-base</id><content type="html" xml:base="http://localhost:4000/python-base"><![CDATA[<p><span class="table-of-contents-list">Python 강좌는 여러 절로 구성되어 있습니다. </span></p>
-<ul class="table-of-contents-list">
-    <li><a href="./python-base">Python 강좌(1) - Python 기본</a></li>
-    <li><a href="./python-control-statement">Python 강좌(2) - Python 제어문</a></li>
-</ul>
-
-<p>이 글은 python base 입니다.!!</p>
-
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">syntaxHighlight</span><span class="p">(</span><span class="nx">code</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nx">foo</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">Hello World</span><span class="dl">'</span><span class="p">;</span>
-    <span class="kd">var</span> <span class="nx">bar</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div></div>]]></content><author><name>sian</name></author><category term="python" /><summary type="html"><![CDATA[Python 강좌는 여러 절로 구성되어 있습니다. Python 강좌(1) - Python 기본 Python 강좌(2) - Python 제어문]]></summary></entry></feed>
+</code></pre></div></div>]]></content><author><name>sian</name></author><category term="build" /><category term="maven" /><category term="gradle" /><summary type="html"><![CDATA[빌드 도구란?]]></summary></entry></feed>
