@@ -1,4 +1,554 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="https://sianlab.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://sianlab.github.io/" rel="alternate" type="text/html" /><updated>2022-06-13T16:27:37+09:00</updated><id>https://sianlab.github.io/feed.xml</id><title type="html">Siansoft</title><subtitle>기술 블로그</subtitle><entry><title type="html">Letsencrypt + Nginx SSL인증서(HTTPS) 적용 (Ubuntu22.04 개정판)</title><link href="https://sianlab.github.io/ssl-letsencrypt-ubuntu22" rel="alternate" type="text/html" title="Letsencrypt + Nginx SSL인증서(HTTPS) 적용 (Ubuntu22.04 개정판)" /><published>2022-06-13T00:00:00+09:00</published><updated>2022-06-13T00:00:00+09:00</updated><id>https://sianlab.github.io/ssl-letsencrypt-ubuntu22</id><content type="html" xml:base="https://sianlab.github.io/ssl-letsencrypt-ubuntu22"><![CDATA[<h2 id="서론">서론</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-05-31T11:32:30+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Siansoft</title><subtitle>기술 블로그</subtitle><entry><title type="html">Unity AR App 개발 - Nreal glasses 360도 영상 App 개발</title><link href="http://localhost:4000/unity_6" rel="alternate" type="text/html" title="Unity AR App 개발 - Nreal glasses 360도 영상 App 개발" /><published>2023-05-17T09:50:00+09:00</published><updated>2023-05-17T09:50:00+09:00</updated><id>http://localhost:4000/unity_6</id><content type="html" xml:base="http://localhost:4000/unity_6"><![CDATA[<h2 id="서론">서론</h2>
+
+<p>Unity 기반 안드로이드용 AR app 개발을 하기 위해 조사 및 테스트한 내용을 정리하기 위해 본 포스트를 작성하였다.
+여섯번째로 이전 포스트에 이어서 Nreal glasses 360도 영상 App 개발에 대해 알아보자.</p>
+
+<h3 id="환경">환경</h3>
+
+<ul>
+  <li>Windows 11</li>
+  <li>Android 기반 스마트폰</li>
+  <li>Nreal Air</li>
+</ul>
+
+<h2 id="1---360도-영상-설정">1.   360도 영상 설정</h2>
+
+<p>1.1	Project 탭에서 Assets 내 material 폴더 생성</p>
+
+<p>1.2	Material 폴더에 360도 영상 파일을 복사</p>
+
+<p><img src="\assets\built\images\unity\unity_6_1_1.png" alt="img" /></p>
+
+<p>1.3	Material 폴더 우클릭 후 Create &gt; Render Texture 클릭</p>
+
+<p>1.4	생성된 Render Texture 클릭 후 Inspector 탭에서 Size 값을 1920 x 1080 으로 설정</p>
+
+<p><img src="\assets\built\images\unity\unity_6_1_2.png" alt="img" /></p>
+
+<p>1.5	Material 폴더 우클릭 후 Create &gt; material 클릭</p>
+
+<p>1.6	생성된 material 클릭 후 Inspector 탭</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.6.1	Shader 값을 Skybox/Panoramic 으로 설정
+
+1.6.2	Spherical 항목에 작성한 Render Texture 객체를 드래그 하여 설정
+</code></pre></div></div>
+
+<p><img src="\assets\built\images\unity\unity_6_1_3.png" alt="img" /></p>
+
+<p>1.7	Window &gt; Rendering &gt; Lighting 클릭</p>
+
+<p><img src="\assets\built\images\unity\unity_6_1_4.png" alt="img" /></p>
+
+<p>1.8	Lighting 창에서 Environment 클릭 후 Skybox Material 항목에 작성한 material 객체를 드래그 하여 설정</p>
+
+<p><img src="\assets\built\images\unity\unity_6_1_5.png" alt="img" /></p>
+
+<p>1.9	Hierarchy 탭에서 + 버튼 클릭 후 Video &gt; Video Player 클릭</p>
+
+<p>1.10	생성된 Video Player 클릭 후 Inspector 탭</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.10.1	Video Clip 항목에 360도 영상 설정
+
+1.10.2	Target Texture 항목에 작성한 Render Texture 설정
+
+1.10.3	반복 재생은 Loop 항목 체크
+</code></pre></div></div>
+
+<p><img src="\assets\built\images\unity\unity_6_1_6.png" alt="img" /></p>
+
+<h2 id="2---nreal-glass-설정">2.   Nreal glass 설정</h2>
+
+<p>2.1	Hierarchy 탭에서 DemoScenesMenu 삭제</p>
+
+<p>2.2	Hierarchy 탭에서 HelloMR &gt; NRCameraRig &gt; LeftCamera 클릭</p>
+
+<p>2.3	Inspector 탭에서 Camera &gt; Clear Flags 값을 Skybox 로 설정</p>
+
+<p><img src="\assets\built\images\unity\unity_6_2_1.png" alt="img" /></p>
+
+<p>2.4 App 빌드 및 실행</p>]]></content><author><name>sian</name></author><category term="Unity" /><category term="Unity" /><summary type="html"><![CDATA[서론]]></summary></entry><entry><title type="html">Unity AR App 개발 - Nreal glasses App 개발</title><link href="http://localhost:4000/unity_5" rel="alternate" type="text/html" title="Unity AR App 개발 - Nreal glasses App 개발" /><published>2023-05-17T09:40:00+09:00</published><updated>2023-05-17T09:40:00+09:00</updated><id>http://localhost:4000/unity_5</id><content type="html" xml:base="http://localhost:4000/unity_5"><![CDATA[<h2 id="서론">서론</h2>
+
+<p>Unity 기반 안드로이드용 AR app 개발을 하기 위해 조사 및 테스트한 내용을 정리하기 위해 본 포스트를 작성하였다.
+다섯번째로 AR 기기 중 하나인 Nreal glasses 용 AR App 개발에 대해 알아보자.</p>
+
+<h3 id="환경">환경</h3>
+
+<ul>
+  <li>Windows 11</li>
+  <li>Android 기반 스마트폰</li>
+  <li>Nreal Air</li>
+</ul>
+
+<h2 id="1---프로젝트-생성">1.   프로젝트 생성</h2>
+
+<p>1.1	개발자사이트(https://developer.nreal.ai/download) 접속하여 Nreal SDK 다운로드</p>
+
+<p><img src="\assets\built\images\unity\unity_5_1_1.png" alt="img" /></p>
+
+<p>1.2	이전 포스트 중 ‘프로젝트 생성’ 부분 참고하여 생성
+※ 필자의 개발환경 기준으로 최신 유니티 에디터 버전을 사용 시 빌드 오류가 발생되어 2020.03 에디터 버전으로 다운그레이드 후 정상 실행이 되어 이 버전 기준으로 작성함.</p>
+
+<h2 id="2---프로젝트-설정">2.   프로젝트 설정</h2>
+
+<p>2.1	File &gt; Build Settings &gt; Player Settings 
+    2.1.1	Other Settings 
+        2.1.1.1	Configuration &gt; Api compatibility Level 값을 .NET 4.x 로 설정
+        2.1.1.2	Write Permission 값을 External로 설정</p>
+
+<p><img src="\assets\built\images\unity\unity_5_2_1.png" alt="img" /></p>
+
+<p>2.2	Resolution and Presentation 
+    2.2.1	Default Orientation 값을 Portrait 로 설정</p>
+
+<p><img src="\assets\built\images\unity\unity_5_2_2.png" alt="img" /></p>
+
+<p>2.3	Quality &gt; V Sync Count 값을 Don’t Sync 로 설정</p>
+
+<p><img src="\assets\built\images\unity\unity_5_2_3.png" alt="img" /></p>
+
+<h2 id="3--nreal-sdk-설치">3.  Nreal SDK 설치</h2>
+
+<p>3.1	Assets &gt; Import Package &gt; Custom Package 클릭</p>
+
+<p>3.2	다운받은 Nreal SDK 파일 선택</p>
+
+<p>3.3	Import Unity Package 창에서 Import 버튼 클릭</p>
+
+<p><img src="\assets\built\images\unity\unity_5_3_1.png" alt="img" /></p>
+
+<h2 id="4-nreal-demo-app-빌드-및-실행">4.	Nreal Demo App 빌드 및 실행</h2>
+
+<p>4.1	Project 탭에서 Assets &gt; NRSDK &gt; Demos &gt; HelloMR.unity 파일 더블클릭</p>
+
+<p><img src="\assets\built\images\unity\unity_5_4_1.png" alt="img" /></p>
+
+<p>4.2	File &gt; Build Settings 에서 Add Open Scene 클릭 후 Build 실행</p>
+
+<p>4.3	사용할 스마트폰에 Nebula 앱 설치</p>
+
+<p>4.4	Nreal glass 를 스마트폰에 연결</p>
+
+<p>4.5	스마트폰에서 Nebula 앱 실행</p>
+
+<p>4.6	Nebula 앱에서 AR 스페이스 버튼 클릭</p>
+
+<p>4.7	Nubula 가상 화면에서 우측으로 이동하여 설치한 Unity app 실행</p>]]></content><author><name>sian</name></author><category term="Unity" /><category term="Unity" /><summary type="html"><![CDATA[서론]]></summary></entry><entry><title type="html">Unity AR App 개발 - Text box 구현</title><link href="http://localhost:4000/unity_4" rel="alternate" type="text/html" title="Unity AR App 개발 - Text box 구현" /><published>2023-05-17T09:30:00+09:00</published><updated>2023-05-17T09:30:00+09:00</updated><id>http://localhost:4000/unity_4</id><content type="html" xml:base="http://localhost:4000/unity_4"><![CDATA[<h2 id="서론">서론</h2>
+
+<p>Unity 기반 안드로이드용 AR app 개발을 하기 위해 조사 및 테스트한 내용을 정리하기 위해 본 포스트를 작성하였다.
+네번째로 이전 포스트에서 설명했던 AR App 에서 사용할 Text box 구현 방법에 대해 알아보자.</p>
+
+<h2 id="1---canvas-생성">1.   Canvas 생성</h2>
+
+<p>1.1	Hierarchy 탭에서 + 버튼 클릭</p>
+
+<p>1.2	UI &gt; Canvas 클릭</p>
+
+<p><img src="\assets\built\images\unity\unity_4_1_1.png" alt="img" /></p>
+
+<p>1.3	Render Mode 값을 World Space 로 설정</p>
+
+<p>1.4	Canvas Scaler 항목 우측 버튼 클릭 후 Remove Component 클릭</p>
+
+<p>1.5	Canvas 크기 설정</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.5.1	Pos X, Y, Z 값을 0으로 설정
+
+1.5.2	Width , Height 값을 1로 설정
+</code></pre></div></div>
+
+<p><img src="\assets\built\images\unity\unity_4_1_2.png" alt="img" /></p>
+
+<h2 id="2---text-생성">2.   Text 생성</h2>
+
+<p>2.1	Hierarchy 탭에서 Canvas 우클릭</p>
+
+<p>2.2	UI &gt; Text 클릭</p>
+
+<p><img src="\assets\built\images\unity\unity_4_2_1.png" alt="img" /></p>
+
+<p>2.3	Text 영역 설정</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2.3.1	Width, Height 값 설정
+
+2.3.2	Scale 값을 0.01로 설정
+</code></pre></div></div>
+
+<p>2.4	Text 설정</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2.4.1	표시할 Text 값 설정
+
+2.4.2	글꼴 설정
+
+2.4.3	정렬 설정
+
+2.4.4	글자색 설정
+</code></pre></div></div>
+
+<p><img src="\assets\built\images\unity\unity_4_2_2.png" alt="img" /></p>
+
+<p>2.5	Hierarchy 탭의 Canvas 항목을 드래그 하여 Project 탭으로 이동</p>
+
+<p>2.6	Hierarchy 탭의 Canvas 항목 삭제</p>
+
+<p><img src="\assets\built\images\unity\unity_4_2_3.png" alt="img" /></p>]]></content><author><name>sian</name></author><category term="Unity" /><category term="Unity" /><summary type="html"><![CDATA[서론]]></summary></entry><entry><title type="html">Unity AR App 개발 - Multiple Image Tracking App 개발</title><link href="http://localhost:4000/unity_3" rel="alternate" type="text/html" title="Unity AR App 개발 - Multiple Image Tracking App 개발" /><published>2023-05-17T09:20:00+09:00</published><updated>2023-05-17T09:20:00+09:00</updated><id>http://localhost:4000/unity_3</id><content type="html" xml:base="http://localhost:4000/unity_3"><![CDATA[<h2 id="서론">서론</h2>
+
+<p>Unity 기반 안드로이드용 AR app 개발을 하기 위해 조사 및 테스트한 내용을 정리하기 위해 본 포스트를 작성하였다.
+세번째로 여러 이미지를 인식하여 각각 다른 이미지를 띄우는 Multiple Image Tracking App 개발에 대해 알아보자.</p>
+
+<h2 id="1---ar-모듈-설치">1.   AR 모듈 설치</h2>
+
+<p>1.1	메뉴 탭의 Window &gt; Package Manager 클릭</p>
+
+<p>1.2	Packages: In Project 항목 클릭하여 Unity registry 로 변경</p>
+
+<p>1.3	우측 상단 검색창에 ar 입력</p>
+
+<p>1.4	검색 결과 목록에서 AR Foundation 선택</p>
+
+<p>1.5	우측 하단 Install 클릭</p>
+
+<p>1.6	설치 완료 후 Package Manager 팝업 닫기</p>
+
+<p><img src="\assets\built\images\unity\unity_2_1_1.png" alt="img" /></p>
+
+<p>1.7	Hierarchy 탭에서 Main Camera 항목 삭제</p>
+
+<p><img src="\assets\built\images\unity\unity_2_1_2.png" alt="img" /></p>
+
+<p>1.8	+ 버튼 클릭하여 XR &gt; AR Session / AR Session Origin 각각 추가한다</p>
+
+<p><img src="\assets\built\images\unity\unity_2_1_3.png" alt="img" /></p>
+
+<h2 id="2-image-library-생성">2.	Image Library 생성</h2>
+
+<p>2.1	Project 탭에서 Assets 항목 우클릭</p>
+
+<p>2.2	Create &gt; folder 클릭하여 material 폴더 생성</p>
+
+<p>2.3	Material 폴더 우클릭 하여 create &gt; XR &gt; reference Image Object 생성</p>
+
+<p><img src="\assets\built\images\unity\unity_2_2_1.png" alt="img" /></p>
+
+<p>2.4	AR 앱으로 촬영할 대상 이미지 파일을 드래그하여 material 폴더로 복사</p>
+
+<p>2.5	생성한 Image Object 선택 후 Inspector 탭에서 Add Image 버튼 클릭</p>
+
+<p>2.6	Texture 2D 항목에 대상 이미지 파일을 드래그 하여 설정</p>
+
+<p><img src="\assets\built\images\unity\unity_2_2_2.png" alt="img" /></p>
+
+<p>2.7	Inspector 탭에서 Specify Size 체크 후 Physical Size 값 설정 (인식할 이미지 크기 설정)
+※ X 값 또는 Y 값 입력 시 다른 값은 비율에 맞게 자동 입력</p>
+
+<p><img src="\assets\built\images\unity\unity_2_2_3.png" alt="img" /></p>
+
+<p>2.8	인식할 이미지 개수만큼 2.4 ~ 2.7 단계 반복</p>
+
+<h2 id="3-image-prefab-생성">3.	Image Prefab 생성</h2>
+
+<p>3.1	AR 앱으로 촬영할 대상 위에 표시할 이미지 파일을 material 폴더로 복사</p>
+
+<p>3.2	Hierarchy 탭에서 + 버튼을 클릭하여 3D Object &gt; Quad 선택</p>
+
+<p><img src="\assets\built\images\unity\unity_2_3_1.png" alt="img" /></p>
+
+<p>3.3	생성한 Quad 항목을 선택</p>
+
+<p>3.4	Inspector 탭의 하단 빈곳으로 복사한 이미지 파일을 드래그하여 이동</p>
+
+<p><img src="\assets\built\images\unity\unity_2_3_2.png" alt="img" /></p>
+
+<p>3.5	Hierarchy 탭에서 생성한 Quad 항목을 드래그하여 Project 탭의 material 폴더로 이동</p>
+
+<p>3.6	Material 폴더에 Quad 항목이 생성된 것을 확인 후 Hierarchy 탭에서 Quad 항목 삭제</p>
+
+<p><img src="\assets\built\images\unity\unity_2_3_3.png" alt="img" /></p>
+
+<p>3.7	표시할 이미지 개수만큼 반복</p>
+
+<h2 id="4-ar-설정">4.	AR 설정</h2>
+<p>4.1	Hierarchy 탭에서 AR Session Origin 항목 클릭</p>
+
+<p>4.2	Inspector 탭에서 Add Component 클릭</p>
+
+<p>4.3	AR Tracked Image Manager 추가</p>
+
+<p><img src="\assets\built\images\unity\unity_2_4_1.png" alt="img" /></p>
+
+<p>4.4	AR Tracked Image Manager 설정</p>
+
+<p>4.4.1	Serialized Library에 2.2에서 생성한 Image Library를 드래그 하여 이동</p>
+
+<p>4.4.2	Max Number Of Moving Images 의 값을 설정 (인식할 이미지 개수)</p>
+
+<p>4.4.3	Tracked Image Prefab에 None 으로 설정</p>
+
+<p><img src="\assets\built\images\unity\unity_3_4_2.png" alt="img" /></p>
+
+<h2 id="5---multiple-image-tracking-스크립트-추가">5.   Multiple Image Tracking 스크립트 추가</h2>
+<p>5.1	Hierarchy 탭에서 AR Session Origin 항목 클릭</p>
+
+<p>5.2	Inspector 탭에서 Add Component 클릭</p>
+
+<p>5.3	Search 에서 New script 클릭</p>
+
+<p>5.4	Name 부분에 생성할 스크립트 명 작성</p>
+
+<p>5.5	Create and Add 클릭</p>
+
+<p><img src="\assets\built\images\unity\unity_3_5_1.png" alt="img" /></p>
+
+<p>5.6	생성된 스크립트 항목의 우측 아이콘 클릭</p>
+
+<p>5.7	메뉴에서 Edit Script 클릭</p>
+
+<p><img src="\assets\built\images\unity\unity_3_5_2.png" alt="img" /></p>
+
+<h2 id="6--multiple-image-tracking-스크립트-코드-작성">6.  Multiple Image Tracking 스크립트 코드 작성</h2>
+<p>6.1	라이브러리 및 전역변수 선언</p>
+
+<p><img src="\assets\built\images\unity\unity_3_6_1.png" alt="img" /></p>
+
+<p>6.2	Awake 함수 선언</p>
+
+<p><img src="\assets\built\images\unity\unity_3_6_2.png" alt="img" /></p>
+
+<p>6.3	이미지 감지 이벤트 처리 함수 선언</p>
+
+<p><img src="\assets\built\images\unity\unity_3_6_3.png" alt="img" /></p>
+
+<h2 id="7--multiple-script-prefab-설정">7.  Multiple script prefab 설정</h2>
+<p>7.1	Hierarchy 탭에서 AR Session Origin 항목 클릭</p>
+
+<p>7.2	추가한 스크립트 내 Prefabs 에서 + 버튼을 눌러 목록 증가</p>
+
+<p><img src="\assets\built\images\unity\unity_3_7_1.png" alt="img" /></p>
+
+<p>7.3	Prefabs 목록에 표시할 이미지 Prefab 등록</p>
+
+<p><img src="\assets\built\images\unity\unity_3_7_2.png" alt="img" /></p>
+
+<h2 id="8--app-빌드">8.  App 빌드</h2>]]></content><author><name>sian</name></author><category term="Unity" /><category term="Unity" /><summary type="html"><![CDATA[서론]]></summary></entry><entry><title type="html">Unity AR App 개발 - Image Tracking App 개발</title><link href="http://localhost:4000/unity_2" rel="alternate" type="text/html" title="Unity AR App 개발 - Image Tracking App 개발" /><published>2023-05-17T09:10:00+09:00</published><updated>2023-05-17T09:10:00+09:00</updated><id>http://localhost:4000/unity_2</id><content type="html" xml:base="http://localhost:4000/unity_2"><![CDATA[<h2 id="서론">서론</h2>
+
+<p>Unity 기반 안드로이드용 AR app 개발을 하기 위해 조사 및 테스트한 내용을 정리하기 위해 본 포스트를 작성하였다.
+두번째로 특정 이미지 위에 다른 이미지를 띄우는 Image Tracking App 개발에 대해 알아보자.</p>
+
+<h2 id="1-ar-모듈-설치">1.	AR 모듈 설치</h2>
+
+<p>1.1	메뉴 탭의 Window &gt; Package Manager 클릭</p>
+
+<p>1.2	Packages: In Project 항목 클릭하여 Unity registry 로 변경</p>
+
+<p>1.3	우측 상단 검색창에 ar 입력</p>
+
+<p>1.4	검색 결과 목록에서 AR Foundation 선택</p>
+
+<p>1.5	우측 하단 Install 클릭</p>
+
+<p>1.6	설치 완료 후 Package Manager 팝업 닫기</p>
+
+<p><img src="\assets\built\images\unity\unity_2_1_1.png" alt="img" /></p>
+
+<p>1.7	Hierarchy 탭에서 Main Camera 항목 삭제</p>
+
+<p><img src="\assets\built\images\unity\unity_2_1_2.png" alt="img" /></p>
+
+<p>1.8	+ 버튼 클릭하여 XR &gt; AR Session / AR Session Origin 각각 추가한다</p>
+
+<p><img src="\assets\built\images\unity\unity_2_1_3.png" alt="img" /></p>
+
+<h2 id="2-image-library-생성">2.	Image Library 생성</h2>
+
+<p>2.1	Project 탭에서 Assets 항목 우클릭</p>
+
+<p>2.2	Create &gt; folder 클릭하여 material 폴더 생성</p>
+
+<p><img src="\assets\built\images\unity\unity_2_2_1.png" alt="img" /></p>
+
+<p>2.3	Material 폴더 우클릭 하여 create &gt; XR &gt; reference Image Object 생성</p>
+
+<p><img src="\assets\built\images\unity\unity_2_2_2.png" alt="img" /></p>
+
+<p>2.4	AR 앱으로 촬영할 대상 이미지 파일을 드래그하여 material 폴더로 복사</p>
+
+<p>2.5	생성한 Image Object 선택 후 Inspector 탭에서 Add Image 버튼 클릭</p>
+
+<p>2.6	Texture 2D 항목에 대상 이미지 파일을 드래그 하여 설정</p>
+
+<p><img src="\assets\built\images\unity\unity_2_2_3.png" alt="img" /></p>
+
+<p>2.7	Inspector 탭에서 Specify Size 체크 후 Physical Size 값 설정 (인식할 이미지 크기 설정)
+※ X 값 또는 Y 값 입력 시 다른 값은 비율에 맞게 자동 입력</p>
+
+<p><img src="\assets\built\images\unity\unity_2_2_4.png" alt="img" /></p>
+
+<h2 id="3-image-prefab-생성">3.	Image Prefab 생성</h2>
+
+<p>3.1	AR 앱으로 촬영할 대상 위에 표시할 이미지 파일을 material 폴더로 복사</p>
+
+<p>3.2	Hierarchy 탭에서 + 버튼을 클릭하여 3D Object &gt; Quad 선택</p>
+
+<p><img src="\assets\built\images\unity\unity_2_3_1.png" alt="img" /></p>
+
+<p>3.3	생성한 Quad 항목을 선택</p>
+
+<p>3.4	Inspector 탭의 하단 빈곳으로 복사한 이미지 파일을 드래그하여 이동</p>
+
+<p><img src="\assets\built\images\unity\unity_2_3_2.png" alt="img" /></p>
+
+<p>3.5	Hierarchy 탭에서 생성한 Quad 항목을 드래그하여 Project 탭의 material 폴더로 이동</p>
+
+<p>3.6	Material 폴더에 Quad 항목이 생성된 것을 확인 후 Hierarchy 탭에서 Quad 항목 삭제</p>
+
+<p><img src="\assets\built\images\unity\unity_2_3_3.png" alt="img" /></p>
+
+<h2 id="4-ar-설정">4.	AR 설정</h2>
+<p>4.1	Hierarchy 탭에서 AR Session Origin 항목 클릭</p>
+
+<p>4.2	Inspector 탭에서 Add Component 클릭</p>
+
+<p>4.3	AR Tracked Image Manager 추가</p>
+
+<p><img src="\assets\built\images\unity\unity_2_4_1.png" alt="img" /></p>
+
+<p>4.4	AR Tracked Image Manager 설정</p>
+
+<p>4.4.1	Serialized Library에 2.2에서 생성한 Image Library를 드래그 하여 이동</p>
+
+<p>4.4.2	Max Number Of Moving Images 의 값을 설정 (인식할 이미지 개수)</p>
+
+<p>4.4.3	Tracked Image Prefab에 2.3에서 생성한 Image Prefab을 드래그 하여 이동</p>
+
+<p><img src="\assets\built\images\unity\unity_2_4_2.png" alt="img" /></p>
+
+<h2 id="5-app-빌드">5.	App 빌드</h2>]]></content><author><name>sian</name></author><category term="Unity" /><category term="Unity" /><summary type="html"><![CDATA[서론]]></summary></entry><entry><title type="html">Unity AR App 개발 - Unity 설치 및 프로젝트 설정</title><link href="http://localhost:4000/unity_1" rel="alternate" type="text/html" title="Unity AR App 개발 - Unity 설치 및 프로젝트 설정" /><published>2023-05-17T09:00:00+09:00</published><updated>2023-05-17T09:00:00+09:00</updated><id>http://localhost:4000/unity_1</id><content type="html" xml:base="http://localhost:4000/unity_1"><![CDATA[<h2 id="서론">서론</h2>
+
+<p>Unity 기반 안드로이드용 AR app 개발을 하기 위해 조사 및 테스트한 내용을 정리하기 위해 본 포스트를 작성하였다.
+첫번째로 Unity 설치 및 프로젝트 설정에 대해 알아보자.</p>
+
+<h3 id="환경">환경</h3>
+
+<ul>
+  <li>Windows 11</li>
+  <li>Android 기반 스마트폰</li>
+</ul>
+
+<h2 id="1-unity-hub-설치">1.	Unity Hub 설치</h2>
+
+<ul>
+  <li>유니티 사이트(https://unity.com/kr/download) 접속하여 다운로드</li>
+</ul>
+
+<p><img src="\assets\built\images\unity\unity_1_1.png" alt="img" /></p>
+
+<h2 id="2-unity-editor-설치">2.	Unity Editor 설치</h2>
+
+<p>2.1	Unity Hub 실행</p>
+
+<p>2.2	좌측 메뉴 Installs 메뉴 클릭</p>
+
+<p>2.3	우측 상단 Install Editor 클릭</p>
+
+<p><img src="\assets\built\images\unity\unity_1_2_1.png" alt="img" /></p>
+
+<p>2.4	설치할 에디터 버전 항목의 Install 클릭</p>
+
+<p><img src="\assets\built\images\unity\unity_1_2_2.png" alt="img" /></p>
+
+<p>2.5 이전 버전 에디터 설치하려면 유니티 아카이브 사이트(https://unity.com/releases/editor/archive) 접속하여 해당 버전 항목의 Unity Hub 버튼 클릭</p>
+
+<p><img src="\assets\built\images\unity\unity_1_2_3.png" alt="img" /></p>
+
+<p>2.6	설치항목 선택 (안드로이드 앱 기준)</p>
+
+<p>2.6.1	안드로이드 관련 항목(SDK/NDK 등) 체크</p>
+
+<p>2.6.2	Visual Studio 항목 체크 후 Install 클릭</p>
+
+<p><img src="\assets\built\images\unity\unity_1_2_4.png" alt="img" /></p>
+
+<h2 id="3-프로젝트-생성">3.	프로젝트 생성</h2>
+
+<p>3.1	Unity Hub 실행</p>
+
+<p>3.2	좌측 메뉴 Projects 클릭</p>
+
+<p>3.3	우측 상단 New project 클릭</p>
+
+<p><img src="\assets\built\images\unity\unity_1_3_1.png" alt="img" /></p>
+
+<p>3.4	중앙 상단 사용할 에디터 버전 선택</p>
+
+<p>3.5	프로젝트 템플릿은 3D Core 선택</p>
+
+<p>3.6	우측 하단 Project name 설정</p>
+
+<p>3.7	Create project 클릭</p>
+
+<p><img src="\assets\built\images\unity\unity_1_3_2.png" alt="img" /></p>
+
+<h2 id="4-프로젝트-설정">4.	프로젝트 설정</h2>
+
+<p>4.1	플랫폼 변경</p>
+
+<p>4.1.1	File &gt; Build Settings 클릭</p>
+
+<p><img src="\assets\built\images\unity\unity_1_4_1.png" alt="img" /></p>
+
+<p>4.1.2	Platform 항목에서 안드로이드 선택 후 Switch Platform 클릭</p>
+
+<p>4.2	빌드 설정</p>
+
+<p>4.2.1	Build Settings 창 하단 Player Settings 클릭</p>
+
+<p>4.2.2	Company Name, Product Name 설정 (빌드 시 해당 설정값으로 패키지명 자동설정 됨)</p>
+
+<p>4.2.3	Other Settings 클릭</p>
+
+<p>4.2.4	Auto Graphics API 체크해제</p>
+
+<p>4.2.5	Graphics APIs 항목에서 Vulkan 클릭 후 아래 – 버튼 클릭하여 제외</p>
+
+<p><img src="\assets\built\images\unity\unity_1_4_2.png" alt="img" /></p>
+
+<p>4.2.6	Minimum API Level 설정 (24 ~ 26 버전 설정 권장)</p>
+
+<p>4.2.7	Target API Level 설정 (기본값으로 사용 권장, 빌드 실패 시 유니티 에디터 버전에 맞는 안드로이드 버전으로 설정)</p>
+
+<p>4.2.8	Scripting Backend 값을 IL2CPP 로 설정</p>
+
+<p>4.2.9 Target Architectures 에서 ARM64 체크 (갤럭시 S20 이상에서 구동 시 필수)</p>
+
+<p><img src="\assets\built\images\unity\unity_1_4_3.png" alt="img" /></p>
+
+<p>4.2.10	Project Settings &gt; XR Plug-in Management 클릭</p>
+
+<p>4.2.11	XR Install 클릭</p>
+
+<p>4.2.12	ARCore 체크</p>
+
+<p><img src="\assets\built\images\unity\unity_1_4_4.png" alt="img" /></p>
+
+<h2 id="5-app-빌드">5.	App 빌드</h2>
+
+<p>5.1	File &gt; Build Settings 클릭</p>
+
+<p>5.2	Add Open Scenes 클릭</p>
+
+<p>5.3	빌드할 Scene 항목 체크</p>
+
+<p>5.4	연결된 기기가 있을 시, Run Device 에서 연결한 기기 선택</p>
+
+<p>5.5	Build And Run 실행</p>
+
+<p><img src="\assets\built\images\unity\unity_1_5_1.png" alt="img" /></p>
+
+<p>5.6	생성할 APK 파일명 설정 후 저장</p>
+
+<p>5.7	빌드 완료 후 해당 프로젝트 폴더에 APK 파일 생성</p>
+
+<p>5.8	Run Device 에서 연결한 기기 선택 시, 기기에서 자동 실행됨</p>]]></content><author><name>sian</name></author><category term="Unity" /><category term="Unity" /><summary type="html"><![CDATA[서론]]></summary></entry><entry><title type="html">Letsencrypt + Nginx SSL인증서(HTTPS) 적용 (Ubuntu22.04 개정판)</title><link href="http://localhost:4000/ssl-letsencrypt-ubuntu22" rel="alternate" type="text/html" title="Letsencrypt + Nginx SSL인증서(HTTPS) 적용 (Ubuntu22.04 개정판)" /><published>2022-06-13T00:00:00+09:00</published><updated>2022-06-13T00:00:00+09:00</updated><id>http://localhost:4000/ssl-letsencrypt-ubuntu22</id><content type="html" xml:base="http://localhost:4000/ssl-letsencrypt-ubuntu22"><![CDATA[<h2 id="서론">서론</h2>
 
 <p>이전에 <a href="https://sianlab.github.io/ssl-letsencrypt/" title="Letsencrypt + Nginx SSL인증서(HTTPS) 적용">ubuntu 18버전에 Let’s Encrypt를 이용하여 SSL 환경을 구성한 포스트</a>를 작성했었다. 몇년이 지나고 현재 ubuntu 22 버전에 다시 SSL을 세팅할 일이 생겨서 이전에 작성한 포스트를 보며 변경된 부분을 개정하여 본 포스트를 작성하였다.</p>
 
@@ -96,7 +646,7 @@
 
 <h2 id="troubleshooting">troubleshooting</h2>
 
-<p>본 포스트 내용을 진행중에 따로 에러가 난 부분이 없어서 추후 에러사항이 있다면 추가해나갈 계획이다.</p>]]></content><author><name>sian</name></author><category term="SSL" /><category term="https" /><category term="SSL" /><category term="letsencrypt" /><summary type="html"><![CDATA[서론]]></summary></entry><entry><title type="html">Apache Ignite 살펴보기</title><link href="https://sianlab.github.io/apache-ignite-overview" rel="alternate" type="text/html" title="Apache Ignite 살펴보기" /><published>2022-06-07T00:00:00+09:00</published><updated>2022-06-07T00:00:00+09:00</updated><id>https://sianlab.github.io/apache-ignite-overview</id><content type="html" xml:base="https://sianlab.github.io/apache-ignite-overview"><![CDATA[<p>아파치 재단에서 Apache Ignite라는 분산형 데이터베이스 서비스를 출시했다. 메모리와 저장장치 간 데이터를 분산하여 속도, 안정성 모두 고려하여 개발된 데이터베이스로 보인다. 사이트에 접속해보면 여러가지 기술들이 나열되어 있는데 이론적인 이야기는 일단 제쳐두고 간단하게 메모리 DB로 사용해 본 내용을 본 포스트에 기재한다.</p>
+<p>본 포스트 내용을 진행중에 따로 에러가 난 부분이 없어서 추후 에러사항이 있다면 추가해나갈 계획이다.</p>]]></content><author><name>sian</name></author><category term="SSL" /><category term="https" /><category term="SSL" /><category term="letsencrypt" /><summary type="html"><![CDATA[서론]]></summary></entry><entry><title type="html">Apache Ignite 살펴보기</title><link href="http://localhost:4000/apache-ignite-overview" rel="alternate" type="text/html" title="Apache Ignite 살펴보기" /><published>2022-06-07T00:00:00+09:00</published><updated>2022-06-07T00:00:00+09:00</updated><id>http://localhost:4000/apache-ignite-overview</id><content type="html" xml:base="http://localhost:4000/apache-ignite-overview"><![CDATA[<p>아파치 재단에서 Apache Ignite라는 분산형 데이터베이스 서비스를 출시했다. 메모리와 저장장치 간 데이터를 분산하여 속도, 안정성 모두 고려하여 개발된 데이터베이스로 보인다. 사이트에 접속해보면 여러가지 기술들이 나열되어 있는데 이론적인 이야기는 일단 제쳐두고 간단하게 메모리 DB로 사용해 본 내용을 본 포스트에 기재한다.</p>
 
 <p>만약 지원하는 기술 및 각종 가이드가 궁금한 사람은 아래 사이트에 접속해서 확인해보면 된다.</p>
 
@@ -396,7 +946,7 @@
 
 <p>ignite 서버를 재시작했음에도 데이터가 유지되는 모습을 확인할 수 있었다.</p>
 
-<p>여기까지 정말 기본적인 ignite 사용법을 살펴보았다.</p>]]></content><author><name>sian</name></author><category term="apache-ignite" /><category term="apache-ignite" /><category term="ignite" /><summary type="html"><![CDATA[아파치 재단에서 Apache Ignite라는 분산형 데이터베이스 서비스를 출시했다. 메모리와 저장장치 간 데이터를 분산하여 속도, 안정성 모두 고려하여 개발된 데이터베이스로 보인다. 사이트에 접속해보면 여러가지 기술들이 나열되어 있는데 이론적인 이야기는 일단 제쳐두고 간단하게 메모리 DB로 사용해 본 내용을 본 포스트에 기재한다.]]></summary></entry><entry><title type="html">Maven과 Gradle 차이</title><link href="https://sianlab.github.io/mavengradle" rel="alternate" type="text/html" title="Maven과 Gradle 차이" /><published>2021-09-09T16:00:00+09:00</published><updated>2021-09-09T16:00:00+09:00</updated><id>https://sianlab.github.io/mavengradle</id><content type="html" xml:base="https://sianlab.github.io/mavengradle"><![CDATA[<h1 id="빌드-도구란">빌드 도구란?</h1>
+<p>여기까지 정말 기본적인 ignite 사용법을 살펴보았다.</p>]]></content><author><name>sian</name></author><category term="apache-ignite" /><category term="apache-ignite" /><category term="ignite" /><summary type="html"><![CDATA[아파치 재단에서 Apache Ignite라는 분산형 데이터베이스 서비스를 출시했다. 메모리와 저장장치 간 데이터를 분산하여 속도, 안정성 모두 고려하여 개발된 데이터베이스로 보인다. 사이트에 접속해보면 여러가지 기술들이 나열되어 있는데 이론적인 이야기는 일단 제쳐두고 간단하게 메모리 DB로 사용해 본 내용을 본 포스트에 기재한다.]]></summary></entry><entry><title type="html">Maven과 Gradle 차이</title><link href="http://localhost:4000/mavengradle" rel="alternate" type="text/html" title="Maven과 Gradle 차이" /><published>2021-09-09T16:00:00+09:00</published><updated>2021-09-09T16:00:00+09:00</updated><id>http://localhost:4000/mavengradle</id><content type="html" xml:base="http://localhost:4000/mavengradle"><![CDATA[<h1 id="빌드-도구란">빌드 도구란?</h1>
 
 <ul>
   <li>빌드 도구는 빌드 자동화를 시켜주는 실행가능한 프로그램만들어 주는 프로그램 ex) maven, gradle, ant</li>
@@ -539,7 +1089,7 @@ Gradle은 설정 주입 방식을 제공한다.</li>
     <span class="nx">compile</span><span class="p">(</span><span class="dl">'</span><span class="s1">org.springframework.boot:spring-boot-starter</span><span class="dl">'</span><span class="p">)</span>
     <span class="nx">testCompile</span><span class="p">(</span><span class="dl">'</span><span class="s1">org.springframework.boot:spring-boot-starter-test</span><span class="dl">'</span><span class="p">)</span>
 <span class="p">}</span>
-</code></pre></div></div>]]></content><author><name>sian</name></author><category term="build" /><category term="maven" /><category term="gradle" /><summary type="html"><![CDATA[빌드 도구란?]]></summary></entry><entry><title type="html">Python 강좌(1) - Python 기본</title><link href="https://sianlab.github.io/python-base" rel="alternate" type="text/html" title="Python 강좌(1) - Python 기본" /><published>2021-09-08T08:40:00+09:00</published><updated>2021-09-08T08:40:00+09:00</updated><id>https://sianlab.github.io/python-base</id><content type="html" xml:base="https://sianlab.github.io/python-base"><![CDATA[<p><span class="table-of-contents-list">Python 강좌는 여러 절로 구성되어 있습니다. </span></p>
+</code></pre></div></div>]]></content><author><name>sian</name></author><category term="build" /><category term="maven" /><category term="gradle" /><summary type="html"><![CDATA[빌드 도구란?]]></summary></entry><entry><title type="html">Python 강좌(1) - Python 기본</title><link href="http://localhost:4000/python-base" rel="alternate" type="text/html" title="Python 강좌(1) - Python 기본" /><published>2021-09-08T08:40:00+09:00</published><updated>2021-09-08T08:40:00+09:00</updated><id>http://localhost:4000/python-base</id><content type="html" xml:base="http://localhost:4000/python-base"><![CDATA[<p><span class="table-of-contents-list">Python 강좌는 여러 절로 구성되어 있습니다. </span></p>
 <ul class="table-of-contents-list">
     <li><a href="./python-base">Python 강좌(1) - Python 기본</a></li>
     <li><a href="./python-control-statement">Python 강좌(2) - Python 제어문</a></li>
@@ -551,421 +1101,4 @@ Gradle은 설정 주입 방식을 제공한다.</li>
     <span class="kd">var</span> <span class="nx">foo</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">Hello World</span><span class="dl">'</span><span class="p">;</span>
     <span class="kd">var</span> <span class="nx">bar</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
 <span class="p">}</span>
-</code></pre></div></div>]]></content><author><name>sian</name></author><category term="python" /><summary type="html"><![CDATA[Python 강좌는 여러 절로 구성되어 있습니다. Python 강좌(1) - Python 기본 Python 강좌(2) - Python 제어문]]></summary></entry><entry><title type="html">Python 강좌(2) - Python 제어문</title><link href="https://sianlab.github.io/python-control-statement" rel="alternate" type="text/html" title="Python 강좌(2) - Python 제어문" /><published>2021-09-08T08:40:00+09:00</published><updated>2021-09-08T08:40:00+09:00</updated><id>https://sianlab.github.io/python-control-statement</id><content type="html" xml:base="https://sianlab.github.io/python-control-statement"><![CDATA[<p><span class="table-of-contents-list">Python 강좌는 여러 절로 구성되어 있습니다. </span></p>
-<ul class="table-of-contents-list">
-    <li><a href="./python-base">Python 강좌(1) - Python 기본</a></li>
-    <li><a href="./python-control-statement">Python 강좌(2) - Python 제어문</a></li>
-</ul>
-
-<p>이 글은 Python 제어문 입니다.!!</p>]]></content><author><name>sian</name></author><category term="python" /><summary type="html"><![CDATA[Python 강좌는 여러 절로 구성되어 있습니다. Python 강좌(1) - Python 기본 Python 강좌(2) - Python 제어문]]></summary></entry><entry><title type="html">PMD 설치 및 사용방법</title><link href="https://sianlab.github.io/pmd" rel="alternate" type="text/html" title="PMD 설치 및 사용방법" /><published>2021-01-20T16:30:00+09:00</published><updated>2021-01-20T16:30:00+09:00</updated><id>https://sianlab.github.io/pmd</id><content type="html" xml:base="https://sianlab.github.io/pmd"><![CDATA[<h1 id="-pmd-란">※	PMD 란</h1>
-
-<ol>
-  <li>JAVA 소스 코드를 분석하여 프로그램의 오류 또는 불필요한 부분을 찾아내고 성능을 높이는 오픈 소스 도구</li>
-  <li>PMD는 미사용 변수, 비어있는 코드 블락, 불필요한 오브젝트 생성과 같은 결함을 유발할 수 있는 코드를 검사한다.</li>
-  <li>자바 코드를 검사해서 나쁜 코딩을 잡아주고 그에 대한 설명을 지원하며, Eclipse, Jbuider 등에 연동하여 사용한다.</li>
-</ol>
-
-<h2 id="-pmd-설치방법">※ PMD 설치방법</h2>
-
-<p><img src="\assets\built\images\pmd\pmd01.png" alt="img" /></p>
-<ul>
-  <li>이클립스와 연동을 위해 Help → Install New Software 클릭한다</li>
-</ul>
-
-<p><img src="\assets\built\images\pmd\pmd02.png" alt="img" /></p>
-<ul>
-  <li>Name을 입력하고 다운로드 주소를 입력한다</li>
-  <li><a href="주소 : http://sourceforge.net/projects/pmd/files/pmd-eclipse/update-site">http://sourceforge.net/projects/pmd/files/pmd-eclipse/update-site</a></li>
-</ul>
-
-<p><img src="\assets\built\images\pmd\pmd03.png" alt="img" /></p>
-<ul>
-  <li>다운로드 시작</li>
-</ul>
-
-<p><img src="\assets\built\images\pmd\pmd04.png" alt="img" /></p>
-<ul>
-  <li>다운로드 완료</li>
-</ul>
-
-<p><img src="\assets\built\images\pmd\pmd05.png" alt="img" /></p>
-<ul>
-  <li>항목 선택 후 설치 시작</li>
-</ul>
-
-<p><img src="\assets\built\images\pmd\pmd06.png" alt="img" /></p>
-<ul>
-  <li>라이선스 동의 후 완료</li>
-</ul>
-
-<h3 id="-pmd-사용방법">※ PMD 사용방법</h3>
-
-<p><img src="\assets\built\images\pmd\pmd07.png" alt="img" /></p>
-<ul>
-  <li>코드 검사할 파일 우클릭 → PMD → Check code</li>
-</ul>
-
-<p><img src="\assets\built\images\pmd\pmd08.png" alt="img" /></p>
-<ul>
-  <li>코드 검사 완료</li>
-</ul>
-
-<p><img src="\assets\built\images\pmd\pmd09.png" alt="img" /></p>
-<ul>
-  <li>항목 우클릭 → show details</li>
-</ul>
-
-<p><img src="\assets\built\images\pmd\pmd10.png" alt="img" /></p>
-<ul>
-  <li>불량 코드로 지적된 사항 확인</li>
-</ul>
-
-<h4 id="-pmd-룰셋">※ PMD 룰셋</h4>
-
-<p>• PMD 룰셋이란
-전자정부 표준프레임워크에서는 Code Inspection 을 위한 룰셋으로 논리오류/구문오류/참조오류 영역을 대상으로 하는 총 39개의 룰을 표준으로 선정하였다</p>
-
-<p>• 룰셋 환경설정
-Eclipse IDE의 환경설정을 통해, 전자정부 표준프레임워크 표준 Inspection 룰셋을 PMD Plugin에 적용할 수 있으며, 다음과 같은 순서로 수행한다.</p>
-
-<ul>
-  <li>전자정부 표준프레임워크 표준 Inspection 룰셋
-  PMD를 이용한 Code Inspection 시 기준이 되는 요소는 룰이며, 전자정부 표준프레임워크에서는 PMD가 제공하는 수 많은 룰 중에 기본이 될 만한 것들을 간추려 전자정부 표준프레임워크 표준 Inspection 룰셋이라는 이름으로 구성하였다. 이는 39개의 룰들로 구성되며, 개별 룰에 대한 상세 설명은 다음을 참조하라</li>
-</ul>
-
-<p>⊙ <a href="⊙ 전자정부 표준 inspection 룰셋">https://www.egovframe.go.kr/wiki/doku.php?id=egovframework:dev2:imp:inspection:usetool#%EC%A0%84%EC%9E%90%EC%A0%95%EB%B6%80<em>%ED%91%9C%EC%A4%80_inspection</em>%EB%A3%B0%EC%85%8B</a></p>
-
-<ul>
-  <li>다음 두가지 경로 중, 하나를 선택해어 전자정부 표준프레임워크 표준 Inspection 룰셋을 다운
-  표준 Inspection 룰셋 한글/영문판의 압축파일 : 개발환경 3.5 이상 버전 사용
-  전자정부 표준프레임워크 온라인 지원 포탈사이트의 다운로드 &gt; 개발환경 &gt; 구현도구 소스코드에서 내려받기</li>
-</ul>
-
-<ol>
-  <li>
-    <p>내려받은 파일을 임의의 디렉터리에 압축 해제</p>
-  </li>
-  <li>
-    <p>Eclipse IDE의 메뉴에서 Window → Preferences 선택
-  <img src="\assets\built\images\pmd\pmd11.png" alt="img" /></p>
-  </li>
-  <li>
-    <p>Preferences 창의 왼쪽 메뉴 구조에서, PMD → Rules Configuration 선택
-  <img src="\assets\built\images\pmd\pmd12.png" alt="img" /></p>
-  </li>
-  <li>
-    <p>Preferences 창에서, use global rule management 선택 후 ruleset 목록 전체선택후 우측의 [x] Remove rules 아이콘 클릭
-  <img src="\assets\built\images\pmd\pmd13.png" alt="img" /></p>
-  </li>
-  <li>
-    <p>Preferences 창에서, 우측의 Import ruleset 아이콘 클릭
-  <img src="\assets\built\images\pmd\pmd14.png" alt="img" /></p>
-  </li>
-  <li>
-    <p>Ruleset 가져오기 팝업창에서, 우측의 Browse…버튼 클릭한후 앞서 압축해제한 룰셋 파일 중 한글판인 EgovInspectionRules_kor-3.5.xml 파일을 선택
-  <img src="\assets\built\images\pmd\pmd15.png" alt="img" /></p>
-  </li>
-  <li>
-    <p>Ruleset 가져오기 팝업창에서, ruleset목록이 확인되면 OK버튼을 클릭
-  <img src="\assets\built\images\pmd\pmd16.png" alt="img" /></p>
-  </li>
-  <li>
-    <p>Perferences 창에서, 목록 좌측의 체크박스를 모두 선택하고 OK버튼을 클릭
-  <img src="\assets\built\images\pmd\pmd17.png" alt="img" /></p>
-  </li>
-  <li>
-    <p>룰셋을 적용하겠냐는 질문에 YES버튼을 클릭하여 최종 확인.</p>
-  </li>
-</ol>]]></content><author><name>sian</name></author><category term="web" /><category term="PMD" /><summary type="html"><![CDATA[※ PMD 란]]></summary></entry><entry><title type="html">TortoiseGit 사용방법</title><link href="https://sianlab.github.io/tortoisegit-2" rel="alternate" type="text/html" title="TortoiseGit 사용방법" /><published>2021-01-13T15:30:00+09:00</published><updated>2021-01-13T15:30:00+09:00</updated><id>https://sianlab.github.io/tortoisegit-2</id><content type="html" xml:base="https://sianlab.github.io/tortoisegit-2"><![CDATA[<h1 id="-tortoisegit-사용방법">※	TortoiseGit 사용방법</h1>
-
-<ol>
-  <li>데이터 받아오기 (Git 데이터 복제)</li>
-</ol>
-
-<p><img src="\assets\built\images\tortoisegit\tortoise25.png" alt="img" /></p>
-
-<p>Git 자료를 복제 받기 원하는 곳으로 이동한 후 마우스 우클릭 “Git 복제하기..” 클릭</p>
-
-<p><img src="\assets\built\images\tortoisegit\tortoise26.png" alt="img" /></p>
-
-<p>새로 생긴 복제창에서 “URL” 부분에 복제할 자료의 Repository 주소를 입력한다</p>
-
-<p><img src="\assets\built\images\tortoisegit\tortoise27.png" alt="img" /></p>
-
-<p>권한을 가진 Git 사용자 정보를 입력한다</p>
-
-<p><img src="\assets\built\images\tortoisegit\tortoise28.png" alt="img" /></p>
-
-<p>Git 데이터 복제</p>
-
-<p><img src="\assets\built\images\tortoisegit\tortoise29.png" alt="img" /></p>
-
-<p>Git 데이터 복제 완료</p>
-
-<ol>
-  <li>데이터 업데이트 (Git 데이터 동기화)</li>
-</ol>
-
-<p><img src="\assets\built\images\tortoisegit\tortoise30.png" alt="img" /></p>
-
-<p>데이터 복제된 폴더에서 우클릭 “Git 동기화..” 클릭</p>
-
-<p><img src="\assets\built\images\tortoisegit\tortoise31.png" alt="img" /></p>
-
-<p>“가져와 병합하기” 클릭</p>
-
-<p><img src="\assets\built\images\tortoisegit\tortoise32.png" alt="img" /></p>
-
-<p>업데이트 된 내역이 출력됨. 다시 “가져와 병합하기” 클릭</p>
-
-<p><img src="\assets\built\images\tortoisegit\tortoise33.png" alt="img" /></p>
-
-<p>데이터가 업데이트 되고 변경된 내역이 출력됨</p>
-
-<ol>
-  <li>데이터 저장 (Git 작업 Commit)</li>
-</ol>
-
-<p><img src="\assets\built\images\tortoisegit\tortoise34.png" alt="img" /></p>
-
-<p>수정한 파일이 위치한 폴더에서 우클릭 “Git 커밋 -&gt; master” 클릭</p>
-
-<p><img src="\assets\built\images\tortoisegit\tortoise35.png" alt="img" /></p>
-
-<p>작업 후엔 항상 “Commit” 을 해야한다.
-메시지 부분에 자신이 작업한 내용을 간략히 기입한다
-하단의 파일 리스트에서 자신이 작업한 파일들을 선택하고 커밋을 누른다</p>
-
-<p><img src="\assets\built\images\tortoisegit\tortoise36.png" alt="img" /></p>
-
-<p>커밋 완료. 위 상태에서는 본인 PC에만 저장되고, 서버에는 올라가지 않은 상태이다</p>
-
-<p><img src="\assets\built\images\tortoisegit\tortoise37.png" alt="img" /></p>
-
-<p>작업한 폴더에서 우클릭 “TortoiseGit → Git Push” 선택</p>
-
-<p><img src="\assets\built\images\tortoisegit\tortoise38.png" alt="img" /></p>
-
-<p>로컬, 원격 모두 master 인지 확인 후 확인버튼 선택</p>
-
-<p><img src="\assets\built\images\tortoisegit\tortoise39.png" alt="img" /></p>
-
-<p>서버에 작업내용 “Push” 완료</p>]]></content><author><name>sian</name></author><category term="web" /><category term="TortoiseGit" /><summary type="html"><![CDATA[※ TortoiseGit 사용방법]]></summary></entry><entry><title type="html">TortoiseGit 설치방법</title><link href="https://sianlab.github.io/tortoisegit-1" rel="alternate" type="text/html" title="TortoiseGit 설치방법" /><published>2021-01-13T15:00:00+09:00</published><updated>2021-01-13T15:00:00+09:00</updated><id>https://sianlab.github.io/tortoisegit-1</id><content type="html" xml:base="https://sianlab.github.io/tortoisegit-1"><![CDATA[<h1 id="-tortoisegit-설치방법">※	TortoiseGit 설치방법</h1>
-
-<h2 id="-tortoisegit-이란">●	TortoiseGit 이란</h2>
-
-<p>윈도우에서 GUI환경을 이용해서 Git을 제어할 수 있도록 도와주는 버전관리 시스템이다
-때문에 Git은 먼저 설치되어 있어야 한다</p>
-
-<p> </p>
-<h2 id="-git-설치방법">●	Git 설치방법</h2>
-
-<p>⊙ Git SCM에 접속하여 설치 파일 다운로드</p>
-
-<p><img src="\assets\built\images\tortoisegit\tortoise01.png" alt="img" /></p>
-
-<p><a href="주소 : https://git-scm.com/">https://git-scm.com/</a></p>
-
-<p><img src="\assets\built\images\tortoisegit\tortoise02.png" alt="img" /></p>
-
-<p><img src="\assets\built\images\tortoisegit\tortoise03.png" alt="img" /></p>
-
-<p><img src="\assets\built\images\tortoisegit\tortoise04.png" alt="img" /></p>
-
-<p><img src="\assets\built\images\tortoisegit\tortoise05.png" alt="img" /></p>
-
-<p>Git을 사용할 기본 에디터 선택 (기본설정 Vim)</p>
-
-<p><img src="\assets\built\images\tortoisegit\tortoise06.png" alt="img" /></p>
-
-<p><img src="\assets\built\images\tortoisegit\tortoise07.png" alt="img" /></p>
-
-<p>https 전송 인증서 선택 – 기본설정으로 Next</p>
-
-<p><img src="\assets\built\images\tortoisegit\tortoise08.png" alt="img" /></p>
-
-<p><img src="\assets\built\images\tortoisegit\tortoise09.png" alt="img" /></p>
-
-<p>OpenSSL 라이브러리 사용 – 기본설정으로 Next</p>
-
-<p><img src="\assets\built\images\tortoisegit\tortoise10.png" alt="img" /></p>
-
-<p>Git Bash 터미널 에뮬레이터 설정
-Use MinTTY(the default terminal of MSYS2) – Git bash 기본 터미널 사용</p>
-
-<p><img src="\assets\built\images\tortoisegit\tortoise11.png" alt="img" /></p>
-
-<p><img src="\assets\built\images\tortoisegit\tortoise12.png" alt="img" /></p>
-
-<p>기본설정으로 Next</p>
-
-<p><img src="\assets\built\images\tortoisegit\tortoise13.png" alt="img" /></p>
-
-<p><img src="\assets\built\images\tortoisegit\tortoise14.png" alt="img" /></p>
-
-<p>Enable file system caching – 빠른 실행을 위해 데이터를 메모리에 캐시
-설정이 완료되면 인스톨</p>
-
-<p><img src="\assets\built\images\tortoisegit\tortoise15.png" alt="img" /></p>
-
-<p>Launch Git Bash에 체크하고 Finish 하면 Git Bash가 실행된다
-특정 폴더에서 우클릭시에도 Git Bash를 실행할 수 있다</p>
-
-<h2 id="-tortoisegit-설치방법-1">●	TortoiseGit 설치방법</h2>
-
-<ol>
-  <li>TortoiseGit 다운로드</li>
-</ol>
-
-<p>Windows 환경에 맞는 설치 파일을 다운로드
-<a href="다운로드 : https://tortoisegit.org/download/">https://tortoisegit.org/download/</a></p>
-
-<p><img src="\assets\built\images\tortoisegit\tortoise16.png" alt="img" /></p>
-
-<ol>
-  <li>설치</li>
-</ol>
-
-<p><img src="\assets\built\images\tortoisegit\tortoise17.png" alt="img" /></p>
-
-<p><img src="\assets\built\images\tortoisegit\tortoise18.png" alt="img" /></p>
-
-<p>Tortoise에서 제공하는 기본 PuTTY 기반의 SSH를 선택</p>
-
-<p><img src="\assets\built\images\tortoisegit\tortoise19.png" alt="img" /></p>
-
-<p><img src="\assets\built\images\tortoisegit\tortoise20.png" alt="img" /></p>
-
-<p>설치 준비가 완료되면 Install 진행</p>
-
-<p><img src="\assets\built\images\tortoisegit\tortoise21.png" alt="img" /></p>
-
-<p>첫번째 언어선택 화면에서 사용 언어를 선택
-추가할 언어팩은 아래 주소에서 추가할 수 있다
-다운로드 : https://tortoisegit.org/download/</p>
-
-<p><img src="\assets\built\images\tortoisegit\tortoise22.png" alt="img" /></p>
-
-<p>Git의 실행파일 위치를 입력해야 한다. Git을 먼저 설치하였다면 자동으로 등록된다</p>
-
-<p><img src="\assets\built\images\tortoisegit\tortoise23.png" alt="img" /></p>
-
-<p>유저 정보 입력</p>
-
-<p><img src="\assets\built\images\tortoisegit\tortoise24.png" alt="img" /></p>
-
-<p>설치 완료</p>]]></content><author><name>sian</name></author><category term="web" /><category term="TortoiseGit" /><summary type="html"><![CDATA[※ TortoiseGit 설치방법]]></summary></entry><entry><title type="html">CentOS 7 Gitlab 설치 및 설정(2) - Gitlab 설정</title><link href="https://sianlab.github.io/gitlab-install-2" rel="alternate" type="text/html" title="CentOS 7 Gitlab 설치 및 설정(2) - Gitlab 설정" /><published>2021-01-13T14:45:00+09:00</published><updated>2021-01-13T14:45:00+09:00</updated><id>https://sianlab.github.io/gitlab-install-2</id><content type="html" xml:base="https://sianlab.github.io/gitlab-install-2"><![CDATA[<h3 id="centos-7-gitlab-설치-및-설정2---gitlab-설정">CentOS 7 Gitlab 설치 및 설정(2) - Gitlab 설정</h3>
-
-<h6 id="os--centos-7">OS : CentOS 7</h6>
-<h6 id="version--gitlab-ce-community-edition---무료버전">VERSION : gitlab-ce (community edition - 무료버전)</h6>
-
-<h6 id="centos-7-gitlab-설치-및-설정1---gitlab-설치하기"><a href="https://sianlab.github.io/linux/gitlab-install-1">CentOS 7 Gitlab 설치 및 설정(1) - Gitlab 설치하기</a></h6>
-
-<h4 id="1-external-url-설정-변경">1. External url 설정 변경</h4>
-
-<h6 id="설정-파일-위치--etcgitlabgitlabrb">설정 파일 위치 : /etc/gitlab/gitlab.rb</h6>
-
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>vim /etc/gitlab/gitlab.rb
-</code></pre></div></div>
-
-<h6 id="-설정-파일-내에서-external_url-부분을-찾아서-원하는-url-로-변경">: 설정 파일 내에서 external_url 부분을 찾아서 원하는 url 로 변경</h6>
-
-<p><img src="\assets\built\images\gitlab\2\image-20210113154112679.png" alt="image-20210113154112679" /></p>
-
-<h4 id="2-저장소-데이터-저장-위치-변경">2. 저장소 데이터 저장 위치 변경</h4>
-
-<h6 id="설정-파일-위치--etcgitlabgitlabrb-1">설정 파일 위치 : /etc/gitlab/gitlab.rb</h6>
-
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>vim /etc/gitlab/gitlab.rb
-</code></pre></div></div>
-
-<h6 id="-설정-파일-내에서-git_data_dirs-경로-변경">: 설정 파일 내에서 git_data_dirs 경로 변경</h6>
-
-<p><img src="\assets\built\images\gitlab\2\image-20210113154201441.png" alt="image-20210113154201441" /></p>
-
-<h4 id="3-smtp-설정">3. SMTP 설정</h4>
-
-<h6 id="설정-파일-위치--etcgitlabgitlabrb-2">설정 파일 위치 : /etc/gitlab/gitlab.rb</h6>
-
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>vim /etc/gitlab/gitlab.rb
-</code></pre></div></div>
-
-<h6 id="-smtp-를-이용한-메일링-서비스-이용을-할-경우-파일-내의-smtp-설정-부분-변경">: SMTP 를 이용한 메일링 서비스 이용을 할 경우 파일 내의 SMTP 설정 부분 변경</h6>
-
-<p><img src="\assets\built\images\gitlab\2\image-20210113154428321.png" alt="image-20210113154428321" /></p>
-
-<p>※Gitlab SMTP 설정 관련 공식 문서 : <a href="https://docs.gitlab.com/omnibus/settings/smtp.html">Gitlab SMTP 설정 관련 Docs</a></p>
-
-<h4 id="4-gitlab-변경된-설정-적용하기">4. Gitlab 변경된 설정 적용하기</h4>
-
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>gitlab-ctl stop				// gitlab 중지
-<span class="nb">sudo </span>gitlab-ctl reconfigure			// 설정 적용
-<span class="nb">sudo </span>gitlab-ctl restart				// gitlab 재시작
-</code></pre></div></div>]]></content><author><name>sian</name></author><category term="linux" /><category term="gitlab" /><summary type="html"><![CDATA[CentOS 7 Gitlab 설치 및 설정(2) - Gitlab 설정]]></summary></entry><entry><title type="html">CentOS 7 Gitlab 설치 및 설정(1) - Gitlab 설치하기</title><link href="https://sianlab.github.io/gitlab-install-1" rel="alternate" type="text/html" title="CentOS 7 Gitlab 설치 및 설정(1) - Gitlab 설치하기" /><published>2021-01-13T12:45:00+09:00</published><updated>2021-01-13T12:45:00+09:00</updated><id>https://sianlab.github.io/gitlab-install-1</id><content type="html" xml:base="https://sianlab.github.io/gitlab-install-1"><![CDATA[<h3 id="centos-7-gitlab-설치-및-설정1---gitlab-설치하기">CentOS 7 Gitlab 설치 및 설정(1) - Gitlab 설치하기</h3>
-
-<h6 id="os--centos-7">OS : CentOS 7</h6>
-<h6 id="version--gitlab-ce-community-edition---무료버전">VERSION : gitlab-ce (community edition - 무료버전)</h6>
-
-<h4 id="1-gitlab-설치시-필요한-패키지-설치">1. Gitlab 설치시 필요한 패키지 설치</h4>
-
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>yum <span class="nb">install</span> <span class="nt">-y</span> curl policycoreutils-python openssh-server
-<span class="nb">sudo </span>systemctl <span class="nb">enable </span>sshd
-<span class="nb">sudo </span>systemctl start sshd
-<span class="nb">sudo </span>firewall-cmd <span class="nt">--permanent</span> <span class="nt">--add-service</span><span class="o">=</span>http
-<span class="nb">sudo </span>firewall-cmd <span class="nt">--permanent</span> <span class="nt">--add-service</span><span class="o">=</span>https
-<span class="nb">sudo </span>systemctl reload firewalld
-</code></pre></div></div>
-
-<h4 id="2-설치-전후-의존성-패키지-설치여부-확인">2. 설치 전/후 의존성 패키지 설치여부 확인</h4>
-
-<h6 id="1-policycoreutils-python">1. policycoreutils-python</h6>
-
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>yum list installed | <span class="nb">grep </span>policycoreutils-python
-</code></pre></div></div>
-
-<p><img src="\assets\built\images\gitlab\1\image-20210113144623259.png" alt="image-20210113144623259" /></p>
-
-<h6 id="2-openssh-server">2. openssh-server</h6>
-
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>yum list installed | <span class="nb">grep </span>openssh-server
-</code></pre></div></div>
-
-<p><img src="\assets\built\images\gitlab\1\image-20210113144640124.png" alt="image-20210113144640124" /></p>
-
-<h6 id="3--openssh-server-구동-여부-확인">3.  openssh-server 구동 여부 확인</h6>
-
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>systemctl status sshd
-</code></pre></div></div>
-
-<p><img src="\assets\built\images\gitlab\1\image-20210113144737316.png" alt="image-20210113144737316" /></p>
-
-<h6 id="4-메일링-서비스를-위한-postfix-설치필요시">4. 메일링 서비스를 위한 postfix 설치(필요시)</h6>
-
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>yum <span class="nb">install </span>postfix
-<span class="nb">sudo </span>systemctl <span class="nb">enable </span>postfix
-<span class="nb">sudo </span>systemctl start postfix
-</code></pre></div></div>
-
-<h4 id="3-gitlab-설치하기">3. Gitlab 설치하기</h4>
-
-<h6 id="1-gitlab-ce-package-repository-추가">1. Gitlab-ce Package repository 추가</h6>
-
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   curl https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.rpm.sh | <span class="nb">sudo </span>bash
-</code></pre></div></div>
-
-<h6 id="2-gitlab-을-접속하기-위한-url-설정-후-gitlab-ce-설치">2. Gitlab 을 접속하기 위한 url 설정 후 gitlab-ce 설치</h6>
-
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   <span class="nb">sudo </span><span class="nv">EXTERNAL_URL</span><span class="o">=</span><span class="s2">"자신의 도메인이나 접속가능한 IP:접속할 Port번호"</span> yum <span class="nb">install</span> <span class="nt">-y</span> gitlab-ce
-   ex<span class="o">)</span> <span class="nb">sudo </span><span class="nv">EXTERNAL_URL</span><span class="o">=</span><span class="s2">"https://localhost:8080"</span> yum <span class="nb">install</span> <span class="nt">-y</span> gitlab-ce
-</code></pre></div></div>
-
-<h6 id="3-설치-완료후-external_url-에-설정된-주소로-접속-후-gitlab-페이지-확인">3. 설치 완료후 EXTERNAL_URL 에 설정된 주소로 접속 후 Gitlab 페이지 확인</h6>
-
-<h6 id="4-초기-페이지-에서-root-의-패스워드를-새로-지정하기-위한-페이지가-나온다">4. 초기 페이지 에서 root 의 패스워드를 새로 지정하기 위한 페이지가 나온다.</h6>
-
-<h4 id="3-gitlab-명령어">3. Gitlab 명령어</h4>
-
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>gitlab-ctl stop				// gitlab 중지
-<span class="nb">sudo </span>gitlab-ctl reconfigure			// 설정 적용
-<span class="nb">sudo </span>gitlab-ctl restart				// gitlab 재시작
-</code></pre></div></div>]]></content><author><name>sian</name></author><category term="linux" /><category term="gitlab" /><summary type="html"><![CDATA[CentOS 7 Gitlab 설치 및 설정(1) - Gitlab 설치하기]]></summary></entry></feed>
+</code></pre></div></div>]]></content><author><name>sian</name></author><category term="python" /><summary type="html"><![CDATA[Python 강좌는 여러 절로 구성되어 있습니다. Python 강좌(1) - Python 기본 Python 강좌(2) - Python 제어문]]></summary></entry></feed>

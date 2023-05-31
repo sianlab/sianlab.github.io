@@ -45,8 +45,8 @@
     
     <!-- This tag outputs SEO meta+structured data and other important settings -->
     <meta name="description" content="기술 블로그" />
-    <link rel="shortcut icon" href="https://sianlab.github.io/assets/built/images/favicon.jpg" type="image/png" />
-    <link rel="canonical" href="https://sianlab.github.io/search" />
+    <link rel="shortcut icon" href="http://localhost:4000/assets/built/images/favicon.jpg" type="image/png" />
+    <link rel="canonical" href="http://localhost:4000/search" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
 
      <!--title below is coming from _includes/dynamic_title-->
@@ -54,14 +54,14 @@
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Search Result" />
     <meta property="og:description" content="기술 블로그" />
-    <meta property="og:url" content="https://sianlab.github.io/search" />
-    <meta property="og:image" content="https://sianlab.github.io/assets/built/images/blog-cover1.png" />
+    <meta property="og:url" content="http://localhost:4000/search" />
+    <meta property="og:image" content="http://localhost:4000/assets/built/images/blog-cover1.png" />
     <meta property="article:publisher" content="https://www.facebook.com/" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Search Result" />
     <meta name="twitter:description" content="기술 블로그" />
-    <meta name="twitter:url" content="https://sianlab.github.io/" />
-    <meta name="twitter:image" content="https://sianlab.github.io/assets/built/images/blog-cover1.png" />
+    <meta name="twitter:url" content="http://localhost:4000/" />
+    <meta name="twitter:image" content="http://localhost:4000/assets/built/images/blog-cover1.png" />
     <meta name="twitter:label1" content="Written by" />
     <meta name="twitter:data1" content="Siansoft" />
     <meta name="twitter:site" content="@" />
@@ -76,18 +76,18 @@
     "publisher": {
         "@type": "Organization",
         "name": "Siansoft",
-        "logo": "https://sianlab.github.io/"
+        "logo": "http://localhost:4000/"
     },
-    "url": "https://sianlab.github.io/search",
+    "url": "http://localhost:4000/search",
     "image": {
         "@type": "ImageObject",
-        "url": "https://sianlab.github.io/assets/built/images/blog-cover1.png",
+        "url": "http://localhost:4000/assets/built/images/blog-cover1.png",
         "width": 2000,
         "height": 666
     },
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://sianlab.github.io/search"
+        "@id": "http://localhost:4000/search"
     },
     "description": "기술 블로그"
 }
@@ -121,7 +121,7 @@ into the {body} of the default.hbs template -->
     <div class="site-nav-left">
         
             
-                <a class="site-nav-logo" href="https://sianlab.github.io/">Siansoft</a>
+                <a class="site-nav-logo" href="http://localhost:4000/">Siansoft</a>
             
         
         
@@ -185,6 +185,60 @@ into the {body} of the default.hbs template -->
 
 <script>
     window.store = {
+    
+    "unity-6": {
+        "title": "Unity AR App 개발 - Nreal glasses 360도 영상 App 개발 ",
+            "author": "sian",
+            "category": "",
+            "content": "서론Unity 기반 안드로이드용 AR app 개발을 하기 위해 조사 및 테스트한 내용을 정리하기 위해 본 포스트를 작성하였다.여섯번째로 이전 포스트에 이어서 Nreal glasses 360도 영상 App 개발에 대해 알아보자.환경  Windows 11  Android 기반 스마트폰  Nreal Air1.   360도 영상 설정1.1\tProject 탭에서 Assets 내 material 폴더 생성1.2\tMaterial 폴더에 360도 영상 파일을 복사1.3\tMaterial 폴더 우클릭 후 Create &gt; Render Texture 클릭1.4\t생성된 Render Texture 클릭 후 Inspector 탭에서 Size 값을 1920 x 1080 으로 설정1.5\tMaterial 폴더 우클릭 후 Create &gt; material 클릭1.6\t생성된 material 클릭 후 Inspector 탭1.6.1\tShader 값을 Skybox/Panoramic 으로 설정1.6.2\tSpherical 항목에 작성한 Render Texture 객체를 드래그 하여 설정1.7\tWindow &gt; Rendering &gt; Lighting 클릭1.8\tLighting 창에서 Environment 클릭 후 Skybox Material 항목에 작성한 material 객체를 드래그 하여 설정1.9\tHierarchy 탭에서 + 버튼 클릭 후 Video &gt; Video Player 클릭1.10\t생성된 Video Player 클릭 후 Inspector 탭1.10.1\tVideo Clip 항목에 360도 영상 설정1.10.2\tTarget Texture 항목에 작성한 Render Texture 설정1.10.3\t반복 재생은 Loop 항목 체크2.   Nreal glass 설정2.1\tHierarchy 탭에서 DemoScenesMenu 삭제2.2\tHierarchy 탭에서 HelloMR &gt; NRCameraRig &gt; LeftCamera 클릭2.3\tInspector 탭에서 Camera &gt; Clear Flags 값을 Skybox 로 설정2.4 App 빌드 및 실행",
+        "url": "/unity_6"
+    }
+    ,
+    
+    "unity-5": {
+        "title": "Unity AR App 개발 - Nreal glasses App 개발 ",
+            "author": "sian",
+            "category": "",
+            "content": "서론Unity 기반 안드로이드용 AR app 개발을 하기 위해 조사 및 테스트한 내용을 정리하기 위해 본 포스트를 작성하였다.다섯번째로 AR 기기 중 하나인 Nreal glasses 용 AR App 개발에 대해 알아보자.환경  Windows 11  Android 기반 스마트폰  Nreal Air1.   프로젝트 생성1.1\t개발자사이트(https://developer.nreal.ai/download) 접속하여 Nreal SDK 다운로드1.2\t이전 포스트 중 ‘프로젝트 생성’ 부분 참고하여 생성※ 필자의 개발환경 기준으로 최신 유니티 에디터 버전을 사용 시 빌드 오류가 발생되어 2020.03 에디터 버전으로 다운그레이드 후 정상 실행이 되어 이 버전 기준으로 작성함.2.   프로젝트 설정2.1\tFile &gt; Build Settings &gt; Player Settings     2.1.1\tOther Settings         2.1.1.1\tConfiguration &gt; Api compatibility Level 값을 .NET 4.x 로 설정        2.1.1.2\tWrite Permission 값을 External로 설정2.2\tResolution and Presentation     2.2.1\tDefault Orientation 값을 Portrait 로 설정2.3\tQuality &gt; V Sync Count 값을 Don’t Sync 로 설정3.  Nreal SDK 설치3.1\tAssets &gt; Import Package &gt; Custom Package 클릭3.2\t다운받은 Nreal SDK 파일 선택3.3\tImport Unity Package 창에서 Import 버튼 클릭4.\tNreal Demo App 빌드 및 실행4.1\tProject 탭에서 Assets &gt; NRSDK &gt; Demos &gt; HelloMR.unity 파일 더블클릭4.2\tFile &gt; Build Settings 에서 Add Open Scene 클릭 후 Build 실행4.3\t사용할 스마트폰에 Nebula 앱 설치4.4\tNreal glass 를 스마트폰에 연결4.5\t스마트폰에서 Nebula 앱 실행4.6\tNebula 앱에서 AR 스페이스 버튼 클릭4.7\tNubula 가상 화면에서 우측으로 이동하여 설치한 Unity app 실행",
+        "url": "/unity_5"
+    }
+    ,
+    
+    "unity-4": {
+        "title": "Unity AR App 개발 - Text box 구현 ",
+            "author": "sian",
+            "category": "",
+            "content": "서론Unity 기반 안드로이드용 AR app 개발을 하기 위해 조사 및 테스트한 내용을 정리하기 위해 본 포스트를 작성하였다.네번째로 이전 포스트에서 설명했던 AR App 에서 사용할 Text box 구현 방법에 대해 알아보자.1.   Canvas 생성1.1\tHierarchy 탭에서 + 버튼 클릭1.2\tUI &gt; Canvas 클릭1.3\tRender Mode 값을 World Space 로 설정1.4\tCanvas Scaler 항목 우측 버튼 클릭 후 Remove Component 클릭1.5\tCanvas 크기 설정1.5.1\tPos X, Y, Z 값을 0으로 설정1.5.2\tWidth , Height 값을 1로 설정2.   Text 생성2.1\tHierarchy 탭에서 Canvas 우클릭2.2\tUI &gt; Text 클릭2.3\tText 영역 설정2.3.1\tWidth, Height 값 설정2.3.2\tScale 값을 0.01로 설정2.4\tText 설정2.4.1\t표시할 Text 값 설정2.4.2\t글꼴 설정2.4.3\t정렬 설정2.4.4\t글자색 설정2.5\tHierarchy 탭의 Canvas 항목을 드래그 하여 Project 탭으로 이동2.6\tHierarchy 탭의 Canvas 항목 삭제",
+        "url": "/unity_4"
+    }
+    ,
+    
+    "unity-3": {
+        "title": "Unity AR App 개발 - Multiple Image Tracking App 개발 ",
+            "author": "sian",
+            "category": "",
+            "content": "서론Unity 기반 안드로이드용 AR app 개발을 하기 위해 조사 및 테스트한 내용을 정리하기 위해 본 포스트를 작성하였다.세번째로 여러 이미지를 인식하여 각각 다른 이미지를 띄우는 Multiple Image Tracking App 개발에 대해 알아보자.1.   AR 모듈 설치1.1\t메뉴 탭의 Window &gt; Package Manager 클릭1.2\tPackages: In Project 항목 클릭하여 Unity registry 로 변경1.3\t우측 상단 검색창에 ar 입력1.4\t검색 결과 목록에서 AR Foundation 선택1.5\t우측 하단 Install 클릭1.6\t설치 완료 후 Package Manager 팝업 닫기1.7\tHierarchy 탭에서 Main Camera 항목 삭제1.8\t+ 버튼 클릭하여 XR &gt; AR Session / AR Session Origin 각각 추가한다2.\tImage Library 생성2.1\tProject 탭에서 Assets 항목 우클릭2.2\tCreate &gt; folder 클릭하여 material 폴더 생성2.3\tMaterial 폴더 우클릭 하여 create &gt; XR &gt; reference Image Object 생성2.4\tAR 앱으로 촬영할 대상 이미지 파일을 드래그하여 material 폴더로 복사2.5\t생성한 Image Object 선택 후 Inspector 탭에서 Add Image 버튼 클릭2.6\tTexture 2D 항목에 대상 이미지 파일을 드래그 하여 설정2.7\tInspector 탭에서 Specify Size 체크 후 Physical Size 값 설정 (인식할 이미지 크기 설정)※ X 값 또는 Y 값 입력 시 다른 값은 비율에 맞게 자동 입력2.8\t인식할 이미지 개수만큼 2.4 ~ 2.7 단계 반복3.\tImage Prefab 생성3.1\tAR 앱으로 촬영할 대상 위에 표시할 이미지 파일을 material 폴더로 복사3.2\tHierarchy 탭에서 + 버튼을 클릭하여 3D Object &gt; Quad 선택3.3\t생성한 Quad 항목을 선택3.4\tInspector 탭의 하단 빈곳으로 복사한 이미지 파일을 드래그하여 이동3.5\tHierarchy 탭에서 생성한 Quad 항목을 드래그하여 Project 탭의 material 폴더로 이동3.6\tMaterial 폴더에 Quad 항목이 생성된 것을 확인 후 Hierarchy 탭에서 Quad 항목 삭제3.7\t표시할 이미지 개수만큼 반복4.\tAR 설정4.1\tHierarchy 탭에서 AR Session Origin 항목 클릭4.2\tInspector 탭에서 Add Component 클릭4.3\tAR Tracked Image Manager 추가4.4\tAR Tracked Image Manager 설정4.4.1\tSerialized Library에 2.2에서 생성한 Image Library를 드래그 하여 이동4.4.2\tMax Number Of Moving Images 의 값을 설정 (인식할 이미지 개수)4.4.3\tTracked Image Prefab에 None 으로 설정5.   Multiple Image Tracking 스크립트 추가5.1\tHierarchy 탭에서 AR Session Origin 항목 클릭5.2\tInspector 탭에서 Add Component 클릭5.3\tSearch 에서 New script 클릭5.4\tName 부분에 생성할 스크립트 명 작성5.5\tCreate and Add 클릭5.6\t생성된 스크립트 항목의 우측 아이콘 클릭5.7\t메뉴에서 Edit Script 클릭6.  Multiple Image Tracking 스크립트 코드 작성6.1\t라이브러리 및 전역변수 선언6.2\tAwake 함수 선언6.3\t이미지 감지 이벤트 처리 함수 선언7.  Multiple script prefab 설정7.1\tHierarchy 탭에서 AR Session Origin 항목 클릭7.2\t추가한 스크립트 내 Prefabs 에서 + 버튼을 눌러 목록 증가7.3\tPrefabs 목록에 표시할 이미지 Prefab 등록8.  App 빌드",
+        "url": "/unity_3"
+    }
+    ,
+    
+    "unity-2": {
+        "title": "Unity AR App 개발 - Image Tracking App 개발 ",
+            "author": "sian",
+            "category": "",
+            "content": "서론Unity 기반 안드로이드용 AR app 개발을 하기 위해 조사 및 테스트한 내용을 정리하기 위해 본 포스트를 작성하였다.두번째로 특정 이미지 위에 다른 이미지를 띄우는 Image Tracking App 개발에 대해 알아보자.1.\tAR 모듈 설치1.1\t메뉴 탭의 Window &gt; Package Manager 클릭1.2\tPackages: In Project 항목 클릭하여 Unity registry 로 변경1.3\t우측 상단 검색창에 ar 입력1.4\t검색 결과 목록에서 AR Foundation 선택1.5\t우측 하단 Install 클릭1.6\t설치 완료 후 Package Manager 팝업 닫기1.7\tHierarchy 탭에서 Main Camera 항목 삭제1.8\t+ 버튼 클릭하여 XR &gt; AR Session / AR Session Origin 각각 추가한다2.\tImage Library 생성2.1\tProject 탭에서 Assets 항목 우클릭2.2\tCreate &gt; folder 클릭하여 material 폴더 생성2.3\tMaterial 폴더 우클릭 하여 create &gt; XR &gt; reference Image Object 생성2.4\tAR 앱으로 촬영할 대상 이미지 파일을 드래그하여 material 폴더로 복사2.5\t생성한 Image Object 선택 후 Inspector 탭에서 Add Image 버튼 클릭2.6\tTexture 2D 항목에 대상 이미지 파일을 드래그 하여 설정2.7\tInspector 탭에서 Specify Size 체크 후 Physical Size 값 설정 (인식할 이미지 크기 설정)※ X 값 또는 Y 값 입력 시 다른 값은 비율에 맞게 자동 입력3.\tImage Prefab 생성3.1\tAR 앱으로 촬영할 대상 위에 표시할 이미지 파일을 material 폴더로 복사3.2\tHierarchy 탭에서 + 버튼을 클릭하여 3D Object &gt; Quad 선택3.3\t생성한 Quad 항목을 선택3.4\tInspector 탭의 하단 빈곳으로 복사한 이미지 파일을 드래그하여 이동3.5\tHierarchy 탭에서 생성한 Quad 항목을 드래그하여 Project 탭의 material 폴더로 이동3.6\tMaterial 폴더에 Quad 항목이 생성된 것을 확인 후 Hierarchy 탭에서 Quad 항목 삭제4.\tAR 설정4.1\tHierarchy 탭에서 AR Session Origin 항목 클릭4.2\tInspector 탭에서 Add Component 클릭4.3\tAR Tracked Image Manager 추가4.4\tAR Tracked Image Manager 설정4.4.1\tSerialized Library에 2.2에서 생성한 Image Library를 드래그 하여 이동4.4.2\tMax Number Of Moving Images 의 값을 설정 (인식할 이미지 개수)4.4.3\tTracked Image Prefab에 2.3에서 생성한 Image Prefab을 드래그 하여 이동5.\tApp 빌드",
+        "url": "/unity_2"
+    }
+    ,
+    
+    "unity-1": {
+        "title": "Unity AR App 개발 - Unity 설치 및 프로젝트 설정 ",
+            "author": "sian",
+            "category": "",
+            "content": "서론Unity 기반 안드로이드용 AR app 개발을 하기 위해 조사 및 테스트한 내용을 정리하기 위해 본 포스트를 작성하였다.첫번째로 Unity 설치 및 프로젝트 설정에 대해 알아보자.환경  Windows 11  Android 기반 스마트폰1.\tUnity Hub 설치  유니티 사이트(https://unity.com/kr/download) 접속하여 다운로드2.\tUnity Editor 설치2.1\tUnity Hub 실행2.2\t좌측 메뉴 Installs 메뉴 클릭2.3\t우측 상단 Install Editor 클릭2.4\t설치할 에디터 버전 항목의 Install 클릭2.5 이전 버전 에디터 설치하려면 유니티 아카이브 사이트(https://unity.com/releases/editor/archive) 접속하여 해당 버전 항목의 Unity Hub 버튼 클릭2.6\t설치항목 선택 (안드로이드 앱 기준)2.6.1\t안드로이드 관련 항목(SDK/NDK 등) 체크2.6.2\tVisual Studio 항목 체크 후 Install 클릭3.\t프로젝트 생성3.1\tUnity Hub 실행3.2\t좌측 메뉴 Projects 클릭3.3\t우측 상단 New project 클릭3.4\t중앙 상단 사용할 에디터 버전 선택3.5\t프로젝트 템플릿은 3D Core 선택3.6\t우측 하단 Project name 설정3.7\tCreate project 클릭4.\t프로젝트 설정4.1\t플랫폼 변경4.1.1\tFile &gt; Build Settings 클릭4.1.2\tPlatform 항목에서 안드로이드 선택 후 Switch Platform 클릭4.2\t빌드 설정4.2.1\tBuild Settings 창 하단 Player Settings 클릭4.2.2\tCompany Name, Product Name 설정 (빌드 시 해당 설정값으로 패키지명 자동설정 됨)4.2.3\tOther Settings 클릭4.2.4\tAuto Graphics API 체크해제4.2.5\tGraphics APIs 항목에서 Vulkan 클릭 후 아래 – 버튼 클릭하여 제외4.2.6\tMinimum API Level 설정 (24 ~ 26 버전 설정 권장)4.2.7\tTarget API Level 설정 (기본값으로 사용 권장, 빌드 실패 시 유니티 에디터 버전에 맞는 안드로이드 버전으로 설정)4.2.8\tScripting Backend 값을 IL2CPP 로 설정4.2.9 Target Architectures 에서 ARM64 체크 (갤럭시 S20 이상에서 구동 시 필수)4.2.10\tProject Settings &gt; XR Plug-in Management 클릭4.2.11\tXR Install 클릭4.2.12\tARCore 체크5.\tApp 빌드5.1\tFile &gt; Build Settings 클릭5.2\tAdd Open Scenes 클릭5.3\t빌드할 Scene 항목 체크5.4\t연결된 기기가 있을 시, Run Device 에서 연결한 기기 선택5.5\tBuild And Run 실행5.6\t생성할 APK 파일명 설정 후 저장5.7\t빌드 완료 후 해당 프로젝트 폴더에 APK 파일 생성5.8\tRun Device 에서 연결한 기기 선택 시, 기기에서 자동 실행됨",
+        "url": "/unity_1"
+    }
+    ,
     
     "ssl-letsencrypt-ubuntu22": {
         "title": "Letsencrypt + Nginx SSL인증서(HTTPS) 적용 (Ubuntu22.04 개정판)",
@@ -433,7 +487,7 @@ into the {body} of the default.hbs template -->
         "title": "React back-end",
             "author": "sian",
             "category": "",
-            "content": "1. Koa 로 웹서버 만들기a. Koa 란?Node.js에서 가장 인기있던 웹 프레임워크인 Express.js 개발팀이 Koa 라는 웹프레임워크를 새로 만들었다.Express 와의 차이점은 Koa가 훨씬 가볍고, Node.js v7 의 async/await 기능을 아주 편하게 사용할 수 있다는 것이다.async/await 를 자체적으로 사용할 수 있기 때문에 Koa 는 Node.js v7 이상 버전에서 사용하는 것이 권장된다.b. Koa 기본 사용법-서버를 여는 방법-src/index.jsconst Koa = require('koa');const app = new Koa();app.use(ctx =&gt; {    ctx.body = 'Hello Koa';});app.listen(4000, () =&gt; {    console.log('heurm server is listening to port 4000');});위 코드를 작성하여 실행시킨 후 브라우저에서 https://sianlab.github.io/ 에 들어가면, Hello Koa 라는 텍스트가 보인다.-async/await 사용하기-const Koa = require('koa');const app = new Koa();app.use(async (ctx, next) =&gt; {    console.log(1);    const started = new Date();    await next();    console.log(new Date() - started + 'ms');});app.listen(4000, () =&gt; {    console.log('heurm server is listening to port 4000');});app.use 라는 함수는 미들웨어다. Koa의 미들웨어 함수에서는 두가지 파라미터를 받는다.ctx는 웹요청과 응답에 대한 정보를 가지고 있고, next 는 다음 미들웨어를 실행시키는 함수다.next를 호출하지 않는다면 그 부분에서 요청처리를 완료시키고 응답을 하게 된다.async/await 문법을 사용하면 콜백이 여러개 겹치는 문제가 사라진다.이것은 서버에서도 자주 사용하게 되는데 이는 데이터베이스에 요청을 할 때 매우 유용하게 사용된다.-REST API 사용하기-REST API 는 요청의 종류에 따라 다른 HTTP 메소드를 사용한다.  GET: 데이터를 가져올 때 사용한다.  POST: 데이터를 등록 할 때 사용한다. 혹은, 인증작업을 거칠때도 사용된다.  DELETE: 데이터를 지울 때 사용된다.  PUT: 데이터를 교체 할 때 사용된다.  PATCH: 데이터의 특정 필드를 수정 할 때 사용된다.라우터를 사용하여 각 메소드에 대한 요청을 준비해보자.src/api/rest_api/rest_api.controller.jsexports.list = (ctx) =&gt; {    ctx.body = 'listed';};exports.create = (ctx) =&gt; {    ctx.body = 'created';};exports.delete = (ctx) =&gt; {    ctx.body = 'deleted';};exports.replace = (ctx) =&gt; {    ctx.body = 'replaced';};exports.update = (ctx) =&gt; {    ctx.body = 'updated';};src/rest_api/index.jsconst Router = require('koa-router');const rest_api = new Router();const rest_apiCtrl = require('./rest_api.controller');rest_api.get('/', rest_apiCtrl.list);rest_api.post('/', rest_apiCtrl.create);rest_api.delete('/', rest_apiCtrl.delete);rest_api.put('/', rest_apiCtrl.replace);rest_api.patch('/', rest_apiCtrl.update);module.exports = rest_api;코드가 복잡해지면 모듈화하여 파일을 분리시키는 것이 좋다.분리시킬수록 코드의 가독성이 높아지고 유지보수 하기에도 편해진다.2. DB 연동하기서버 폴더에서 connection 파일를 만들어 각 항목의 값을 자신의 DB 설정에 맞게 입력한다.먼저 사용할 DB와 dotenv를 인스톨 해야한다.프로젝트의 루트경로에 .env 파일을 만들고 mongoDB의 웹서버의 포트번호와 DB주소를 넣는다.보안을 위해 따로 파일을 만들어서(.env) DB의 정보를 환경변수로 빼내는 것이다.dotenv가 여기서 환경변수를 파일안에 넣어서 불러올 수 있도록 해준다.a. MySQL과 연동하는 방법.var mysql = require('mysql');var dbConfig = {   host: 'localhost',   user: 'root',   password: '1234',   port: 3306,   database: 'nelp'   connectionLimit : 50};var pool = mysql.createPool(dbConfig);// Get Connection in Poolpool.getConnection(function(err,connection){  if(!err){    //connected!  }  // 커넥션을 풀에 반환  connection.release();});  1.  다수의 Connection 관리 기법  2.  Pool에서 Connection 얻어서 사용하고 Pool에 반납  3.  waitForConnections : 풀에 여유 커넥션이 없는 경우 대기 여부  4.  connectionLimit : 최대 커넥션 개수, 기본 10개b. Mongoose를 사용하여 MongoDB 연동하는 방법..envPORT=4000MONGO_URI=mongodb://localhost/project_name다음은 src/index.js 파일 상단에 dotenv를 적용한다.src/index.jsrequire('dotenv').config(); // .env 파일에서 환경변수 불러오기const Koa = require('koa');const Router = require('koa-router');const app = new Koa();const router = new Router();const api = require('./api');const mongoose = require('mongoose');mongoose.Promise = global.Promise; // Node 의 네이티브 Promise 사용// mongodb 연결mongoose.connect(process.env.MONGO_URI, {  useMongoClient: true}).then(    (response) =&gt; {        console.log('Successfully connected to mongodb');    }).catch(e =&gt; {    console.error(e);});const port = process.env.PORT || 4000; // PORT 값이 설정되어있지 않다면 4000 을 사용합니다.router.use('/api', api.routes()); // api 라우트를 /api 경로 하위 라우트로 설정app.use(router.routes()).use(router.allowedMethods());app.listen(port, () =&gt; {    console.log('heurm server is listening to port ' + port);});DB가 연결되면 스키마를 작성해야 한다.간단하게 말해서 해당 컬렉션에 어떤 항목이 들어가는지, 각 데이터의 형식이 무엇인지어떤 종류의 값이 들어가는지 정의하는 것이다.간단한 예로 books에 대한 데이터 스키마를 준비하고 모델을 만들어보자.책의 정보를 담는 데이터는 어떤 값들이 필요한가?  책 이름  저자  출판일  가격  …각 항목들이 어떤 형식으로 이루어져야 하는지 생각해보자.  책 이름: 문자열  저자: 저자의 정보(저자명, email, 저자의 수 등)  출판일: 날짜  가격: 숫자  …위의 데이터로 스키마를 만들어보자.const mongoose = require('mongoose');const { Schema } = mongoose;// Book 에서 사용할 서브다큐먼트의 스키마입니다.const Author = new Schema({    name: String,    email: String});const Book = new Schema({    title: String,    authors: [Author], // 위에서 만든 Author 스키마를 가진 객체들의 배열형태로 설정했습니다.    publishedDate: Date,    price: Number,    tags: [String],    createdAt: { // 기본값을 설정할땐 이렇게 객체로 설정해줍니다        type: Date,        default: Date.now // 기본값은 현재 날짜로 지정합니다.    }});// 스키마를 모델로 변환하여, 내보내기 합니다.module.exports = mongoose.model('Book', Book);위의 코드에서 Author와 Book이 스키마이고, 하단에 mongoose.model 을 통하여만든 스키마를 모델로 변환하여 다른 파일에서 불러와 사용 할 수 있도록 내보낸 것이다.MongoDB가 설치되어 있다면, mongo 명령어를 통하여 데이터베이스에 접속해 데이터를 조회할 수 있을 것이다.3. SQL과 NoSQLa. SQL 이란?SQL은 ‘관계형 데이터베이스’ 또는 ‘구조화 된 쿼리 언어(Structured Query Language)’의약자로 특정 유형의 데이터베이스와 상호 작용하는데 사용하는 쿼리 언어라고 한다.SQL의 데이터는 정해진 데이터 스키마를 따라 데이터베이스 테이블에 저장된다.각 테이블에는 명확하게 정의된 구조가 있다. 따라서 스키마를 준수하지 않는 레코드는 추가할 수 없다.명확하게 정의된 구조로 데이터의 무결성을 보장하고, 관계는 각 데이터를 중복없이 한번만 저장한다.SQL을 사용하면 관계형 데이터베이스 관리 시스템(RDBMS)에서 데이터를 저장, 수정, 삭제 및 검색 할 수 있다.b. NoSQL 이란?기본적으로 SQL과 반대되는 접근방식을 따르기 때문에 지어진 이름이다.스키마와 데이터간의 관계가 없다. NoSQL 에서는 레코드를 문서(documents)라고 부른다.핵심적인 차이는 SQL에서는 정해진 스키마를 따르지 않는다면 데이터를 추가할 수 없지만,NoSQL에서는 다른 구조의 데이터를 같은 컬렉션(=SQL에서 테이블)에 추가할 수 있다.위에서 스키마를 따로 만들어주어야 하는것은 MongDB가 NoSQL이기 때문이다.NoSQL의 문서는 JSWON데이터와 비슷한 형태를 가지고 있다. 또한 일반적으로 관련 데이터를동일한 컬렉션에 모두 담고 있다.이런 방식은 데이터가 중복되기 때문에 불안정하다는 단점이 있다.예를들면, 실수로 B컬렉션에서는 데이터를 수정하지 않았는데, A컬렉션에서만 데이터를 업데이트 하는 경우이다.그럼에도 불구하고, 이 방식의 가장 큰 장점은 복잡한 조인을 사용할 필요가 없다는 것이다.이미 하나의 컬렉션에 모든 데이터가 저장되어 있기 때문이다.특히 자주 변경되지 않는 데이터 일때 더 큰 장점이 된다.어떤 데이터베이스를 쓸 것이냐는 어떠한 데이터를 다루는지, 어떤 애플리케이션에서 사용되는지 고려해야 한다.",
+            "content": "1. Koa 로 웹서버 만들기a. Koa 란?Node.js에서 가장 인기있던 웹 프레임워크인 Express.js 개발팀이 Koa 라는 웹프레임워크를 새로 만들었다.Express 와의 차이점은 Koa가 훨씬 가볍고, Node.js v7 의 async/await 기능을 아주 편하게 사용할 수 있다는 것이다.async/await 를 자체적으로 사용할 수 있기 때문에 Koa 는 Node.js v7 이상 버전에서 사용하는 것이 권장된다.b. Koa 기본 사용법-서버를 여는 방법-src/index.jsconst Koa = require('koa');const app = new Koa();app.use(ctx =&gt; {    ctx.body = 'Hello Koa';});app.listen(4000, () =&gt; {    console.log('heurm server is listening to port 4000');});위 코드를 작성하여 실행시킨 후 브라우저에서 http://localhost:4000/ 에 들어가면, Hello Koa 라는 텍스트가 보인다.-async/await 사용하기-const Koa = require('koa');const app = new Koa();app.use(async (ctx, next) =&gt; {    console.log(1);    const started = new Date();    await next();    console.log(new Date() - started + 'ms');});app.listen(4000, () =&gt; {    console.log('heurm server is listening to port 4000');});app.use 라는 함수는 미들웨어다. Koa의 미들웨어 함수에서는 두가지 파라미터를 받는다.ctx는 웹요청과 응답에 대한 정보를 가지고 있고, next 는 다음 미들웨어를 실행시키는 함수다.next를 호출하지 않는다면 그 부분에서 요청처리를 완료시키고 응답을 하게 된다.async/await 문법을 사용하면 콜백이 여러개 겹치는 문제가 사라진다.이것은 서버에서도 자주 사용하게 되는데 이는 데이터베이스에 요청을 할 때 매우 유용하게 사용된다.-REST API 사용하기-REST API 는 요청의 종류에 따라 다른 HTTP 메소드를 사용한다.  GET: 데이터를 가져올 때 사용한다.  POST: 데이터를 등록 할 때 사용한다. 혹은, 인증작업을 거칠때도 사용된다.  DELETE: 데이터를 지울 때 사용된다.  PUT: 데이터를 교체 할 때 사용된다.  PATCH: 데이터의 특정 필드를 수정 할 때 사용된다.라우터를 사용하여 각 메소드에 대한 요청을 준비해보자.src/api/rest_api/rest_api.controller.jsexports.list = (ctx) =&gt; {    ctx.body = 'listed';};exports.create = (ctx) =&gt; {    ctx.body = 'created';};exports.delete = (ctx) =&gt; {    ctx.body = 'deleted';};exports.replace = (ctx) =&gt; {    ctx.body = 'replaced';};exports.update = (ctx) =&gt; {    ctx.body = 'updated';};src/rest_api/index.jsconst Router = require('koa-router');const rest_api = new Router();const rest_apiCtrl = require('./rest_api.controller');rest_api.get('/', rest_apiCtrl.list);rest_api.post('/', rest_apiCtrl.create);rest_api.delete('/', rest_apiCtrl.delete);rest_api.put('/', rest_apiCtrl.replace);rest_api.patch('/', rest_apiCtrl.update);module.exports = rest_api;코드가 복잡해지면 모듈화하여 파일을 분리시키는 것이 좋다.분리시킬수록 코드의 가독성이 높아지고 유지보수 하기에도 편해진다.2. DB 연동하기서버 폴더에서 connection 파일를 만들어 각 항목의 값을 자신의 DB 설정에 맞게 입력한다.먼저 사용할 DB와 dotenv를 인스톨 해야한다.프로젝트의 루트경로에 .env 파일을 만들고 mongoDB의 웹서버의 포트번호와 DB주소를 넣는다.보안을 위해 따로 파일을 만들어서(.env) DB의 정보를 환경변수로 빼내는 것이다.dotenv가 여기서 환경변수를 파일안에 넣어서 불러올 수 있도록 해준다.a. MySQL과 연동하는 방법.var mysql = require('mysql');var dbConfig = {   host: 'localhost',   user: 'root',   password: '1234',   port: 3306,   database: 'nelp'   connectionLimit : 50};var pool = mysql.createPool(dbConfig);// Get Connection in Poolpool.getConnection(function(err,connection){  if(!err){    //connected!  }  // 커넥션을 풀에 반환  connection.release();});  1.  다수의 Connection 관리 기법  2.  Pool에서 Connection 얻어서 사용하고 Pool에 반납  3.  waitForConnections : 풀에 여유 커넥션이 없는 경우 대기 여부  4.  connectionLimit : 최대 커넥션 개수, 기본 10개b. Mongoose를 사용하여 MongoDB 연동하는 방법..envPORT=4000MONGO_URI=mongodb://localhost/project_name다음은 src/index.js 파일 상단에 dotenv를 적용한다.src/index.jsrequire('dotenv').config(); // .env 파일에서 환경변수 불러오기const Koa = require('koa');const Router = require('koa-router');const app = new Koa();const router = new Router();const api = require('./api');const mongoose = require('mongoose');mongoose.Promise = global.Promise; // Node 의 네이티브 Promise 사용// mongodb 연결mongoose.connect(process.env.MONGO_URI, {  useMongoClient: true}).then(    (response) =&gt; {        console.log('Successfully connected to mongodb');    }).catch(e =&gt; {    console.error(e);});const port = process.env.PORT || 4000; // PORT 값이 설정되어있지 않다면 4000 을 사용합니다.router.use('/api', api.routes()); // api 라우트를 /api 경로 하위 라우트로 설정app.use(router.routes()).use(router.allowedMethods());app.listen(port, () =&gt; {    console.log('heurm server is listening to port ' + port);});DB가 연결되면 스키마를 작성해야 한다.간단하게 말해서 해당 컬렉션에 어떤 항목이 들어가는지, 각 데이터의 형식이 무엇인지어떤 종류의 값이 들어가는지 정의하는 것이다.간단한 예로 books에 대한 데이터 스키마를 준비하고 모델을 만들어보자.책의 정보를 담는 데이터는 어떤 값들이 필요한가?  책 이름  저자  출판일  가격  …각 항목들이 어떤 형식으로 이루어져야 하는지 생각해보자.  책 이름: 문자열  저자: 저자의 정보(저자명, email, 저자의 수 등)  출판일: 날짜  가격: 숫자  …위의 데이터로 스키마를 만들어보자.const mongoose = require('mongoose');const { Schema } = mongoose;// Book 에서 사용할 서브다큐먼트의 스키마입니다.const Author = new Schema({    name: String,    email: String});const Book = new Schema({    title: String,    authors: [Author], // 위에서 만든 Author 스키마를 가진 객체들의 배열형태로 설정했습니다.    publishedDate: Date,    price: Number,    tags: [String],    createdAt: { // 기본값을 설정할땐 이렇게 객체로 설정해줍니다        type: Date,        default: Date.now // 기본값은 현재 날짜로 지정합니다.    }});// 스키마를 모델로 변환하여, 내보내기 합니다.module.exports = mongoose.model('Book', Book);위의 코드에서 Author와 Book이 스키마이고, 하단에 mongoose.model 을 통하여만든 스키마를 모델로 변환하여 다른 파일에서 불러와 사용 할 수 있도록 내보낸 것이다.MongoDB가 설치되어 있다면, mongo 명령어를 통하여 데이터베이스에 접속해 데이터를 조회할 수 있을 것이다.3. SQL과 NoSQLa. SQL 이란?SQL은 ‘관계형 데이터베이스’ 또는 ‘구조화 된 쿼리 언어(Structured Query Language)’의약자로 특정 유형의 데이터베이스와 상호 작용하는데 사용하는 쿼리 언어라고 한다.SQL의 데이터는 정해진 데이터 스키마를 따라 데이터베이스 테이블에 저장된다.각 테이블에는 명확하게 정의된 구조가 있다. 따라서 스키마를 준수하지 않는 레코드는 추가할 수 없다.명확하게 정의된 구조로 데이터의 무결성을 보장하고, 관계는 각 데이터를 중복없이 한번만 저장한다.SQL을 사용하면 관계형 데이터베이스 관리 시스템(RDBMS)에서 데이터를 저장, 수정, 삭제 및 검색 할 수 있다.b. NoSQL 이란?기본적으로 SQL과 반대되는 접근방식을 따르기 때문에 지어진 이름이다.스키마와 데이터간의 관계가 없다. NoSQL 에서는 레코드를 문서(documents)라고 부른다.핵심적인 차이는 SQL에서는 정해진 스키마를 따르지 않는다면 데이터를 추가할 수 없지만,NoSQL에서는 다른 구조의 데이터를 같은 컬렉션(=SQL에서 테이블)에 추가할 수 있다.위에서 스키마를 따로 만들어주어야 하는것은 MongDB가 NoSQL이기 때문이다.NoSQL의 문서는 JSWON데이터와 비슷한 형태를 가지고 있다. 또한 일반적으로 관련 데이터를동일한 컬렉션에 모두 담고 있다.이런 방식은 데이터가 중복되기 때문에 불안정하다는 단점이 있다.예를들면, 실수로 B컬렉션에서는 데이터를 수정하지 않았는데, A컬렉션에서만 데이터를 업데이트 하는 경우이다.그럼에도 불구하고, 이 방식의 가장 큰 장점은 복잡한 조인을 사용할 필요가 없다는 것이다.이미 하나의 컬렉션에 모든 데이터가 저장되어 있기 때문이다.특히 자주 변경되지 않는 데이터 일때 더 큰 장점이 된다.어떤 데이터베이스를 쓸 것이냐는 어떠한 데이터를 다루는지, 어떤 애플리케이션에서 사용되는지 고려해야 한다.",
         "url": "/react-back-end"
     }
     ,
@@ -727,7 +781,7 @@ $(function() {
         <!-- The footer at the very bottom of the screen -->
         <footer class="site-footer outer">
             <div class="site-footer-content inner">
-                <section class="copyright"><a href="https://sianlab.github.io/">Siansoft</a> &copy; 2022</section>
+                <section class="copyright"><a href="http://localhost:4000/">Siansoft</a> &copy; 2023</section>
                 <section class="poweredby">Proudly published with <a href="https://jekyllrb.com/">Jekyll</a> &
                     <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> using
                     <a href="https://github.com/jekyllt/jasper2" target="_blank" rel="noopener">Jasper2</a></section>
