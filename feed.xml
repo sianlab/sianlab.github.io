@@ -1,4 +1,204 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-05-31T17:27:34+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Siansoft</title><subtitle>기술 블로그</subtitle><entry><title type="html">[ElectronJS] React 앱을 데스크톱 응용프로그램으로 변환(포팅)하기</title><link href="http://localhost:4000/react_porting_by_electron" rel="alternate" type="text/html" title="[ElectronJS] React 앱을 데스크톱 응용프로그램으로 변환(포팅)하기" /><published>2023-05-31T17:00:00+09:00</published><updated>2023-05-31T17:00:00+09:00</updated><id>http://localhost:4000/react_porting_by_electron</id><content type="html" xml:base="http://localhost:4000/react_porting_by_electron"><![CDATA[<h2 id="서론">서론</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-08-09T18:42:27+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Siansoft</title><subtitle>기술 블로그</subtitle><entry><title type="html">[ChatGPT] 챗GPT function 기능 이용해보기</title><link href="http://localhost:4000/chat_gpt_function" rel="alternate" type="text/html" title="[ChatGPT] 챗GPT function 기능 이용해보기" /><published>2023-08-09T17:00:00+09:00</published><updated>2023-08-09T17:00:00+09:00</updated><id>http://localhost:4000/chat_gpt_function</id><content type="html" xml:base="http://localhost:4000/chat_gpt_function"><![CDATA[<h2 id="서론">서론</h2>
+
+<p>작년 말 출시하여 현재 1년도 안 된 사이에 엄청난 이용자가 생긴 AI 대화형 인공지능 ChatGPT(이하 챗GPT).</p>
+
+<p>현재 GPT-4 모델 출시, 플러그인, 추가 기능 등등 많은 업데이트도 되고 있는 상황이다.</p>
+
+<p>하지만 챗GPT의 주 목적은 사람과 자연스러운 대화를 나누는 것이기 때문에 간혹 모르는 주제의 내용임에도 잘못된 정보를 전달하는 등의 현상이 발생한다.</p>
+
+<p>예를 들어 날씨를 알려달라고 한다거나, 비 유명인의 정보 등을 알려달라고 하면 그럴듯한 답변을 내놓지만 정보가 정확하지 않다.</p>
+
+<p>이런 점 등을 OpenAI에서 추가로 제공하는 <strong>function</strong> 기능을 이용하여 보완을 할 수 있는데, 챗GPT를 이용하여 서비스를 제공하는 측에서
+자신들의 커스텀 함수를 이용하여 챗GPT에게 추가로 자신들이 원하는 기능을 제공할 수 있게 만들 수 있다.</p>
+
+<p>function 기능을 사용하여 정확한 날씨 정보를 응답하게 하거나, 자사 측 서비스를 활용하여 api를 사용하거나 메일을 보내는 등의 기능을 활용할 수 있다.</p>
+
+<p>그래서 이 기능을 써보기 위해 OpenAI 설명서에 있는 function 기능을 한글로 나름 번역해서 테스트 해보았다.</p>
+
+<h3 id="환경">환경</h3>
+
+<ul>
+  <li>gpt-3.5-turbo</li>
+  <li>nextjs (테스트용)</li>
+</ul>
+
+<h2 id="1-테스트용-앱-준비">1.	테스트용 앱 준비</h2>
+
+<p>기존에 챗GPT API를 테스트하기 위해 따로 nextjs로 만들어 둔 간단한 테스트 앱이 있는데, 이를 이용하여 function 테스트를 진행하였다.</p>
+
+<p><img src="\assets\built\images\chatgpt\chatgpt_function_1.jpg" alt="img" /></p>
+
+<h2 id="2-코드-입력">2.	코드 입력</h2>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 날씨 정보를 알려주는 함수</span>
+<span class="kd">function</span> <span class="nx">get_current_weather</span><span class="p">(</span><span class="nx">location</span><span class="p">,</span> <span class="nx">unit</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">섭씨</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">weather_info</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">location</span><span class="p">:</span> <span class="nx">location</span><span class="p">,</span>
+    <span class="na">temperature</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span>
+    <span class="na">unit</span><span class="p">:</span> <span class="nx">unit</span><span class="p">,</span>
+    <span class="na">forecast</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">맑음</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">바람</span><span class="dl">"</span><span class="p">],</span>
+  <span class="p">};</span>
+  <span class="k">return</span> <span class="nx">weather_info</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// 챗GPT api 요청</span>
+<span class="k">async</span> <span class="kd">function</span> <span class="nx">onSubmit</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+
+  <span class="c1">// 메시지 작성중 체크</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">msgCheck</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">메세지 작성중입니다.</span><span class="dl">"</span><span class="p">);</span>
+    <span class="k">return</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="c1">// 기존 응답값 제거</span>
+  <span class="nx">setResult</span><span class="p">(</span><span class="dl">""</span><span class="p">);</span>
+
+  <span class="c1">// 챗gpt에 api 요청</span>
+  <span class="kd">let</span> <span class="nx">thisForm</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">;</span>
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">messages</span> <span class="o">=</span> <span class="p">[{</span> <span class="na">role</span><span class="p">:</span> <span class="dl">"</span><span class="s2">user</span><span class="dl">"</span><span class="p">,</span> <span class="na">content</span><span class="p">:</span> <span class="nx">thisForm</span><span class="p">.</span><span class="nx">input</span><span class="p">.</span><span class="nx">value</span><span class="p">}];</span>
+    <span class="kd">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">fetch</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://api.openai.com/v1/chat/completions</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span>
+      <span class="na">method</span><span class="p">:</span> <span class="dl">"</span><span class="s2">POST</span><span class="dl">"</span><span class="p">,</span>
+      <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+        <span class="dl">"</span><span class="s2">Content-Type</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">Authorization</span><span class="dl">"</span><span class="p">:</span> <span class="s2">`Bearer </span><span class="p">${</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NEXT_PUBLIC_OPENAI_API_KEY</span><span class="p">}</span><span class="s2">`</span>
+      <span class="p">},</span>
+      <span class="na">body</span><span class="p">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
+        <span class="na">model</span><span class="p">:</span> <span class="dl">"</span><span class="s2">gpt-3.5-turbo</span><span class="dl">"</span><span class="p">,</span>
+        <span class="na">messages</span><span class="p">:</span> <span class="nx">messages</span><span class="p">,</span>
+        <span class="na">functions</span><span class="p">:</span> <span class="p">[</span>  <span class="c1">// function 기능에 사용할 정보, 챗GPT가 프롬프트를 분석하여 function 기능이 필요한지 아닌지 분석하는데 사용된다.</span>
+          <span class="p">{</span>
+            <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">get_current_weather</span><span class="dl">"</span><span class="p">,</span>
+            <span class="na">description</span><span class="p">:</span> <span class="dl">"</span><span class="s2">주어진 지역의 날씨 조회</span><span class="dl">"</span><span class="p">,</span>
+            <span class="na">parameters</span><span class="p">:</span> <span class="p">{</span>
+              <span class="na">type</span><span class="p">:</span> <span class="dl">"</span><span class="s2">object</span><span class="dl">"</span><span class="p">,</span>
+              <span class="na">properties</span><span class="p">:</span> <span class="p">{</span>
+                <span class="na">location</span><span class="p">:</span> <span class="p">{</span>
+                  <span class="na">type</span><span class="p">:</span> <span class="dl">"</span><span class="s2">string</span><span class="dl">"</span><span class="p">,</span>
+                  <span class="na">description</span><span class="p">:</span> <span class="dl">"</span><span class="s2">각 나라의 도시 혹은 특정 지역, 예를 들어 서울</span><span class="dl">"</span>
+                <span class="p">},</span>
+                <span class="na">unit</span><span class="p">:</span> <span class="p">{</span>
+                  <span class="na">type</span><span class="p">:</span> <span class="dl">"</span><span class="s2">string</span><span class="dl">"</span><span class="p">,</span>
+                  <span class="na">enum</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="dl">"</span><span class="s2">섭씨</span><span class="dl">"</span><span class="p">,</span>
+                    <span class="dl">"</span><span class="s2">화씨</span><span class="dl">"</span>
+                  <span class="p">]</span>
+                <span class="p">}</span>
+              <span class="p">},</span>
+              <span class="na">required</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">location</span><span class="dl">"</span><span class="p">]</span>  <span class="c1">// 사용자 정의 함수(get_current_weather 함수)에 필요한 필수 값. 챗gpt는 프롬프트를 분석하여 이 값을 리턴해준다.</span>
+            <span class="p">}</span>
+          <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="na">function_call</span><span class="p">:</span> <span class="dl">"</span><span class="s2">auto</span><span class="dl">"</span> <span class="c1">// function 기능을 자동으로 분석해서 사용할지 판단하도록 한다.</span>
+      <span class="p">}),</span>
+    <span class="p">});</span>
+
+    <span class="c1">// 챗gpt api response</span>
+    <span class="kd">const</span> <span class="nx">res</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
+
+    <span class="c1">// 응답문을 분석하여 챗gpt가 function 기능이 필요하다 판단되면</span>
+    <span class="c1">// 응답문에 function_call이란 값을 리턴한다.</span>
+    <span class="c1">// 이를 이용하여 function이 필요한지 아닌지 분기하여 function이 필요한 프롬프트라면</span>
+    <span class="c1">// 기존에 미리 작성한 함수 등을 이용하여(현재는 위의 get_current_weather 함수) 추가 정보를 재차 챗gpt에 요청한다.</span>
+    <span class="c1">// 그러면 챗gpt는 총 두번의 요청을 받은 뒤 사용자가 정의한 function대로 대답을 해주게 된다.</span>
+    <span class="kd">const</span> <span class="nx">resMessage</span> <span class="o">=</span> <span class="nx">res</span><span class="p">.</span><span class="nx">choices</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">message</span><span class="p">;</span>
+    <span class="kd">let</span> <span class="nx">result</span> <span class="o">=</span> <span class="dl">""</span><span class="p">;</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">resMessage</span><span class="p">.</span><span class="nx">function_call</span><span class="p">)</span> <span class="p">{</span>  <span class="c1">// function_call 값이 있는 지 확인</span>
+      <span class="kd">const</span> <span class="nx">args</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">resMessage</span><span class="p">.</span><span class="nx">function_call</span><span class="p">.</span><span class="nx">arguments</span><span class="p">);</span>  <span class="c1">// 챗gpt가 프롬프트를 분석해서 사용자 정의 함수에 필요한 필수 값을 리턴해준다.</span>
+      <span class="kd">const</span> <span class="nx">functionRes</span> <span class="o">=</span> <span class="nx">get_current_weather</span><span class="p">(</span><span class="nx">args</span><span class="p">.</span><span class="nx">location</span><span class="p">);</span>       <span class="c1">// 사용자 정의 함수로 챗gpt에 보낼 정보</span>
+
+      <span class="c1">// 챗gpt에 보낼 값 재가공</span>
+      <span class="nx">messages</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">resMessage</span><span class="p">);</span>
+      <span class="nx">messages</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span>
+        <span class="na">role</span><span class="p">:</span> <span class="dl">"</span><span class="s2">function</span><span class="dl">"</span><span class="p">,</span>
+        <span class="na">name</span><span class="p">:</span> <span class="nx">resMessage</span><span class="p">.</span><span class="nx">function_call</span><span class="p">.</span><span class="nx">name</span><span class="p">,</span>
+        <span class="na">content</span><span class="p">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">functionRes</span><span class="p">)</span>
+      <span class="p">});</span>
+
+      <span class="c1">// 2차 요청</span>
+      <span class="kd">const</span> <span class="nx">secondResponse</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">fetch</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://api.openai.com/v1/chat/completions</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span>
+        <span class="na">method</span><span class="p">:</span> <span class="dl">"</span><span class="s2">POST</span><span class="dl">"</span><span class="p">,</span>
+        <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+          <span class="dl">"</span><span class="s2">Content-Type</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span><span class="p">,</span>
+          <span class="dl">"</span><span class="s2">Authorization</span><span class="dl">"</span><span class="p">:</span> <span class="s2">`Bearer </span><span class="p">${</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NEXT_PUBLIC_OPENAI_API_KEY</span><span class="p">}</span><span class="s2">`</span>
+        <span class="p">},</span>
+        <span class="na">body</span><span class="p">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
+          <span class="na">model</span><span class="p">:</span> <span class="dl">"</span><span class="s2">gpt-3.5-turbo</span><span class="dl">"</span><span class="p">,</span>
+          <span class="na">messages</span><span class="p">:</span> <span class="nx">messages</span><span class="p">,</span>
+        <span class="p">}),</span>
+      <span class="p">});</span>
+
+      <span class="c1">// 챗gpt api 2차 response</span>
+      <span class="kd">const</span> <span class="nx">secRes</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">secondResponse</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">secRes</span><span class="p">);</span>
+
+      <span class="nx">result</span> <span class="o">=</span> <span class="nx">secRes</span><span class="p">.</span><span class="nx">choices</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">message</span><span class="p">.</span><span class="nx">content</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="nx">result</span> <span class="o">=</span> <span class="nx">resMessage</span><span class="p">.</span><span class="nx">content</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// 화면에 출력</span>
+    <span class="nx">setResult</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+
+  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Consider implementing your own error handling logic here</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="nx">err</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">finally</span> <span class="p">{</span>
+    <span class="nx">setMsgCheck</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>아래에 링크해 둔 OpenAI의 가이드 글을 거의 그대로 가져와서 한글로 바꾸고 주석을 추가해놓은 javascript 코드이다.</p>
+
+<p>위 코드의 주석에도 적어놓았지만, 간단하게 작동 방식을 설명하자면 아래와 같다.</p>
+
+<ol>
+  <li>사용자가 챗GPT에게 API를 요청한다. 이 때, function을 사용하기 위하여 function 관련 정보를 같이 넘겨준다.</li>
+  <li>챗GPT가 요청받은 function 관련 정보를 이용하여 프롬프트를 분석 후 function 기능이 필요한 문구인지 확인한다.</li>
+  <li>챗GPT가 응답 시 function 기능이 필요한지 아닌지 여부를 포함하여 응답한다.</li>
+  <li>function 기능이 필요하지 않다면 그대로 응답문을 리턴한다.</li>
+  <li>function 기능이 필요하다면 사용자가 필요로 한 값을 리턴해주고 사용자는 이 값을 이용하여 자신의 함수를 동작시킨다.</li>
+  <li>사용자 함수 동작 후 챗GPT에게 필요한 정보를 포함하여 2차 요청을 한다.</li>
+  <li>챗GPT는 필요 정보를 받은 뒤, 사용자가 정의한 값을 이용하여 응답문을 리턴한다.</li>
+</ol>
+
+<h2 id="3-결과-확인">3.	결과 확인</h2>
+
+<p>function의 좋은 점은 사용자 함수를 사용한다는 점도 있지만, 챗GPT가 프롬프트를 분석하여 function이 필요하지 않은 문장이라면
+평소처럼 일반적인 대답을 해준다는 점이다.</p>
+
+<p><img src="\assets\built\images\chatgpt\chatgpt_function_2.jpg" alt="img" /></p>
+
+<p>위 결과 화면처럼 function이 필요하지 않은 프롬프트라면 그냥 평소처럼 일반적인 대답을 해준다.</p>
+
+<p><img src="\assets\built\images\chatgpt\chatgpt_function_3.jpg" alt="img" /></p>
+
+<p>하지만 위 처럼 function이 필요한 구문이 들어온다면 챗GPT가 function이 필요한 기능이라는 1차 응답을 보내게 되고
+이를 이용하여 사용자가 2차 요청을 보내면 2차 응답에서 최종적으로 사용자가 정의한 대로 응답을 받아볼 수 있게 된다.</p>
+
+<p>옆에 같이 띄워놓은 콘솔에도 응답이 2번 온 모습을 확인할 수 있다.</p>
+
+<p><img src="\assets\built\images\chatgpt\chatgpt_function_4.jpg" alt="img" /></p>
+
+<p>참고로 function 기능을 사용하지 않으면 위처럼 날씨를 알 수 없다고 하거나, 잘못된 날씨 정보를 응답해준다.</p>
+
+<h2 id="추후-공부해야할-부분">추후 공부해야할 부분</h2>
+
+<p>이번엔 OpenAI쪽의 가이드 글을 그대로 사용해 본 것이라서 사용자가 2차 요청할 때 보낸 weather_info와 같은 사용자 값이
+어떤 구조로 요청을 하면 되는 지에 대한 이해가 아직 낮은 상태이다.</p>
+
+<p>OpenAI쪽에선 json 형식이면 된다고 하는 것 보니 json 형식만 지키면 key와 value 값도 알아서 분석하는 것이 아닌가 추측된다.</p>
+
+<h2 id="마치며">마치며</h2>
+
+<p>추후 사용자가 만든 API를 이용해본다던가, 다른 사람에게 메일을 보내본다던가 테스트 해 볼 여지가 아직 많이 남은 것 같다.</p>
+
+<h2 id="참조-사이트">참조 사이트</h2>
+<p><a href="https://platform.openai.com/docs/guides/gpt/function-calling" title="Chat GPT function 가이드">Chat GPT function 가이드 페이지</a></p>]]></content><author><name>sian</name></author><category term="ChatGPT" /><category term="ChatGPT, OpenAI" /><summary type="html"><![CDATA[서론]]></summary></entry><entry><title type="html">[ElectronJS] React 앱을 데스크톱 응용프로그램으로 변환(포팅)하기</title><link href="http://localhost:4000/react_porting_by_electron" rel="alternate" type="text/html" title="[ElectronJS] React 앱을 데스크톱 응용프로그램으로 변환(포팅)하기" /><published>2023-05-31T17:00:00+09:00</published><updated>2023-05-31T17:00:00+09:00</updated><id>http://localhost:4000/react_porting_by_electron</id><content type="html" xml:base="http://localhost:4000/react_porting_by_electron"><![CDATA[<h2 id="서론">서론</h2>
 
 <p>React 기반의 웹 사이트를 데스크톱 응용 프로그램으로 포팅하는 방법이 있을까 싶어서 찾아보던 중 알게 된 ElectronJS.
 ElectronJS를 이용하면 굉장히 간단한 설정 몇번으로 React 기반(정확하게는 JS, HTML, CSS 기반)의 데스크톱 응용프로그램을 만들거나 포팅을 할 수 있다.
@@ -1139,147 +1339,4 @@ react 앱이 돌아가고 있지 않아도 프로그램이 정상 작동하는 �
 
 <p>ignite 서버를 재시작했음에도 데이터가 유지되는 모습을 확인할 수 있었다.</p>
 
-<p>여기까지 정말 기본적인 ignite 사용법을 살펴보았다.</p>]]></content><author><name>sian</name></author><category term="apache-ignite" /><category term="apache-ignite" /><category term="ignite" /><summary type="html"><![CDATA[아파치 재단에서 Apache Ignite라는 분산형 데이터베이스 서비스를 출시했다. 메모리와 저장장치 간 데이터를 분산하여 속도, 안정성 모두 고려하여 개발된 데이터베이스로 보인다. 사이트에 접속해보면 여러가지 기술들이 나열되어 있는데 이론적인 이야기는 일단 제쳐두고 간단하게 메모리 DB로 사용해 본 내용을 본 포스트에 기재한다.]]></summary></entry><entry><title type="html">Maven과 Gradle 차이</title><link href="http://localhost:4000/mavengradle" rel="alternate" type="text/html" title="Maven과 Gradle 차이" /><published>2021-09-09T16:00:00+09:00</published><updated>2021-09-09T16:00:00+09:00</updated><id>http://localhost:4000/mavengradle</id><content type="html" xml:base="http://localhost:4000/mavengradle"><![CDATA[<h1 id="빌드-도구란">빌드 도구란?</h1>
-
-<ul>
-  <li>빌드 도구는 빌드 자동화를 시켜주는 실행가능한 프로그램만들어 주는 프로그램 ex) maven, gradle, ant</li>
-</ul>
-
-<h2 id="빌드-자동화란">빌드 자동화란?</h2>
-<ul>
-  <li>
-    <p>빌드 자동화의 본질적 목적은 소프트웨어 개발자가 반복해서 하는 코딩을 잘 짜여진 프로세스를 통해 자동으로 실행하여, 
-믿을 수 있는 결과물도 생산해 낼 수 있는 일련의 작업방식 및 방법을 말한다.</p>
-  </li>
-  <li>
-    <p>지속적인 통합(continuous Integration)과도 일맥상통되는 의미다. 
-수없이 반복해서 최종 결과물을 만들어내야 하는 소프트웨어 개발업무에서 빠질 수 없는 개념적 이해가 되었다. 
-특히 오늘날의 복잡하고 광범위한 협업적 개발 과정에서는 과정과정에서 있을 수 있는 인간적 실수의 가능성을 최소한으로 줄여야 한다.</p>
-  </li>
-</ul>
-
-<p>출처 : Wikipedia</p>
-
-<h2 id="maven-이란">Maven 이란?</h2>
-<ul>
-  <li>Project object model (POM)개념의 기반으로 만들어져있으며 빌드 중인 프로젝트, 빌드 순서, 
-다양한 외부 라이브러리의 종속성 관계들을 pom.xml파일에 명시한다.</li>
-  <li>외부저장소에서 필요한 라이브러리와 플러그인들을 다운로드 한 다음, 로컬시스템의 캐시에 모두 저장한다.</li>
-</ul>
-
-<h3 id="project-object-model-pom">Project Object Model (POM)</h3>
-<p>Project Object Model는 이름 그대로 Project Object Model의 정보를 담고있는 파일이다. <br />
-이 파일에서 주요하게 다루는 기능들은 다음과 같다.</p>
-<ul>
-  <li>프로젝트 정보 : 프로젝트의 이름, 개발자 목록, 라이센스 등</li>
-  <li>빌드 설정 : 소스, 리소스, 라이프 사이클별 실행한 플러그인(goal)등 빌드와 관련된 설정</li>
-  <li>빌드 환경 : 사용자 환경 별로 달라질 수 있는 프로파일 정보</li>
-  <li>POM연관 정보 : 의존 프로젝트(모듈), 상위 프로젝트, 포함하고 있는 하위 모듈 등</li>
-</ul>
-
-<h2 id="gradle-이란">Gradle 이란?</h2>
-<ul>
-  <li>Maven과 Ant에서 볼수 있는 개념들을 사용하는 대안으로써 나온 프로젝트 빌드 관리 툴이다.</li>
-  <li>Ant처럼 유연한 범용 빌드 도구</li>
-  <li>Maven을 사용할 수 있는 변환 가능 컨벤션 프레임 워크</li>
-  <li>Groovy 언어를 사용한 Domain-specific-language를 사용한다. 
-(설정파일을 xml파일을 사용하는 Maven보다 코드가 훨씬 간결하다.)</li>
-  <li>2007년에 처음 개발되었고, 2013년에 구글에 의해 안드로이드 프로젝트의 빌드 시스템으로 채택되었다.</li>
-</ul>
-
-<h2 id="maven-gradle-차이">Maven Gradle 차이</h2>
-<ol>
-  <li>Maven은 고정적이고 선형적인 단계의 모델을 기반<br />
-Gradle은 작업 의존성 그래프를 기반</li>
-  <li>Maven, Gradle 둘 다 다중 모듈 빌드를 병렬로 실행할 수 있지만<br />
-Gradle은 어떤 task가 업데이트 되었고 안되었는지를 체크하기 때문에 incremental build를 허용한다.<br />
-이미 업데이트된 task에 대해서는 작업이 실행 되지 않으므로 빌드 시간이 훨씬 단축된다.</li>
-  <li>Maven은 멀티 프로젝트에서 특정 설정을 다른 모듈에서 사용하려면 상속을 받아야하지<br />
-Gradle은 설정 주입 방식을 제공한다.</li>
-  <li>Gradle은 concurrent에 안전한 캐시를 허용한다.<br />
-2개 이상의 프로젝트에서 동일한 캐시를 사용할 경우,   <br />
-서로 overwrite되지 않도록 checksum기반의 캐시를 사용하고 캐시를 repository와 동기화시킬 수 있다.</li>
-</ol>
-
-<h2 id="maven-코드-예제">Maven 코드 예제</h2>
-<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
-<span class="nt">&lt;project</span> <span class="na">xmlns=</span><span class="s">"http://maven.apache.org/POM/4.0.0"</span> <span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span>
-<span class="na">xsi:schemaLocation=</span><span class="s">"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"</span><span class="nt">&gt;</span>
-<span class="nt">&lt;modelVersion&gt;</span>4.0.0<span class="nt">&lt;/modelVersion&gt;</span>
-
-    <span class="nt">&lt;groupId&gt;</span>com.example<span class="nt">&lt;/groupId&gt;</span>
-    <span class="nt">&lt;artifactId&gt;</span>demo-maven<span class="nt">&lt;/artifactId&gt;</span>
-    <span class="nt">&lt;version&gt;</span>0.0.1-SNAPSHOT<span class="nt">&lt;/version&gt;</span>
-    <span class="nt">&lt;packaging&gt;</span>jar<span class="nt">&lt;/packaging&gt;</span>
-
-    <span class="nt">&lt;name&gt;</span>demo-maven<span class="nt">&lt;/name&gt;</span>
-    <span class="nt">&lt;description&gt;</span>Demo project for Spring Boot<span class="nt">&lt;/description&gt;</span>
-
-    <span class="nt">&lt;parent&gt;</span>
-        <span class="nt">&lt;groupId&gt;</span>org.springframework.boot<span class="nt">&lt;/groupId&gt;</span>
-        <span class="nt">&lt;artifactId&gt;</span>spring-boot-starter-parent<span class="nt">&lt;/artifactId&gt;</span>
-        <span class="nt">&lt;version&gt;</span>1.5.4.RELEASE<span class="nt">&lt;/version&gt;</span>
-        <span class="nt">&lt;relativePath/&gt;</span> <span class="c">&lt;!-- lookup parent from repository --&gt;</span>
-    <span class="nt">&lt;/parent&gt;</span>
-
-    <span class="nt">&lt;properties&gt;</span>
-        <span class="nt">&lt;project.build.sourceEncoding&gt;</span>UTF-8<span class="nt">&lt;/project.build.sourceEncoding&gt;</span>
-        <span class="nt">&lt;project.reporting.outputEncoding&gt;</span>UTF-8<span class="nt">&lt;/project.reporting.outputEncoding&gt;</span>
-        <span class="nt">&lt;java.version&gt;</span>1.8<span class="nt">&lt;/java.version&gt;</span>
-    <span class="nt">&lt;/properties&gt;</span>
-    
-    <span class="nt">&lt;dependencies&gt;</span>
-        <span class="nt">&lt;dependency&gt;</span>
-            <span class="nt">&lt;groupId&gt;</span>org.springframework.boot<span class="nt">&lt;/groupId&gt;</span>
-            <span class="nt">&lt;artifactId&gt;</span>spring-boot-starter<span class="nt">&lt;/artifactId&gt;</span>
-        <span class="nt">&lt;/dependency&gt;</span>
-    
-        <span class="nt">&lt;dependency&gt;</span>
-            <span class="nt">&lt;groupId&gt;</span>org.springframework.boot<span class="nt">&lt;/groupId&gt;</span>
-            <span class="nt">&lt;artifactId&gt;</span>spring-boot-starter-test<span class="nt">&lt;/artifactId&gt;</span>
-            <span class="nt">&lt;scope&gt;</span>test<span class="nt">&lt;/scope&gt;</span>
-        <span class="nt">&lt;/dependency&gt;</span>
-    <span class="nt">&lt;/dependencies&gt;</span>
-
-    <span class="nt">&lt;build&gt;</span>
-        <span class="nt">&lt;plugins&gt;</span>
-            <span class="nt">&lt;plugin&gt;</span>
-                <span class="nt">&lt;groupId&gt;</span>org.springframework.boot<span class="nt">&lt;/groupId&gt;</span>
-                <span class="nt">&lt;artifactId&gt;</span>spring-boot-maven-plugin<span class="nt">&lt;/artifactId&gt;</span>
-            <span class="nt">&lt;/plugin&gt;</span>
-        <span class="nt">&lt;/plugins&gt;</span>
-    <span class="nt">&lt;/build&gt;</span>
-<span class="nt">&lt;/project&gt;</span>
-</code></pre></div></div>
-
-<h2 id="gradle-코드-예제">Gradle 코드 예제</h2>
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">buildscript</span> <span class="p">{</span>
-    <span class="nx">ext</span> <span class="p">{</span>
-        <span class="nx">springBootVersion</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">1.5.4.RELEASE</span><span class="dl">'</span>
-    <span class="p">}</span>
-    
-    <span class="nx">repositories</span> <span class="p">{</span>
-        <span class="nx">m</span>  <span class="nx">avenCentral</span><span class="p">()</span>
-    <span class="p">}</span>
-    <span class="nx">dependencies</span> <span class="p">{</span>
-        <span class="nx">classpath</span><span class="p">(</span><span class="dl">"</span><span class="s2">org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}</span><span class="dl">"</span><span class="p">)</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="nx">apply</span> <span class="nx">plugin</span><span class="p">:</span> <span class="dl">'</span><span class="s1">java</span><span class="dl">'</span>
-<span class="nx">apply</span> <span class="nx">plugin</span><span class="p">:</span> <span class="dl">'</span><span class="s1">idea</span><span class="dl">'</span>
-<span class="nx">apply</span> <span class="nx">plugin</span><span class="p">:</span> <span class="dl">'</span><span class="s1">org.springframework.boot</span><span class="dl">'</span>
-
-<span class="nx">version</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">0.0.1-SNAPSHOT</span><span class="dl">'</span>
-<span class="nx">sourceCompatibility</span> <span class="o">=</span> <span class="mf">1.8</span>
-
-<span class="nx">repositories</span> <span class="p">{</span>
-    <span class="nx">mavenCentral</span><span class="p">()</span>
-<span class="p">}</span>
-
-
-<span class="nx">dependencies</span> <span class="p">{</span>
-    <span class="nx">compile</span><span class="p">(</span><span class="dl">'</span><span class="s1">org.springframework.boot:spring-boot-starter</span><span class="dl">'</span><span class="p">)</span>
-    <span class="nx">testCompile</span><span class="p">(</span><span class="dl">'</span><span class="s1">org.springframework.boot:spring-boot-starter-test</span><span class="dl">'</span><span class="p">)</span>
-<span class="p">}</span>
-</code></pre></div></div>]]></content><author><name>sian</name></author><category term="build" /><category term="maven" /><category term="gradle" /><summary type="html"><![CDATA[빌드 도구란?]]></summary></entry></feed>
+<p>여기까지 정말 기본적인 ignite 사용법을 살펴보았다.</p>]]></content><author><name>sian</name></author><category term="apache-ignite" /><category term="apache-ignite" /><category term="ignite" /><summary type="html"><![CDATA[아파치 재단에서 Apache Ignite라는 분산형 데이터베이스 서비스를 출시했다. 메모리와 저장장치 간 데이터를 분산하여 속도, 안정성 모두 고려하여 개발된 데이터베이스로 보인다. 사이트에 접속해보면 여러가지 기술들이 나열되어 있는데 이론적인 이야기는 일단 제쳐두고 간단하게 메모리 DB로 사용해 본 내용을 본 포스트에 기재한다.]]></summary></entry></feed>
